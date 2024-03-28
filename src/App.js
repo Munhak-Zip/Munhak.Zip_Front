@@ -1,7 +1,7 @@
 // @ts-ignore
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Login from './page/user/Login.js';
+import Main from './page/user/Main.js';
 import Minyoung from "./page/user/Minyoung";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
             <Routes>
                 <Route
                     path="/"
-                    element={<Login />}
+                    element={<Main />}
                 />
 
                 <Route
