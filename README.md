@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# ⭐Munhak.Zip_Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+더 자세한 깃허브 룰 설명은 팀 노션 참고. 
 
-## Available Scripts
+## 작업 순서 
 
-In the project directory, you can run:
+1. 이슈 생성
+2. 브랜치 생성 후 작업. add, commit, push (절대 메인에 push xx)
+3. PR 날리기, pr 담당자에게 알리기
+4. 메인에 merge는 본인이 하면 xx 반드시 다른 사람이 코드 확인 후 merge
+5. 이슈 close
 
-### `npm start`
+## type
+- add : 새로운 파일 추가
+- feat : 만들어진 파일에 새로운 기능 추가, 수정기존의 기능을 요구 사항에 맞추어 수정
+- fix : 기능에 대한 버그 수정
+- build : 빌드 관련 수정
+- chore : 패키지 매니저 수정, 그 외 기타 수정 ex) .gitignore
+- ci : CI 관련 설정 수정
+- docs : 문서 수정
+- comment : 주석 추가
+- style : 코드 스타일, 포맷팅에 대한 수정
+- refactor : 기능의 변화가 아닌 코드 리팩터링 ex) 변수 이름 변경
+- test : 테스트 코드 추가/수정
+- release : 버전 릴리즈
+- remove : 코드 또는 파일, 리소스 제거
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Commit message 
+commit은 틈틈히 쪼개서 하는게 좋음. 예를 들어서 새 파일 추가 → commit → 새 파일에 대한 작업 진행
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`[type] : 내용 #이슈번호`
 
-### `npm test`
+ex) `[add] : 이미지 파일 추가 #223`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## branch 이름
+branch명은 한글로 작성 시 깨질 수 있음. 영문으로 작성할 것.
 
-### `npm run build`
+`type/작업내용`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ex)  `fix/login error`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## PR 규칙 
+pr시 자신이 작업한 내용 자세하게 써주어야 함!!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+예진 ← 민영 ← 다윤 ← 미현 ex( 민영이가 예진이 PR merge, 예진이가 미현 PR merge
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+merge 할 때 delete branch 해주세용
