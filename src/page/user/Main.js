@@ -8,6 +8,9 @@ const Main=() =>{
             <Link to={"/login/minyoung"}>
                 <button>민영</button>
             </Link>
+            <Link to={"/login"}>
+                <button>login</button>
+            </Link>
         </div>
     );
 }

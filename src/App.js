@@ -1,8 +1,9 @@
 // @ts-ignore
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Main from './page/user/Main.js';
+import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
+import Login from "./views/user/Login"
 
 function App() {
   // @ts-ignore
@@ -19,6 +20,10 @@ function App() {
                     path={"/login/minyoung"}
                     element={<Minyoung/>}
                     />
+                <Route
+                    path={"/login"}
+                    element={<Login/>}
+                />
             </Routes>
         </div>
     </BrowserRouter>
