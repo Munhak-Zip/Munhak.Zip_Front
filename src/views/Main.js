@@ -2,6 +2,8 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
+import '../resources/css/Main/Main.css'
+
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
@@ -69,12 +71,12 @@ function App() {
     }
     // @ts-ignore
     return (
-        <div>
+        <div className={"div1"}>
             <Header title={"MOVIE.ZIP"} onChangeMode={()=>{
                 setMode('WELCOME');
             }}></Header>
-            <input type={"text"} value={search} />
-            <input type={"button"} value={"검색"} />
+            <input type="text" placeholder={"검색하기"} value={search} />
+            <input type={"button"} value={"검색"} /> 
             <Nav topics={topics} onChangeMode={(_id)=>{
                 setMode('READ');
                 setId(_id);
