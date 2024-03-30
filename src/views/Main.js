@@ -42,6 +42,11 @@ function App() {
     // const setMode = _mode[1]; //state변경
 
     const [mode, setMode] = useState('WELCOME');
+    const [search, setSearch] = useState(""); //검색변수
+    const onChange = (event) => {
+        setSearch(event.target.value)
+    }
+
     const [id, setId] = useState(null);
     const topics = [
         {id: 1, title: '보관함', body: 'wish is...'},
@@ -68,6 +73,7 @@ function App() {
             <Header title={"MOVIE.ZIP"} onChangeMode={()=>{
                 setMode('WELCOME');
             }}></Header>
+            <input type={"text"} value={search} />
             <Nav topics={topics} onChangeMode={(_id)=>{
                 setMode('READ');
                 setId(_id);
