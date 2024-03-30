@@ -74,6 +74,7 @@ function App() {
                 setMode('WELCOME');
             }}></Header>
             <input type={"text"} value={search} />
+            <input type={"button"} value={"검색"} />
             <Nav topics={topics} onChangeMode={(_id)=>{
                 setMode('READ');
                 setId(_id);
