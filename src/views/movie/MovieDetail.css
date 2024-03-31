@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+.bookmarkMovie img {
+    margin-left: 820px;
+}
+.imgMovie img {
+    display: block;
+    margin: 0 auto;
+}
+div.title{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    color: #FFFFFF;
+}
