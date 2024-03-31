@@ -1,6 +1,6 @@
-body{
-    background-color: black;
-}
+/*body{*/
+/*    background-color: black;*/
+/*}*/
 .mobile {
     width: 360px; /* 너비 설정 */
     margin: 0 auto; /* 가로 중앙 배치 */
@@ -63,10 +63,73 @@ div.title{
 }
 .reservation_btn{
     margin-top: 25px;
+    margin-bottom: 45px;
     width: 360px; /* 버튼의 너비 설정 */
     height: 49px;
     background-color: #D1003F; /* 배경색 설정 */
     color: #FFFFFF;
     font-weight: bold;
     font-size: 22px;
+}
+.review_text{
+    margin-left: 5px;
+    margin-top: 22px;
+    background-color: black;
+    width: 280px;
+    height: auto;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    word-wrap: break-word;
+    outline: none;
+}
+.review_btn{
+    margin-top: 22px;
+    margin-left: 8px;
+    width: 60px;
+    height: 37px;
+    background-color: #D1003F;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 15px;
+}
+.expect {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.expect .star_ex {
+    margin-left: 10px;
+    height: 25px;
+}
+
+.expect_box {
+    margin-left: 3px;
+    width: 330px;
+    display:  inline-block; /* inline-flex로 설정하여 가로로 배열될 수 있도록 함 */
+    align-items: center;
+    padding: 5px 10px;
+    border: 3px solid #FFFFFF;
+    border-radius: 18px;
+}
+
+.expect_text_mid{
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block; /* 텍스트 요소들이 가로로 배열되도록 함 */
+    margin-top: 5px; /* 위 아래 간격 조정 */
+    margin-bottom: 11px;
+}
+.expect_text{
+    color: #FFFFFF;
+    font-size: 12px;
+    display: inline-block; /* 텍스트 요소들이 가로로 배열되도록 함 */
+    margin-bottom: 5px;
 }

@@ -53,6 +53,32 @@ const MovieDetail=() =>{
             {/* 버튼 */}
             <button className="reservation_btn">예매하기</button>
 
+            <div className="starGroup">
+                <img className="star_image" src={star} width={40} height={40}/>
+                <img className="star_image" src={star} width={40} height={40}/>
+                <img className="star_image" src={star} width={40} height={40}/>
+                <img className="star_image" src={starN} width={40} height={40}/>
+                <img className="star_image" src={starN} width={40} height={40}/>
+            </div>
+
+            <input className="review_text" type="text" placeholder="리뷰를 작성해주세요"/>
+            <button className="review_btn">작성</button>
+
+            <div className="expect">
+                예상
+                <img className="star_ex" src={star} width={25} height={25}/>
+                (3)
+            </div>
+            <div className="expect_box">
+                <b className="expect_text_mid">한줄평</b>
+                <br/>
+                <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
+            </div>
+
+            <div className="critict_title">
+
+            </div>
+
         </div>
     );
 }
