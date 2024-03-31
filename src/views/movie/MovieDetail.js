@@ -75,8 +75,59 @@ const MovieDetail=() =>{
                 <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
             </div>
 
-            <div className="critict_title">
+            <div className="critic_title">
+                평론가 리뷰
+            </div>
 
+            <div className="critic">
+                <div className="critic_name">
+                    이은선
+                    <div className="star_critic">
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={starN} width={25} height={25}/>
+                        <img className="star_image" src={starN} width={25} height={25}/>
+                    </div>
+                    <div className="bookmark_critic">
+                        <img src={bookmark} width={35} height={35}/>
+                    </div>
+                </div>
+
+
+                <div className="critic_review_mid">
+                    리뷰 소제목
+                </div>
+                <div className="critic_review">
+                    리뷰리뷰리뷰리뷰리뷰~
+                </div>
+
+                <div className="horizontal-line"></div>
+            </div>
+            <div className="critic">
+                <div className="critic_name">
+                    이은선
+                    <div className="star_critic">
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={star} width={25} height={25}/>
+                        <img className="star_image" src={starN} width={25} height={25}/>
+                        <img className="star_image" src={starN} width={25} height={25}/>
+                    </div>
+                    <div className="bookmark_critic">
+                        <img src={bookmark} width={35} height={35}/>
+                    </div>
+                </div>
+
+
+                <div className="critic_review_mid">
+                    리뷰 소제목
+                </div>
+                <div className="critic_review">
+                    리뷰리뷰리뷰리뷰리뷰~
+                </div>
+
+                <div className="horizontal-line"></div>
             </div>
 
         </div>
