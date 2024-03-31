@@ -1,4 +1,6 @@
-
+body{
+    background-color: black;
+}
 .mobile {
     width: 360px; /* 너비 설정 */
     margin: 0 auto; /* 가로 중앙 배치 */
@@ -34,14 +36,14 @@ div.title{
     font-size: 23px;
 }
 .movie_text {
-    margin-top: 13px;
+    margin-top: 15px;
     margin-right: 7px;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 18px;
 }
 .category{
-    margin-top: 25px;
+    margin-top: 30px;
 }
 .category .category_box {
     margin-right: 5px;
@@ -58,4 +60,13 @@ div.title{
     font-weight: bold;
     font-size: 13px;
     text-align: center; /* 텍스트를 가운데 정렬 */
+}
+.reservation_btn{
+    margin-top: 25px;
+    width: 360px; /* 버튼의 너비 설정 */
+    height: 49px;
+    background-color: #D1003F; /* 배경색 설정 */
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 22px;
 }

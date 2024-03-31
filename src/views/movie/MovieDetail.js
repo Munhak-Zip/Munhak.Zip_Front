@@ -22,6 +22,7 @@ const MovieDetail=() =>{
             <div className="title">
                 영화명
             </div>
+            {/* 별점 */}
             <div className="starGroup">
                 <img className="star_image" src={star} width={30} height={30}/>
                 <img className="star_image" src={star} width={30} height={30}/>
@@ -36,6 +37,7 @@ const MovieDetail=() =>{
                 영화설명~~~~~~~~~~~~~~~~~~~~~<br/>
                 영화설명~~~~~~~~~~
             </div>
+            {/* 카테고리 */}
             <div className="category">
                 <div className="category_box">
                     <div className="category_text">
@@ -48,6 +50,8 @@ const MovieDetail=() =>{
                     </div>
                 </div>
             </div>
+            {/* 버튼 */}
+            <button className="reservation_btn">예매하기</button>
 
         </div>
     );
