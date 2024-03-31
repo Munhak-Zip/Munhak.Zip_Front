@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './page/user/Main.js';
 import Minyoung from "./page/user/Minyoung";
+import Moviedetail from "./views/movie/MovieDetail";
 
 function App() {
   // @ts-ignore
@@ -19,6 +20,10 @@ function App() {
                     path={"/login/minyoung"}
                     element={<Minyoung/>}
                     />
+                <Route
+                    path={"/movie/detail"}
+                    element={<Moviedetail />}
+                />
             </Routes>
         </div>
     </BrowserRouter>
