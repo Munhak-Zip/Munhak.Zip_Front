@@ -76,12 +76,15 @@ function App() {
                 setMode('WELCOME');
             }}></Header>
             <input type="text" placeholder={"검색하기"} value={search} />
-            <input type={"button"} value={"검색"} /> 
-            <Nav topics={topics} onChangeMode={(_id)=>{
+            <input type={"button"} value={"검색"} />
+            {/*<Nav topics={topics} onChangeMode={(_id)=>{
                 setMode('READ');
                 setId(_id);
             }}></Nav>
-            {content}
+            {content}*/}
+            <div className={"new"}>
+                <h1>최신영화</h1>
+            </div>
         </div>
     )
 }
