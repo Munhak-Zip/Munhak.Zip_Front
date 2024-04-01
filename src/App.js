@@ -4,6 +4,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './page/user/Main.js';
 import Minyoung from "./page/user/Minyoung";
 import Moviedetail from "./views/movie/MovieDetail";
+import Reviewdetail from "./views/wish/ReviewDetail";
+import Myreviewdetail from "./views/wish/MyReviewDetail";
 
 function App() {
   // @ts-ignore
@@ -23,6 +25,14 @@ function App() {
                 <Route
                     path={"/movie/detail"}
                     element={<Moviedetail />}
+                />
+                <Route
+                    path={"/wish/reviewDetail"}
+                    element={<Reviewdetail />}
+                />
+                <Route
+                    path={"/wish/myReviewDetail"}
+                    element={<Myreviewdetail />}
                 />
             </Routes>
         </div>
