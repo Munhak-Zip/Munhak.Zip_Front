@@ -1,18 +1,33 @@
-.div1 Header a {
-    text-decoration: none;
-    color: #D1003F;
-}
+
 
 @media (max-width: 768px) {
     /* 홈 페이지의 제목 스타일 변경 */
     .div1 {
+        margin: 0;
         /*max-width: 360px;*/
         max-height: 800px;
         margin-left: auto;
         margin-right: auto;
         background-color: black;
-        text-align: center;
         color: white;
+        text-align: center;
+    }
+
+    .div1 Header a{
+        font-size: 40px;
+         text-decoration: none;
+         color: #D1003F;
+     }
+
+    .new {
+        text-align: left;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .new img {
+        width: 131px;
+        height: 92px;
     }
 }
 @media (min-width: 769px) {

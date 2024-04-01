@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import '../resources/css/Main/Main.css'
+import Poster from '../resources/img/Main/sample1.png'
 
 function Header(props) {
     console.log('props', props, props.title)
@@ -82,8 +83,11 @@ function App() {
                 setId(_id);
             }}></Nav>
             {content}*/}
+            <p/>
             <div className={"new"}>
-                <h1>최신영화</h1>
+                최신영화
+                <p/>
+                <img src = {Poster} className={"Poster-img"} alt="logo"/>
             </div>
         </div>
     )
