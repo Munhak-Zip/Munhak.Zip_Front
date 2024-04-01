@@ -8,6 +8,9 @@ const Main=() =>{
             <Link to={"/login/minyoung"}>
                 <button>민영</button>
             </Link>
+            <Link to={"/movie/detail"}>
+                <button>영화 상세</button>
+            </Link>
             <Link to={"/main"}>
                 <button>예진</button>
             </Link>
