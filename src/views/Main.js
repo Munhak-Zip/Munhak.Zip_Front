@@ -49,6 +49,8 @@ function App() {
     const onChange = (event) => {
         setSearch(event.target.value)
     }
+    const [moviesIndex, setMoviesIndex] = useState(0); // 현재 영화 리스트의 시작 인덱스
+
 
     const [id, setId] = useState(null);
     const topics = [
@@ -74,9 +76,9 @@ function App() {
     const renderMovies = () => {
         // 영화 데이터 배열 (실제 영화 데이터로 교체 가능)
         const movies = [
-            { id: 1, title: '영화 1', poster: Poster },
-            { id: 2, title: '영화 2', poster: Poster },
-            { id: 3, title: '영화 3', poster: Poster },
+            { id: 1, title: '영화명', poster: Poster },
+            { id: 2, title: '영화명', poster: Poster },
+
             // 필요한 만큼 영화 객체 추가
         ];
 
@@ -87,15 +89,23 @@ function App() {
                 <p>{movie.title}</p>
             </span>
         ));
+
     }
+    const showMovies = () => {
+
+    }
+
+
+
+
     // @ts-ignore
     return (
         <div className={"div1"}>
-            <Header title={"MOVIE.ZIP"} onChangeMode={()=>{
+            <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
-            <input type="text" placeholder={"검색하기"} value={search} />
-            <input type={"button"} value={"검색"} />
+            <input type="text" placeholder={"검색하기"} value={search}/>
+            <input type={"button"} value={"검색"}/>
             {/*<Nav topics={topics} onChangeMode={(_id)=>{
                 setMode('READ');
                 setId(_id);
@@ -104,7 +114,23 @@ function App() {
             <p/>
             <div className={"new"}>
                 최신영화
-                <img src = {Next} className={"next-button"} alt="next"/>
+                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
+                <div className={"new-movies"}>
+                    {renderMovies()}
+                </div>
+            </div>
+            <p/>
+            <div className={"recommend"}>
+                추천영화
+                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
+                <div className={"new-movies"}>
+                    {renderMovies()}
+                </div>
+            </div>
+            <p/>
+            <div className={"recommend"}>
+                보관함
+                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
                 <div className={"new-movies"}>
                     {renderMovies()}
                 </div>
