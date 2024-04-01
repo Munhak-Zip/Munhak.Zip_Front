@@ -1,26 +1,33 @@
-import React from 'react';
-import './MovieDetail.css'
-import bookmark from './bookmark.png'
-import movieImg from './Rectangle.png';
-import star from './star.png';
-import starN from './star_unclick.png';
-import back from './back.png';
+import React, {useState} from 'react';
+import '../../resources/css/Movie/MovieDetail.css';
+import bookmark from '../../resources/img/Movie/bookmark.png'
+import movieImg from '../../resources/img/Movie/movie.png';
+import star from '../../resources/img/Movie/star.png';
+import starN from '../../resources/img/Movie/star_unclick.png';
+import back from '../../resources/img/Movie/back.png';
 import {Link, useNavigate} from "react-router-dom";
 
 const MovieDetail=() =>{
+    const [starRating, setStarRating] = useState(0); // 별점 상태를 저장하는 state 변수
+
+    // 별점 클릭 시 이벤트 핸들러
+    const handleStarClick = (index) => {
+        setStarRating(index + 1); // 클릭한 별의 인덱스에 1을 더한 값으로 별점 상태를 업데이트
+    };
     return (
         <div className="mobile">
             <div className="back_img">
                 <img src={back} width={30} height={30}/>
+                {/*좋아하는 영화*/}
             </div>
             <div className="bookmarkMovie">
-                <img src={bookmark} width={50} height={50}/>
+                <img src={bookmark} width={45} height={45}/>
             </div>
             <div className="imgMovie">
-                <img src={movieImg} width={200} height={200}/>
+                <img src={movieImg} width={250} height={350}/>
             </div>
             <div className="title">
-                영화명
+                파묘
             </div>
             {/* 별점 */}
             <div className="starGroup">
@@ -53,12 +60,25 @@ const MovieDetail=() =>{
             {/* 버튼 */}
             <button className="reservation_btn">예매하기</button>
 
+            {/*<div className="starGroup">*/}
+            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
+            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
+            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
+            {/*    <img className="star_image" src={starN} width={40} height={40}/>*/}
+            {/*    <img className="star_image" src={starN} width={40} height={40}/>*/}
+            {/*</div>*/}
+
             <div className="starGroup">
-                <img className="star_image" src={star} width={40} height={40}/>
-                <img className="star_image" src={star} width={40} height={40}/>
-                <img className="star_image" src={star} width={40} height={40}/>
-                <img className="star_image" src={starN} width={40} height={40}/>
-                <img className="star_image" src={starN} width={40} height={40}/>
+                {[...Array(5)].map((_, index) => (
+                    <img
+                        key={index}
+                        className="star_image"
+                        src={index < starRating ? star : starN} // 현재 별점 상태에 따라 이미지 소스를 선택
+                        width={40}
+                        height={40}
+                        onClick={() => handleStarClick(index)} // 별 클릭 시 이벤트 핸들러 호출
+                    />
+                ))}
             </div>
 
             <input className="review_text" type="text" placeholder="리뷰를 작성해주세요"/>
