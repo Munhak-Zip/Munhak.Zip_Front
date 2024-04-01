@@ -5,6 +5,7 @@ import {useState} from 'react';
 import '../resources/css/Main/Main.css'
 import Poster from '../resources/img/Main/sample1.png'
 import Next from '../resources/next.png'
+import Star from '../resources/star.png'
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
@@ -76,8 +77,8 @@ function App() {
     const renderMovies = () => {
         // 영화 데이터 배열 (실제 영화 데이터로 교체 가능)
         const movies = [
-            { id: 1, title: '영화명', poster: Poster },
-            { id: 2, title: '영화명', poster: Poster },
+            { id: 1, title: '영화명', poster: Poster, start: 5 },
+            { id: 2, title: '영화명', poster: Poster, start: 5 },
 
             // 필요한 만큼 영화 객체 추가
         ];
@@ -86,7 +87,7 @@ function App() {
         return movies.map(movie => (
             <span key={movie.id} className="movie">
                 <img src={movie.poster} alt={movie.title} className="Poster-img"/>
-                <p>{movie.title}</p>
+                <p>{movie.title}<img src={Star} className={"star"}/>({movie.start})</p>
             </span>
         ));
 
