@@ -70,6 +70,24 @@ function App() {
         }
         content = <Article title={title} body={body}></Article>
     }
+
+    const renderMovies = () => {
+        // 영화 데이터 배열 (실제 영화 데이터로 교체 가능)
+        const movies = [
+            { id: 1, title: '영화 1', poster: Poster },
+            { id: 2, title: '영화 2', poster: Poster },
+            { id: 3, title: '영화 3', poster: Poster },
+            // 필요한 만큼 영화 객체 추가
+        ];
+
+        // 영화 배열을 순회하며 각 영화 포스터를 렌더링합니다.
+        return movies.map(movie => (
+            <span key={movie.id} className="movie">
+                <img src={movie.poster} alt={movie.title} className="Poster-img"/>
+                <p>{movie.title}</p>
+            </span>
+        ));
+    }
     // @ts-ignore
     return (
         <div className={"div1"}>
@@ -86,8 +104,10 @@ function App() {
             <p/>
             <div className={"new"}>
                 최신영화
-                <p/>
-                <img src = {Poster} className={"Poster-img"} alt="logo"/>
+                <div className={"new-movies"}>
+                    {renderMovies()}
+                    {/*<img src = {Poster} className={"Poster-img"} alt="logo"/>*/}
+                </div>
             </div>
         </div>
     )

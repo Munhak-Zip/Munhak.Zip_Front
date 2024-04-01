@@ -29,6 +29,10 @@
         width: 131px;
         height: 92px;
     }
+
+    .new-movies {
+        display: flex; /* 영화들을 수평으로 정렬합니다. */
+    }
 }
 @media (min-width: 769px) {
     /* 홈 페이지의 제목 스타일 변경 */
