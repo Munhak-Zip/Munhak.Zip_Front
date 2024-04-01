@@ -9,7 +9,7 @@ const MyReviewDetail=() =>{
         <div className="mobile">
             <div className="back_img">
                 <img src={back} width={30} height={30}/>
-                나의 리뷰
+                <span>나의 리뷰</span>
             </div>
 
             <div className="critic_title">
