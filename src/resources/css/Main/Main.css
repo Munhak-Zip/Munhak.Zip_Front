@@ -17,7 +17,7 @@
     .div1 {
         margin: 0;
         /*max-width: 360px;*/
-        max-height: 800px;
+        max-height: 800vh;
         margin-left: auto;
         margin-right: auto;
         background-color: black;
@@ -48,7 +48,7 @@
 
     .movie .Poster-img {
         width: 131px;
-        height: 92px;
+        height: 20vh;
     }
 
     .new-movies {
