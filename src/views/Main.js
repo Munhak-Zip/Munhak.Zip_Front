@@ -18,12 +18,12 @@ function Header(props) {
 
 function Nav(props) {
     const lis = []
-    for(let i=0; i<props.topics.length; i++){
+    for (let i = 0; i < props.topics.length; i++) {
         let t = props.topics[i];
         lis.push(<li key={t.id}>
-            <a id={t.id} href={'/read/'+t.id} onClick={(event)=>{
-            event.preventDefault();
-            props.onChangeMode(Number(event.target.id));
+            <a id={t.id} href={'/read/' + t.id} onClick={(event) => {
+                event.preventDefault();
+                props.onChangeMode(Number(event.target.id));
         }}>{t.title}</a>
         </li>)
     }
@@ -96,8 +96,24 @@ function App() {
 
     }
 
-
-
+    function Movies(props) {
+        let content; // String 제거
+        if (props.type === "new") { // .equals() 대신 === 사용
+            content = "최신영화";
+        }
+        else if(props.type === "recommend") { // .equals() 대신 === 사용
+            content = "추천영화";
+        }
+        else
+            content = "보관함";
+        return <div className={props.type}>
+            {content}
+            <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
+            <div className={"new-movies"}>
+                {renderMovies()}
+            </div>
+        </div>
+    }
 
     // @ts-ignore
     return (
@@ -113,29 +129,9 @@ function App() {
             }}></Nav>
             {content}*/}
             <p/>
-            <div className={"new"}>
-                최신영화
-                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
-                <div className={"new-movies"}>
-                    {renderMovies()}
-                </div>
-            </div>
-            <p/>
-            <div className={"recommend"}>
-                추천영화
-                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
-                <div className={"new-movies"}>
-                    {renderMovies()}
-                </div>
-            </div>
-            <p/>
-            <div className={"recommend"}>
-                보관함
-                <img src={Next} className={"next-button"} alt="next" onClick={showMovies}/>
-                <div className={"new-movies"}>
-                    {renderMovies()}
-                </div>
-            </div>
+            <Movies type={"new"}></Movies>
+            <Movies type={"recommend"}></Movies>
+            <Movies type={"wish"}></Movies>
         </div>
     )
 }
