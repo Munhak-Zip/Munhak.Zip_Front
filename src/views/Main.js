@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import '../resources/css/Main/Main.css'
 import Poster from '../resources/img/Main/sample1.png'
-
+import Next from '../resources/next.png'
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
@@ -104,9 +104,9 @@ function App() {
             <p/>
             <div className={"new"}>
                 최신영화
+                <img src = {Next} className={"next-button"} alt="next"/>
                 <div className={"new-movies"}>
                     {renderMovies()}
-                    {/*<img src = {Poster} className={"Poster-img"} alt="logo"/>*/}
                 </div>
             </div>
         </div>

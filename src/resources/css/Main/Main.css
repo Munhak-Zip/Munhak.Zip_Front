@@ -2,6 +2,8 @@
 
 @media (max-width: 768px) {
     /* 홈 페이지의 제목 스타일 변경 */
+
+
     .div1 {
         margin: 0;
         /*max-width: 360px;*/
@@ -24,14 +26,22 @@
         font-size: 18px;
         font-weight: bold;
     }
+    .next-button{
+        width: 20px; /* 이미지의 너비를 조절합니다. */
+        height: auto; /* 높이를 자동으로 설정하여 비율을 유지합니다. */
+        margin-left: 250px;
+    }
 
-    .new img {
+    .movie img {
         width: 131px;
         height: 92px;
     }
 
     .new-movies {
         display: flex; /* 영화들을 수평으로 정렬합니다. */
+    }
+    .movie {
+        margin-right: 20px; /* 각 영화 사이의 간격을 조절합니다. */
     }
 }
 @media (min-width: 769px) {
