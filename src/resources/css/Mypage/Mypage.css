@@ -1,0 +1,53 @@
+.wrap{
+    width: 600px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}
+.header{
+    height: 100px;
+}
+.content_wrap{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.views_name{
+    font-size: 40px;
+    font-weight: bolder;
+}
+.article{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+.article:first-child{
+    margin-top: 60px;
+}
+.input_info{
+    border: none; /* 기본 border 제거 */
+    border-bottom: 2px solid white; /* 하단 border만 추가 */
+    background-color: black; /* 배경색 설정 */
+    color: white; /* 텍스트 색상 설정 */
+    outline: none; /* 포커스 효과 제거 */
+}
+
+.index{
+    width: 150px;
+}
+
+.change_btn{
+    margin-left: 70px;
+    border: 1px solid white;
+    border-radius: 40px;
+    background-color: black;
+    color: white;
+    width: 90px;
+}
+
+/*좋아하는 장르*/
+.mypage-like{
+    font-size: 20px;
+    font-weight: bold;
+}
