@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
+import Moviedetail from "./views/movie/MovieDetail";
 import Mypage from "./views/mypage/Mypage";
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
                     path={"/login/minyoung"}
                     element={<Minyoung/>}
                     />
+                <Route
+                    path={"/movie/detail"}
+                    element={<Moviedetail />}
+                />
                 <Route
                     path={"/user/mypage"}
                     element={<Mypage/>}
