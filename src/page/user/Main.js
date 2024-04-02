@@ -11,6 +11,9 @@ const Main=() =>{
             <Link to={"/movie/detail"}>
                 <button>영화 상세</button>
             </Link>
+            <Link to={"/main"}>
+                <button>예진</button>
+            </Link>
             <Link to={"/wish/reviewDetail"}>
                 <button>리뷰페이지</button>
             </Link>
