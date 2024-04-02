@@ -14,6 +14,62 @@ const MovieDetail=() =>{
     const handleStarClick = (index) => {
         setStarRating(index + 1); // 클릭한 별의 인덱스에 1을 더한 값으로 별점 상태를 업데이트
     };
+
+    const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
+        const renderStars = (count, totalStars) => {
+            const starImages = [];
+            for (let i = 0; i < totalStars; i++) {
+                starImages.push(
+                    <img
+                        key={i}
+                        className="star_image"
+                        src={i < count ? star : starN}
+                        width={25}
+                        height={25}
+                    />
+                );
+            }
+            return starImages;
+        };
+
+        return (
+            <div className="critic">
+                <div className="critic_name">
+                    {name}
+                    <div className="star_critic">
+                        {renderStars(stars, 5)}
+                    </div>
+                    <div className="bookmark_critic">
+                        <img src={bookmark} width={35} height={35} />
+                    </div>
+                </div>
+                <div className="critic_review_mid">
+                    {reviewTitle}
+                </div>
+                <div className="critic_review">
+                    {reviewContent}
+                </div>
+                <div className="horizontal-line"></div>
+            </div>
+        );
+    };
+
+    // Critic 컴포넌트 사용
+    const critics = [
+        {
+            name: '이은선',
+            stars: 3,
+            reviewTitle: '리뷰 소제목',
+            reviewContent: '리뷰리뷰리뷰리뷰리뷰~',
+        },
+        {
+            name: '이은선',
+            stars: 3,
+            reviewTitle: '리뷰 소제목',
+            reviewContent: '리뷰리뷰리뷰리뷰리뷰~',
+        },
+        // 다른 평론가 데이터들...
+    ];
     return (
         <div className="mobile">
             <div className="back_img">
@@ -99,56 +155,15 @@ const MovieDetail=() =>{
                 평론가 리뷰
             </div>
 
-            <div className="critic">
-                <div className="critic_name">
-                    이은선
-                    <div className="star_critic">
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={starN} width={25} height={25}/>
-                        <img className="star_image" src={starN} width={25} height={25}/>
-                    </div>
-                    <div className="bookmark_critic">
-                        <img src={bookmark} width={35} height={35}/>
-                    </div>
-                </div>
-
-
-                <div className="critic_review_mid">
-                    리뷰 소제목
-                </div>
-                <div className="critic_review">
-                    리뷰리뷰리뷰리뷰리뷰~
-                </div>
-
-                <div className="horizontal-line"></div>
-            </div>
-            <div className="critic">
-                <div className="critic_name">
-                    이은선
-                    <div className="star_critic">
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={star} width={25} height={25}/>
-                        <img className="star_image" src={starN} width={25} height={25}/>
-                        <img className="star_image" src={starN} width={25} height={25}/>
-                    </div>
-                    <div className="bookmark_critic">
-                        <img src={bookmark} width={35} height={35}/>
-                    </div>
-                </div>
-
-
-                <div className="critic_review_mid">
-                    리뷰 소제목
-                </div>
-                <div className="critic_review">
-                    리뷰리뷰리뷰리뷰리뷰~
-                </div>
-
-                <div className="horizontal-line"></div>
-            </div>
+            {critics.map((critic, index) => (
+                <Critic
+                    key={index}
+                    name={critic.name}
+                    stars={critic.stars}
+                    reviewTitle={critic.reviewTitle}
+                    reviewContent={critic.reviewContent}
+                />
+            ))}
 
         </div>
     );

@@ -14,6 +14,12 @@ const Main=() =>{
             <Link to={"/main"}>
                 <button>예진</button>
             </Link>
+            <Link to={"/wish/reviewDetail"}>
+                <button>리뷰페이지</button>
+            </Link>
+            <Link to={"/wish/myReviewDetail"}>
+                <button>나의리뷰페이지</button>
+            </Link>
         </div>
     );
 }

@@ -10,6 +10,7 @@ body{
     font-weight: bold;
     font-size: 20px;
     color: #FFFFFF;
+    align-items: center;
 }
 .bookmarkMovie img {
     margin-left: 310px;
