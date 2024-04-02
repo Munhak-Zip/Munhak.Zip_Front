@@ -5,6 +5,7 @@ import Main from './page/user/Main.js';
 import Minyoung from "./page/user/Minyoung";
 import Yjin from "./views/Main"
 import Moviedetail from "./views/movie/MovieDetail";
+import Mypage from "./views/mypage/Mypage";
 
 function App() {
     // @ts-ignore
@@ -21,6 +22,14 @@ function App() {
                         path={"/login/minyoung"}
                         element={<Minyoung/>}
                     />
+                <Route
+                    path={"/movie/detail"}
+                    element={<Moviedetail />}
+                />
+                <Route
+                    path={"/user/mypage"}
+                    element={<Mypage/>}
+                />
                     <Route
                         path={"/main"}
                         element={<Yjin/>}
@@ -29,10 +38,10 @@ function App() {
                         path={"/movie/detail"}
                         element={<Moviedetail />}
                     />
-                </Routes>
-            </div>
-        </BrowserRouter>
-    );
+            </Routes>
+        </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
