@@ -5,7 +5,7 @@ const Main=() =>{
     return (
         <div>
             메인입니당
-            <Link to={"/login/minyoung"}>
+            <Link to={"/user/mypage"}>
                 <button>민영</button>
             </Link>
             <Link to={"/movie/detail"}>
