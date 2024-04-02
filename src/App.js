@@ -25,12 +25,11 @@ function App() {
                         path={"/main"}
                         element={<Yjin/>}
                     />
+                    <Route
+                        path={"/movie/detail"}
+                        element={<Moviedetail />}
+                    />
                 </Routes>
-                <Route
-                    path={"/movie/detail"}
-                    element={<Moviedetail />}
-                />
-            </Routes>
             </div>
         </BrowserRouter>
     );

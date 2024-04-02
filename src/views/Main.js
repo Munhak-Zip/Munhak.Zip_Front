@@ -5,7 +5,7 @@ import {useState} from 'react';
 import '../resources/css/Main/Main.css'
 import Poster from '../resources/img/Main/sample1.png'
 import Next from '../resources/next.png'
-import Star from '../resources/star.png'
+import Star from '../resources/img/Movie/star.png'
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
