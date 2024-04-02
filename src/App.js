@@ -1,25 +1,26 @@
 // @ts-ignore
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Main from './views/Main';
+import Main from './page/user/Main.js';
 import Minyoung from "./page/user/Minyoung";
+import Yjin from "./views/Main"
 import Moviedetail from "./views/movie/MovieDetail";
 import Mypage from "./views/mypage/Mypage";
 
 function App() {
-  // @ts-ignore
+    // @ts-ignore
     return (
-    <BrowserRouter>
-        <div className="App">
-            <Routes>
-                <Route
-                    path="/"
-                    element={<Main />}
-                />
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Main />}
+                    />
 
-                <Route
-                    path={"/login/minyoung"}
-                    element={<Minyoung/>}
+                    <Route
+                        path={"/login/minyoung"}
+                        element={<Minyoung/>}
                     />
                 <Route
                     path={"/movie/detail"}
@@ -29,6 +30,14 @@ function App() {
                     path={"/user/mypage"}
                     element={<Mypage/>}
                 />
+                    <Route
+                        path={"/main"}
+                        element={<Yjin/>}
+                    />
+                    <Route
+                        path={"/movie/detail"}
+                        element={<Moviedetail />}
+                    />
             </Routes>
         </div>
     </BrowserRouter>
