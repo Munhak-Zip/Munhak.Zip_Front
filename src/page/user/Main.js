@@ -5,8 +5,20 @@ const Main=() =>{
     return (
         <div>
             메인입니당
-            <Link to={"/login/minyoung"}>
+            <Link to={"/user/mypage"}>
                 <button>민영</button>
+            </Link>
+            <Link to={"/movie/detail"}>
+                <button>영화 상세</button>
+            </Link>
+            <Link to={"/main"}>
+                <button>예진</button>
+            </Link>
+            <Link to={"/wish/reviewDetail"}>
+                <button>리뷰페이지</button>
+            </Link>
+            <Link to={"/wish/myReviewDetail"}>
+                <button>나의리뷰페이지</button>
             </Link>
             <Link to={"/login"}>
                 <button>로그인</button>
