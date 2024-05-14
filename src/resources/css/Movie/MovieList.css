@@ -46,17 +46,13 @@
         height: auto; /* 높이를 자동으로 설정하여 비율을 유지합니다. */
         margin-left: 250px;
     }
-    .star {
-        margin-left: 40px;
-        width: 20px;
-    }
 
     .movie .Poster-img {
         width: 131px;
         height: 20vh;
     }
 
-    .new-movies {
+    .movies {
         display: flex; /* 영화들을 수평으로 정렬합니다. */
     }
     .movie {
