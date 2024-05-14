@@ -41,6 +41,10 @@ function App() {
                     path={"/movie/movieList"}
                     element={<MovieList/>}
                 />
+                <Route
+                    path={"/wish"}
+                    element={<Wish/>}
+                />
                     <Route
                         path={"/movie/detail"}
                         element={<Moviedetail />}
