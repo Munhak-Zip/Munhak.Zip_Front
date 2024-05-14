@@ -14,7 +14,13 @@ function Header(props) {
     </header>
 }
 function Category(props) {
-
+    let content;
+    if (props.type === "wishMovies") {
+        content = "좋아하는 영화"
+    }
+    return <div className={props.type}>
+        {content}
+    </div>
 }
 
 function Article(props) {
@@ -47,9 +53,7 @@ function App() {
             <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
-            <Category>
-
-            </Category>
+            <Category type={"wishMovies"}></Category>
         </div>
     )
 }
