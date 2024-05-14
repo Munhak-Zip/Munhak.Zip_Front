@@ -36,12 +36,15 @@
         font-size: 18px;
         font-weight: bold;
     }
-
-    .Arrow {
+    .before-button{
         width: 20px;
         transform: scaleX(-1);
     }
-
+    .next-button{
+        width: 20px; /* 이미지의 너비를 조절 */
+        height: auto; /* 높이를 자동으로 설정하여 비율을 유지 */
+        margin-left: 250px;
+    }
     .movie .Poster-img {
         width: 131px;
         height: 20vh;
@@ -85,10 +88,10 @@
         color: #D1003F;
     }
 
-    .new, .recommend {
-        text-align: left;
-        font-size: 18px;
-        font-weight: bold;
+
+    .before-button{
+        width: 20px;
+        transform: scaleX(-1);
     }
     .next-button{
         width: 20px; /* 이미지의 너비를 조절 */
