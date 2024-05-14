@@ -13,6 +13,26 @@ const Wish=() => {
             }}>{props.title}</a></h1>
         </header>
     }
+    function Category(props) {
+        let content;
+        if (props.type === "wishMovies") {
+            content = "좋아하는 영화"
+        }
+        else if (props.type === "newMovies") {
+            content = "최신 영화"
+        }
+        else if (props.type === "recMovies") {
+            content = "추천 영화"
+        }
+        return <div className={props.type}>
+            <img src={Arrow} className={"Arrow"}/>
+            {content}
+            <p/>
+            <div className={"movies"}>
+                {renderMovies()}
+            </div>
+        </div>
+    }
 
     return (
         <div className={"div1"}>
