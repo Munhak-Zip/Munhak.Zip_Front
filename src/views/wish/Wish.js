@@ -104,7 +104,8 @@ const Wish=() => {
     function Category(props) {
         let content; // String 제거
         let renderContent;
-
+        let showPre;
+        let showNext;
         if (props.type === "wishMovies") { // .equals() 대신 === 사용
             content = "좋아하는 영화";
             renderContent = renderWishMovies;
@@ -120,8 +121,8 @@ const Wish=() => {
         return <div className={props.type}>
             {content}
             <p/>
-            <img src={Arrow} className={"before-button"} alt="before" onClick={showPreMovies}/>
-            <img src={Arrow} className={"next-button"} alt="next" onClick={showMovies}/>
+            <img src={Arrow} className={"before-button"} alt="before" onClick={showPre}/>
+            <img src={Arrow} className={"next-button"} alt="next" onClick={showNext}/>
             <div className={"new-movies"}>
                 {renderContent()}
             </div>
