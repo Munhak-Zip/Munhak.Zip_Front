@@ -44,6 +44,12 @@ function Category(props) {
     if (props.type === "wishMovies") {
         content = "좋아하는 영화"
     }
+    else if (props.type === "newMovies") {
+        content = "최신 영화"
+    }
+    else if (props.type === "recMovies") {
+        content = "추천 영화"
+    }
     return <div className={props.type}>
         <img src={Arrow} className={"Arrow"}/>
         {content}
@@ -80,7 +86,7 @@ function App() {
             <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
-            <Category type={"wishMovies"}></Category>
+            <Category type={"wishMovies"}></Category> <!--이후 요청 처리로 type 수정 필요 (추천, 최신 ,,,) -->
         </div>
     )
 }
