@@ -31,13 +31,14 @@
         color: #D1003F;
     }
 
-    .wishMovies {
+    .wishMovies, .wishReviews{
         text-align: left;
         font-size: 18px;
         font-weight: bold;
     }
 
     .review {
+        text-align: center;
         border: 1px solid white; /* 테두리 색상 */
         padding: 10px; /* 안쪽 여백 */
         margin: 10px; /* 바깥쪽 여백 */
@@ -45,7 +46,9 @@
     }
 
     .review img {
+        display: inline-block;
         width: 30px;
+        margin-left: 0;
     }
     .before-button{
         width: 20px;
