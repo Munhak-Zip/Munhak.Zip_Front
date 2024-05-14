@@ -42,7 +42,7 @@ const Wish=() => {
             setCurrentPage(currentPage - 1);
         }
     }
-    const renderMovies = () => {
+    const renderWishMovies = () => {
         // 현재 페이지에 해당하는 영화만 필터링
         const start = currentPage * moviesPerPage;
         const end = start + moviesPerPage;
@@ -65,23 +65,37 @@ const Wish=() => {
         ));
 
     }
+
+    const renderWishReviews = () => {
+
+    }
+
+    const renderMyReviews = () => {
+    }
+
     function Category(props) {
         let content; // String 제거
+        let renderContent;
+
         if (props.type === "wishMovies") { // .equals() 대신 === 사용
             content = "좋아하는 영화";
+            renderContent = renderWishMovies;
         }
         else if(props.type === "wishReviews") { // .equals() 대신 === 사용
             content = "좋아하는 리뷰";
+            renderContent = renderWishReviews;
         }
-        else
+        else{
             content = "내가 작성한 리뷰";
+            renderContent = renderMyReviews;
+        }
         return <div className={props.type}>
             {content}
             <p/>
             <img src={Arrow} className={"before-button"} alt="before" onClick={showPreMovies}/>
             <img src={Arrow} className={"next-button"} alt="next" onClick={showMovies}/>
             <div className={"new-movies"}>
-                {renderMovies()}
+                {renderContent()}
             </div>
         </div>
     }
@@ -92,6 +106,7 @@ const Wish=() => {
                 setMode('WELCOME');
             }}></Header>
             <Category type={"wishMovies"}></Category>
+            <Category type={"wishReviews"}></Category>
         </div>
     )
 }
