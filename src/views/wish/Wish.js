@@ -17,6 +17,14 @@ const Wish=() => {
 
         // 필요한 만큼 영화 객체 추가
     ];
+    const reviews = [
+        { id: 1, title: '영화명1', poster: Poster, start: 5, title: "소제목1" },
+        { id: 2, title: '영화명2', poster: Poster, start: 5, title: "소제목2" },
+        { id: 3, title: '영화명3', poster: Poster, start: 5, title: "소제목3" },
+        { id: 4, title: '영화명4', poster: Poster, start: 5, title: "소제목4" },
+
+        // 필요한 만큼 영화 객체 추가
+    ];
     function Header(props) {
         console.log('props', props, props.title)
         return <header>
