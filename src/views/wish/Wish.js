@@ -55,14 +55,14 @@ const Wish=() => {
         }
     }
 
-    const showPrevReviews = () => {
+    const showPreReviews = () => {
         if (currentReviewPage > 0) {
             setCurrentReviewPage(currentReviewPage - 1);
         }
     }
     const renderWishMovies = () => {
         // 현재 페이지에 해당하는 영화만 필터링
-        const start = currentPage * moviesPerPage;
+        const start = currentMoviePage * moviesPerPage;
         const end = start + moviesPerPage;
         const currentMovies = movies.slice(start, end);
 
@@ -86,7 +86,7 @@ const Wish=() => {
 
     const renderWishReviews = () => {
         // 현재 페이지에 해당하는 영화만 필터링
-        const start = currentPage * reviewsPerPage;
+        const start = currentReviewPage * reviewsPerPage;
         const end = start + reviewsPerPage;
         const currentReviews = reviews.slice(start, end);
 
