@@ -35,7 +35,7 @@ const Wish=() => {
             }}>{props.title}</a></h1>
         </header>
     }
-    const showMovies = () => {
+    const showNextMovies = () => {
         // 다음 페이지로 이동
         if ((currentPage + 1) * moviesPerPage < movies.length) {
             setCurrentPage(currentPage + 1);
@@ -49,6 +49,17 @@ const Wish=() => {
         // 이전 페이지로
         if (currentPage > 0) {
             setCurrentPage(currentPage - 1);
+        }
+    }
+    const showNextReviews = () => {
+        if ((currentReviewPage + 1) * reviewsPerPage < reviews.length) {
+            setCurrentReviewPage(currentReviewPage + 1);
+        }
+    }
+
+    const showPrevReviews = () => {
+        if (currentReviewPage > 0) {
+            setCurrentReviewPage(currentReviewPage - 1);
         }
     }
     const renderWishMovies = () => {
@@ -109,10 +120,14 @@ const Wish=() => {
         if (props.type === "wishMovies") { // .equals() 대신 === 사용
             content = "좋아하는 영화";
             renderContent = renderWishMovies;
+            showPre = showPreMovies;
+            showNext = showNextMovies;
         }
         else if(props.type === "wishReviews") { // .equals() 대신 === 사용
             content = "좋아하는 리뷰";
             renderContent = renderWishReviews;
+            showPre = showPreReviews;
+            showNext = showNextReviews;
         }
         else{
             content = "내가 작성한 리뷰";
