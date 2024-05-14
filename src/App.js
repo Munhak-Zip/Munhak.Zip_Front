@@ -9,7 +9,7 @@ import Myreviewdetail from "./views/wish/MyReviewDetail";
 import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
 import MovieList from "./views/movie/MovieList";
-
+import Wish from "./views/wish/Wish"
 function App() {
   // @ts-ignore
     return (
