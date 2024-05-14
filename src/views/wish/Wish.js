@@ -5,11 +5,14 @@ import Poster from '../../resources/img/Main/sample1.png'
 import Star from '../../resources/img/Movie/star.png'
 const Wish=() => {
     const [mode, setMode] = useState('WELCOME');
-    const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 번호를 상태로 관리
+    const [currentMoviePage, setCurrentMoviePage] = useState(0); // 현재 영화 페이지 번호
+    const [currentReviewPage, setCurrentReviewPage] = useState(0); // 현재 리뷰 페이지 번호
 
-    // 한 페이지당 보여줄 영화 수
     const moviesPerPage = 2;
     const reviewsPerPage = 2;
+    // 영화와 리뷰 배열은 이전과 동일하게 유지
+    // 한 페이지당 보여줄 영화 수
+
     const movies = [
         { id: 1, title: '영화명1', poster: Poster, start: 5 },
         { id: 2, title: '영화명2', poster: Poster, start: 5 },
@@ -36,12 +39,8 @@ const Wish=() => {
         </header>
     }
     const showNextMovies = () => {
-        // 다음 페이지로 이동
-        if ((currentPage + 1) * moviesPerPage < movies.length) {
-            setCurrentPage(currentPage + 1);
-        } else {
-            // 마지막 페이지인 경우, 처음으로 돌아감 (옵션)
-            // setCurrentPage(0);
+        if ((currentMoviePage + 1) * moviesPerPage < movies.length) {
+            setCurrentMoviePage(currentMoviePage + 1);
         }
     }
 
