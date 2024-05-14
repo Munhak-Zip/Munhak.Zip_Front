@@ -45,9 +45,8 @@ const Wish=() => {
     }
 
     const showPreMovies = () => {
-        // 이전 페이지로
-        if (currentPage > 0) {
-            setCurrentPage(currentPage - 1);
+        if (currentMoviePage > 0) {
+            setCurrentMoviePage(currentMoviePage - 1);
         }
     }
     const showNextReviews = () => {
