@@ -3,7 +3,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import '../../resources/css/Movie/MovieList.css'
-
+import Arrow from '../../resources/next.png'
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
