@@ -7,9 +7,11 @@ const Wish=() => {
     const [mode, setMode] = useState('WELCOME');
     const [currentMoviePage, setCurrentMoviePage] = useState(0); // 현재 영화 페이지 번호
     const [currentReviewPage, setCurrentReviewPage] = useState(0); // 현재 리뷰 페이지 번호
+    const [currentMyReviewPage, setCurrentMyReviewPage] = useState(0); // 현재 리뷰 페이지 번호
 
     const moviesPerPage = 2;
     const reviewsPerPage = 2;
+    const myReviewsPerPage = 2;
     // 영화와 리뷰 배열은 이전과 동일하게 유지
     // 한 페이지당 보여줄 영화 수
 
@@ -26,9 +28,13 @@ const Wish=() => {
         { id: 2, mvTitle: '영화명2', poster: Poster, star: 2, title: "소제목2" },
         { id: 3, mvTitle: '영화명3', poster: Poster, star: 3, title: "소제목3" },
         { id: 4, mvTitle: '영화명4', poster: Poster, star: 4, title: "소제목4" },
-
-        // 필요한 만큼 영화 객체 추가
     ];
+    const myReviews = [
+        { id: 1, mvTitle: '영화명1', poster: Poster, star: 1, title: "내리뷰1" },
+        { id: 2, mvTitle: '영화명2', poster: Poster, star: 2, title: "내리뷰2" },
+        { id: 3, mvTitle: '영화명3', poster: Poster, star: 3, title: "내리뷰3" },
+        { id: 4, mvTitle: '영화명4', poster: Poster, star: 4, title: "내리뷰4" },
+    ]
     function Header(props) {
         console.log('props', props, props.title)
         return <header>
@@ -58,6 +64,17 @@ const Wish=() => {
     const showPreReviews = () => {
         if (currentReviewPage > 0) {
             setCurrentReviewPage(currentReviewPage - 1);
+        }
+    }
+    const showNextMyReviews = () => {
+        if ((currentMyReviewPage + 1) * myReviewsPerPage < myReviews.length) {
+            setCurrentMyReviewPage(currentMyReviewPage + 1);
+        }
+    }
+
+    const showPreMyReviews = () => {
+        if (currentMyReviewPage > 0) {
+            setCurrentMyReviewPage(currentMyReviewPage - 1);
         }
     }
     const renderWishMovies = () => {
@@ -104,12 +121,29 @@ const Wish=() => {
                 {review.title}
             </span>
         ));
+    }
+    const renderMyReviews = () => {
+        // 현재 페이지에 해당하는 영화만 필터링
+        const start = currentMyReviewPage * myReviewsPerPage;
+        const end = start + myReviewsPerPage;
+        const currentMyReviews = myReviews.slice(start, end);
+
+        return currentMyReviews.map(review => (
+            <span key={review.id} className="review">
+                <img src={review.poster} alt={review.title} className="Poster-img"/>
+                <p/>{review.mvTitle}<p/>
+                <div> {
+                    // 별점이 유효한지 확인하고, 유효하지 않은 경우 0으로 처리
+                    [...Array(Number.isInteger(review.star) && review.star > 0 ? review.star : 0)].map((_, i) => (
+                        <img key={i} src={Star} className="star"/>
+                    ))
+                }
+                </div>
+                {review.title}
+            </span>
+        ));
         // 영화 데이터 배열 (실제 영화 데이터로 교체 가능)
     }
-
-    const renderMyReviews = () => {
-    }
-
     function Category(props) {
         let content; // String 제거
         let renderContent;
@@ -130,6 +164,8 @@ const Wish=() => {
         else{
             content = "내가 작성한 리뷰";
             renderContent = renderMyReviews;
+            showPre = showPreMyReviews;
+            showNext = showNextMyReviews;
         }
         return <div className={props.type}>
             {content}
@@ -149,6 +185,7 @@ const Wish=() => {
             }}></Header>
             <Category type={"wishMovies"}></Category>
             <Category type={"wishReviews"}></Category>
+            <Category type={"myReviews"}></Category>
         </div>
     )
 }
