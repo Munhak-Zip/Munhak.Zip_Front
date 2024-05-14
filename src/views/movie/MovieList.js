@@ -21,6 +21,8 @@ const renderMovies = () => {
     const movies = [
         { id: 1, title: '영화명', poster: Poster, start: 5 },
         { id: 2, title: '영화명', poster: Poster, start: 5 },
+        { id: 3, title: '영화명', poster: Poster, start: 5 },
+        { id: 4, title: '영화명', poster: Poster, start: 5 },
 
         // 필요한 만큼 영화 객체 추가
     ];
