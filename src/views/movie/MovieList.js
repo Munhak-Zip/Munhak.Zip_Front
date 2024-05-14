@@ -19,6 +19,7 @@ function Category(props) {
         content = "좋아하는 영화"
     }
     return <div className={props.type}>
+        <img src={Arrow} className={"Arrow"}/>
         {content}
     </div>
 }
