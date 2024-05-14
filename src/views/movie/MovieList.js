@@ -70,23 +70,13 @@ function App() {
 
     const [moviesIndex, setMoviesIndex] = useState(0); // 현재 영화 리스트의 시작 인덱스
 
-
-
-    const renderMovies = () => {
-
-    }
-
-    function Movies(props) {
-
-    }
-
     // @ts-ignore
     return (
         <div className={"div1"}>
             <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
-            <Category type={"wishMovies"}></Category> <!--이후 요청 처리로 type 수정 필요 (추천, 최신 ,,,) -->
+            <Category type={"wishMovies"}></Category>
         </div>
     )
 }
