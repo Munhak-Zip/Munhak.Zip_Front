@@ -12,7 +12,10 @@ const Main=() =>{
                 <button>영화 상세</button>
             </Link>
             <Link to={"/main"}>
-                <button>예진</button>
+                <button>메인페이지</button>
+            </Link>
+            <Link to={"/movie/movieList"}>
+                <button>좋아하는 영화 리스트 페이지</button>
             </Link>
             <Link to={"/wish/reviewDetail"}>
                 <button>리뷰페이지</button>
