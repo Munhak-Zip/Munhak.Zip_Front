@@ -45,6 +45,7 @@ function Category(props) {
     return <div className={props.type}>
         <img src={Arrow} className={"Arrow"}/>
         {content}
+        <p/>
         <div className={"movies"}>
             {renderMovies()}
         </div>
