@@ -41,11 +41,6 @@
         width: 20px;
         transform: scaleX(-1);
     }
-    .next-button{
-        width: 20px; /* 이미지의 너비를 조절합니다. */
-        height: auto; /* 높이를 자동으로 설정하여 비율을 유지합니다. */
-        margin-left: 250px;
-    }
 
     .movie .Poster-img {
         width: 131px;
@@ -53,10 +48,11 @@
     }
 
     .movies {
-        display: flex; /* 영화들을 수평으로 정렬합니다. */
+        display: flex; /* 영화들을 수평으로 정렬 */
+        flex-wrap: wrap;
     }
     .movie {
-        margin-right: 20px; /* 각 영화 사이의 간격을 조절합니다. */
+        margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
     }
 }
 @media (min-width: 769px) {
@@ -95,8 +91,8 @@
         font-weight: bold;
     }
     .next-button{
-        width: 20px; /* 이미지의 너비를 조절합니다. */
-        height: auto; /* 높이를 자동으로 설정하여 비율을 유지합니다. */
+        width: 20px; /* 이미지의 너비를 조절 */
+        height: auto; /* 높이를 자동으로 설정하여 비율을 유지 */
         margin-left: 250px;
     }
 
@@ -106,9 +102,9 @@
     }
 
     .new-movies {
-        display: flex; /* 영화들을 수평으로 정렬합니다. */
+        display: flex; /* 영화들을 수평으로 정렬 */
     }
     .movie {
-        margin-right: 20px; /* 각 영화 사이의 간격을 조절합니다. */
+        margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
     }
 }
