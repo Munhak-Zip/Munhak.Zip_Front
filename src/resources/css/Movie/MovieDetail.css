@@ -191,7 +191,7 @@ div.title{
     width: 100%; /* 가로선의 너비 설정 */
 }
 
-.btn_good {
+.btn_good_not {
     width: 178px;
     height: 37px;
     background-color: #D1003F;
@@ -203,7 +203,7 @@ div.title{
 
 }
 
-.btn_good_not {
+.btn_good {
     width: 177px;
     height: 37px;
     border-top: 1px solid #FFFFFF; /* 위쪽 선만 투명하게 */
@@ -217,7 +217,7 @@ div.title{
     margin-left: 3px;
     background-color: transparent;
 }
-.btn_bad {
+.btn_bad_not {
     width: 178px;
     height: 37px;
     background-color: #D1003F;
@@ -227,7 +227,7 @@ div.title{
     border-top-right-radius: 15px;
 
 }
-.btn_bad_not {
+.btn_bad {
     width: 177px;
     height: 37px;
     border-top: 1px solid #FFFFFF; /* 위쪽 선만 투명하게 */
