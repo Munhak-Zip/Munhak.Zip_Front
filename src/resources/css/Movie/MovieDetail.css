@@ -125,7 +125,8 @@ div.title{
     align-items: center;
     padding: 5px 10px;
     border: 2px solid #FFFFFF;
-    border-radius: 18px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .expect_text_mid{
@@ -189,7 +190,7 @@ div.title{
 }
 
 .btn_good {
-    width: 160px;
+    width: 170px;
     height: 37px;
     background-color: #D1003F;
     color: #FFFFFF;
@@ -200,7 +201,7 @@ div.title{
 
 }
 .btn_bad {
-    width: 160px;
+    width: 170px;
     height: 37px;
     background-color: #D1003F;
     color: #FFFFFF;
