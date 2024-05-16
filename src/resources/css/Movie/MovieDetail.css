@@ -118,13 +118,15 @@ div.title{
 }
 
 .expect_box {
-
     margin-left: 3px;
     width: 330px;
     display:  inline-block; /* inline-flex로 설정하여 가로로 배열될 수 있도록 함 */
     align-items: center;
     padding: 5px 10px;
-    border: 2px solid #FFFFFF;
+    border-top: 1px solid transparent; /* 위쪽 선만 투명하게 */
+    border-bottom: 1px solid #FFFFFF; /* 아래쪽 선은 흰색 */
+    border-left: 1px solid #FFFFFF; /* 왼쪽 선은 흰색 */
+    border-right: 1px solid #FFFFFF; /* 오른쪽 선은 흰색 */
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
 }
@@ -190,18 +192,18 @@ div.title{
 }
 
 .btn_good {
-    width: 177px;
+    width: 178px;
     height: 37px;
     background-color: #D1003F;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
     border-top-left-radius: 15px;
-    margin-left: 3px;
+    margin-left: 2px;
 
 }
 .btn_bad {
-    width: 177px;
+    width: 178px;
     height: 37px;
     background-color: #D1003F;
     color: #FFFFFF;
