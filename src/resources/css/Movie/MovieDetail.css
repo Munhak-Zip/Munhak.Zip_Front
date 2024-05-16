@@ -227,3 +227,17 @@ div.title{
     border-top-right-radius: 15px;
 
 }
+.btn_bad_not {
+    width: 177px;
+    height: 37px;
+    border-top: 1px solid #FFFFFF; /* 위쪽 선만 투명하게 */
+    border-bottom: 1px solid transparent; /* 아래쪽 선은 흰색 */
+    border-left: 1px solid transparent; /* 왼쪽 선은 흰색 */
+    border-right: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-left-radius: 15px;
+    margin-left: 3px;
+    background-color: transparent;
+}
