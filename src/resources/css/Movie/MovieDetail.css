@@ -197,7 +197,6 @@ div.title{
     font-weight: bold;
     font-size: 16px;
     border-top-left-radius: 15px;
-    margin-top: 5px;
     margin-left: 3px;
 
 }
@@ -209,6 +208,5 @@ div.title{
     font-weight: bold;
     font-size: 16px;
     border-top-right-radius: 15px;
-    margin-top: 5px;
     margin-left: 3px;
 }
