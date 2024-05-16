@@ -237,7 +237,6 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
-    border-top-left-radius: 15px;
-    margin-left: 3px;
+    border-top-right-radius: 15px;
     background-color: transparent;
 }
