@@ -145,13 +145,13 @@ const MovieDetail=() =>{
             </div>
             <div className="expect_box">
                 <button className="btn_good_bad">높은 평점</button>
-                <b className="expect_text_mid">한줄평</b>
+                <button className="btn_good_bad">낮은 평점</button>
                 <br/>
                 <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
             </div>
 
             <div className="critic_title">
-                평론가 리뷰
+            평론가 리뷰
             </div>
 
             {critics.map((critic, index) => (
