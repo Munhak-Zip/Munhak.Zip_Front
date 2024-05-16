@@ -16,14 +16,18 @@ const MovieDetail=() =>{
     };
 
     const [isGoodClicked, setIsGoodClicked] = useState(false);
+    const [isBadClicked, setIsBadClicked] = useState(false);
 
     const handleGoodClick = () => {
         setIsGoodClicked(true);
+        setIsBadClicked(false);
     };
 
     const handleBadClick = () => {
         setIsGoodClicked(false);
+        setIsBadClicked(true);
     };
+
 
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
         const renderStars = (count, totalStars) => {
@@ -153,7 +157,7 @@ const MovieDetail=() =>{
             <div className="expect">
                 평점요약
             </div>
-            <button className={isGoodClicked ? "btn_good" : "btn_good_not"} onClick={handleGoodClick}>높은 평점</button>
+            <button className="btn_good">높은 평점</button>
             <button className="btn_bad">낮은 평점</button>
             <div className="expect_box">
             <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
