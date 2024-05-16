@@ -118,7 +118,7 @@ div.title{
 }
 
 .expect_box {
-    margin-top: 5px;
+
     margin-left: 3px;
     width: 330px;
     display:  inline-block; /* inline-flex로 설정하여 가로로 배열될 수 있도록 함 */
@@ -197,7 +197,8 @@ div.title{
     font-weight: bold;
     font-size: 16px;
     border-top-left-radius: 15px;
-
+    margin-top: 5px;
+    margin-left: 3px;
 
 }
 .btn_bad {
@@ -208,6 +209,6 @@ div.title{
     font-weight: bold;
     font-size: 16px;
     border-top-right-radius: 15px;
-
-
+    margin-top: 5px;
+    margin-left: 3px;
 }
