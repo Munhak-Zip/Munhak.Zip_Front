@@ -185,3 +185,15 @@ div.title{
     border-top: 1px solid  #FFFFFF; /* 가로선의 스타일 및 색상 설정 */
     width: 100%; /* 가로선의 너비 설정 */
 }
+
+.btn_good_bad {
+    margin-top: 22px;
+    margin-left: 8px;
+    width: 60px;
+    height: 37px;
+    background-color: #D1003F;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 15px;
+}
