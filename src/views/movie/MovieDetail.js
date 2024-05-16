@@ -144,8 +144,8 @@ const MovieDetail=() =>{
                 평점요약
             </div>
             <div className="expect_box">
-                <button className="btn_good_bad">높은 평점</button>
-                <button className="btn_good_bad">낮은 평점</button>
+                <button className="btn_good">높은 평점</button>
+                <button className="btn_bad">낮은 평점</button>
                 <br/>
                 <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
             </div>
