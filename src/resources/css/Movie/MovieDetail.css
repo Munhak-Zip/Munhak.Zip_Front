@@ -186,7 +186,7 @@ div.title{
     width: 100%; /* 가로선의 너비 설정 */
 }
 
-.btn_good_bad {
+.btn_good {
     width: 160px;
     height: 37px;
     background-color: #D1003F;
@@ -195,4 +195,13 @@ div.title{
     font-size: 16px;
     border-radius: 15px;
     margin-right: 5px;
+}
+.btn_bad {
+    width: 160px;
+    height: 37px;
+    background-color: #D1003F;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 15px;
 }
