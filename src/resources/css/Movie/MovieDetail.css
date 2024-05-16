@@ -139,7 +139,8 @@ div.title{
     color: #FFFFFF;
     font-size: 12px;
     display: inline-block; /* 텍스트 요소들이 가로로 배열되도록 함 */
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .critic_title{
     margin-left: 5px;
