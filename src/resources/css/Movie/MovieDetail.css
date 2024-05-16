@@ -187,11 +187,12 @@ div.title{
 }
 
 .btn_good_bad {
-    width: 165px;
+    width: 160px;
     height: 37px;
     background-color: #D1003F;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
     border-radius: 15px;
+    margin-right: 5px;
 }
