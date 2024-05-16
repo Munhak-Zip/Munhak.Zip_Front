@@ -15,6 +15,16 @@ const MovieDetail=() =>{
         setStarRating(index + 1); // 클릭한 별의 인덱스에 1을 더한 값으로 별점 상태를 업데이트
     };
 
+    const [isGoodClicked, setIsGoodClicked] = useState(false);
+
+    const handleGoodClick = () => {
+        setIsGoodClicked(true);
+    };
+
+    const handleBadClick = () => {
+        setIsGoodClicked(false);
+    };
+
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
         const renderStars = (count, totalStars) => {
             const starImages = [];
@@ -143,10 +153,10 @@ const MovieDetail=() =>{
             <div className="expect">
                 평점요약
             </div>
-            <button className="btn_good">높은 평점</button>
+            <button className={isGoodClicked ? "btn_good" : "btn_good_not"} onClick={handleGoodClick}>높은 평점</button>
             <button className="btn_bad">낮은 평점</button>
             <div className="expect_box">
-                <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
+            <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
             </div>
 
             <div className="critic_title">
