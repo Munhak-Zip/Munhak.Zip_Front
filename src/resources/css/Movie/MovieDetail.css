@@ -109,6 +109,7 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .expect .star_ex {
@@ -194,7 +195,7 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
-    border-radius: 15px;
+
     margin-right: 5px;
 
 }
@@ -205,7 +206,7 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
-    border-radius: 15px;
+
     margin-left: 5px;
 
 }
