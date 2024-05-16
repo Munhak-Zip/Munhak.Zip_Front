@@ -206,7 +206,7 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 16px;
-
+    border-top-right-radius: 15px;
     margin-left: 5px;
 
 }
