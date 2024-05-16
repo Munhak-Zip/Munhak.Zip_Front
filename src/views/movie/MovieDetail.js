@@ -141,9 +141,7 @@ const MovieDetail=() =>{
             <button className="review_btn">작성</button>
 
             <div className="expect">
-                예상
-                <img className="star_ex" src={star} width={25} height={25}/>
-                (3)
+                평점요약
             </div>
             <div className="expect_box">
                 <b className="expect_text_mid">한줄평</b>
