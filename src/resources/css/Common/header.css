@@ -16,3 +16,10 @@
 .all{
     display: flex;
 }
+
+.horizontal-line {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    border-top: 1px solid  #FFFFFF; /* 가로선의 스타일 및 색상 설정 */
+    width: 100%; /* 가로선의 너비 설정 */
+}
