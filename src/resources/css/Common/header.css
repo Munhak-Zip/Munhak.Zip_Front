@@ -5,4 +5,10 @@
 }
 .header{
     margin-bottom: -25px;
+    display: flex;
+}
+.title{
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
 }
