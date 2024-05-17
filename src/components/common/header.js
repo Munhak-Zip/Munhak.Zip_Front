@@ -12,6 +12,7 @@ const header=() =>{
                     <div className="title_style">
                         Movie.Zip
                     </div>
+                    <div className="horizontal-line"></div>
                 </div>
             </div>
         </header>
