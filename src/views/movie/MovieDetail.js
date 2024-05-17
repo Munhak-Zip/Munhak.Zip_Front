@@ -15,6 +15,7 @@ const MovieDetail=() =>{
         setStarRating(index + 1); // 클릭한 별의 인덱스에 1을 더한 값으로 별점 상태를 업데이트
     };
 
+    //버튼 클릭
     const [isGoodClicked, setIsGoodClicked] = useState(true);
     const [isBadClicked, setIsBadClicked] = useState(false);
     const handleGoodClick = () => {
