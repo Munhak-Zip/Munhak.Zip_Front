@@ -7,9 +7,11 @@ const header=() =>{
     return (
         <header className="header">
             <div className= "mobile">
-                <img src={menu} width={50} height={50}/>
-                <div className="title_style">
-                    Movie.Zip
+                <div className="all">
+                    <img src={menu} width={50} height={50}/>
+                    <div className="title_style">
+                        Movie.Zip
+                    </div>
                 </div>
             </div>
         </header>
