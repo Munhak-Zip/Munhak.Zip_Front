@@ -8,18 +8,19 @@ import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
 import Yjin from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
+import Header from "./components/common/header";
 
 function App() {
   // @ts-ignore
     return (
     <BrowserRouter>
         <div className="App">
+            <Header />
             <Routes>
                 <Route
                     path="/"
                     element={<Main />}
                 />
-
                 <Route
                     path={"/login/minyoung"}
                     element={<Minyoung/>}
