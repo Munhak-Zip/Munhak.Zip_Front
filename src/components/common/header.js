@@ -8,10 +8,12 @@ const header=() =>{
         <header className="header">
             <div className= "mobile">
                 <img src={menu} width={50} height={50}/>
+                <div className="title_style">
+                    Movie.Zip
+                </div>
             </div>
         </header>
-    )
-        ;
+    );
 }
 
 export default header;
