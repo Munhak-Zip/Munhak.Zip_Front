@@ -38,10 +38,6 @@ function App() {
                         element={<Yjin/>}
                     />
                     <Route
-                        path={"/movie/detail"}
-                        element={<Moviedetail />}
-                    />
-                    <Route
                         path={"/wish/reviewDetail"}
                         element={<Reviewdetail />}
                     />
