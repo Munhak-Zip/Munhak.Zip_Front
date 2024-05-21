@@ -10,6 +10,7 @@ import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
+import Reserve from "./views/movie/Reserve"
 function App() {
   // @ts-ignore
     return (
@@ -44,6 +45,10 @@ function App() {
                 <Route
                     path={"/wish"}
                     element={<Wish/>}
+                />
+                <Route
+                    path={"/reserve"}
+                    element={<Reserve/>}
                 />
                     <Route
                         path={"/movie/detail"}
