@@ -12,6 +12,7 @@
     font-size: 35px;
     color: #D1003F;
     margin-left: 7px;
+    cursor: pointer;
 }
 .all{
     display: flex;
@@ -36,10 +37,12 @@
     color: #FFFFFF;
     margin-top: 3px;
     margin-left: 260px;
+    cursor: pointer;
 }
 .sidebar-text{
     color: #FFFFFF;
     margin-top: 25px;
     text-align: center;
     font-size: 25px;
+    cursor: pointer;
 }
