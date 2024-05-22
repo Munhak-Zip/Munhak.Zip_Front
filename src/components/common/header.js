@@ -38,15 +38,15 @@ const Header=(props) =>{
                     <div className="close">
                         <img src={close} width={50} height={50} onClick={closeSidebar}/>
                     </div>
-                    <div className="sidebar-text">
+                    <Link to="/보관함" className="sidebar-text">
                         보관함
-                    </div>
-                    <div className="sidebar-text">
+                    </Link>
+                    <Link to="/보관함" className="sidebar-text">
                         마이페이지
-                    </div>
-                    <div className="sidebar-text">
+                    </Link>
+                    <Link to="/로그아웃" className="sidebar-text">
                         로그아웃
-                    </div>
+                    </Link>
                 </div>
             )}
         </header>
