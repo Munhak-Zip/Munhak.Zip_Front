@@ -44,6 +44,16 @@ body {
     .seatTable th {
         background-color: #f2f2f2;
     }
+    /* 선택된 좌석의 배경색을 파란색으로 설정 */
+    .seatTable td {
+        cursor: pointer;
+    }
+
+    .seatTable td.selected {
+        background-color: red;
+        color: white;
+    }
+
 
 }
 
