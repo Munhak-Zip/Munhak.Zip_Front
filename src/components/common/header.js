@@ -32,6 +32,7 @@ const Header=(props) =>{
     }
     const goToLogout = () => {
         navigate("/Logout");
+        closeSidebar();
     }
     const goToWish = () => {
         navigate("/wish/reviewDetail"); //링크 추후에 변경...
