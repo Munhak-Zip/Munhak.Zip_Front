@@ -28,7 +28,7 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 450px; /* 초기에는 오른쪽으로 숨겨진 상태 */
+    left: 440px; /* 초기에는 오른쪽으로 숨겨진 상태 */
     z-index: 99;
     background-color: #202020;
     border-left: 4px solid #202020;
