@@ -68,13 +68,22 @@ const Reserve = () => {
         );
     }
 
+    function handleReservation() {
+        if (!selectedSeat) {
+            alert("좌석을 선택해주세요.");
+        } else {
+            alert("예매가 완료되었습니다. 선택된 좌석: " + selectedSeat);
+        }
+    }
+
     return (
         <div className={"div1"}>
             <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
             <Information title={"파묘"} date={"2024-05-21"} time={"14:00"} /><br />
-            <Seat />
+            <Seat /><br/>
+            <button onClick={handleReservation}>예매하기</button>
         </div>
     );
 }
