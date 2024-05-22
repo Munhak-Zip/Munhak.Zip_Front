@@ -41,9 +41,11 @@ const Header=(props) =>{
                     <Link to="/보관함" className="sidebar-text">
                         보관함
                     </Link>
+                    <br/>
                     <Link to="/user/mypage" className="sidebar-text">
                         마이페이지
                     </Link>
+                    <br/>
                     <Link to="/로그아웃" className="sidebar-text">
                         로그아웃
                     </Link>
