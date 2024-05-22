@@ -39,7 +39,7 @@ const Header=(props) =>{
         closeSidebar();
     }
 
-    //안보여주고 싶은 화면
+    //안보여주고 싶은 화면 -> 로그인,로그아웃...
     // if (locationNow.pathname === "/main") return null;
     return (
         <header className="header">
