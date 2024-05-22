@@ -12,12 +12,10 @@ const Header=(props) =>{
 
     // 사이드바를 토글하는 함수
     const toggleSidebar = () => {
-
         setSidebarOpen(!isSidebarOpen);
     };
     // close 이미지를 클릭하여 사이드바를 닫음
     const closeSidebar = () => {
-
         setSidebarOpen(false);
     };
 
