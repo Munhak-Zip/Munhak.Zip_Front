@@ -1,63 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter&display=swap');
 
+body {
+    /background-color: black;
+    font-family: "Commissioner", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0,
+            "FLAR" 0,
+            "VOLM" 0;
+}
 
 @media (max-width: 768px) {
-    /* 홈 페이지의 제목 스타일 변경 */
-    body {
-        background-color: black;
-        font-family: "Commissioner", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings:
-                "slnt" 0,
-                "FLAR" 0,
-                "VOLM" 0;
-    }
-
     .div1 {
         margin: 0;
-        /*max-width: 360px;*/
         max-height: 800vh;
         margin-left: auto;
         margin-right: auto;
-        background-color: black;
-        color: white;
         text-align: center;
     }
-
-    .content {
-        color:white;
-    }
-
-}
-@media (min-width: 769px) {
-    /* 홈 페이지의 제목 스타일 변경 */
-    body {
-        background-color: black;
-        font-family: "Commissioner", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings:
-                "slnt" 0,
-                "FLAR" 0,
-                "VOLM" 0;
-    }
-
-    .div1 {
-        margin: 0;
-        /*max-width: 360px;*/
-        max-height: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: black;
-        color: white;
-        text-align: center;
-    }
-
-    .div1 Header a{
+    .div1 Header a {
         font-size: 40px;
         text-decoration: none;
         color: #D1003F;
     }
+    .seatTable {
+        margin-left: auto;
+        margin-right: auto;
+    }
 
+    .seatTable table {
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 8px;
+    }
 
+    .seatTable th, .seatTable td {
+        border: 1px solid white;
+        padding: 2px; /* 셀 내부의 패딩을 줄여 셀의 크기를 작게 만듭니다. */
+        text-align: center; /* 셀 내용을 중앙 정렬합니다. */
+    }
+
+    .seatTable th {
+        background-color: #f2f2f2;
+    }
+
+}
+
+@media (min-width: 769px) {
+    .div1 {
+        margin: 0;
+        max-height: 800vh;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .div1 Header a {
+        font-size: 40px;
+        text-decoration: none;
+        color: #D1003F;
+    }
+    .seatTable table {
+        border-collapse: collapse; /* 테이블의 테두리가 겹치도록 */
+        margin: auto; /* 테이블을 중앙 정렬 */
+        width: 80%;
+    }
+
+    .seatTable th, .seatTable td {
+        border: 1px solid white; /* 검은색 테두리 */
+        padding: 8px; /* 내용과 테두리 사이의 간격 */
+    }
+
+    .seatTable th {
+        background-color: white; /* 테이블 헤더 배경색 */
+    }
+
+}
