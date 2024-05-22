@@ -41,8 +41,12 @@ const Header=(props) =>{
                     <div className="sidebar-text">
                         보관함
                     </div>
-                    <br/>
-                    d
+                    <div className="sidebar-text">
+                        마이페이지
+                    </div>
+                    <div className="sidebar-text">
+                        로그아웃
+                    </div>
                 </div>
             )}
         </header>
