@@ -4,7 +4,8 @@ import '../../resources/css/Movie/Reserve.css';
 const Reserve = () => {
     const [mode, setMode] = useState('WELCOME');
     const [selectedSeat, setSelectedSeat] = useState(null);
-
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
     function Header(props) {
         return (
             <header>
@@ -15,16 +16,6 @@ const Reserve = () => {
                     }}>{props.title}</a>
                 </h1>
             </header>
-        );
-    }
-
-    function Information(props) {
-        return (
-            <div className={"content"}>
-                영화명 : {props.title} <br />
-                날짜 : {props.date} <br />
-                시간 : {props.time}
-            </div>
         );
     }
 
@@ -81,8 +72,10 @@ const Reserve = () => {
             <Header title={"MOVIE.ZIP"} onChangeMode={() => {
                 setMode('WELCOME');
             }}></Header>
-            <Information title={"파묘"} date={"2024-05-21"} time={"14:00"} /><br />
-            <Seat /><br/>
+            영화명 : 파묘 <br/>
+            날짜 : <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/><br/>
+            시간 : <input type="time" value={time} onChange={(e) => setTime(e.target.value)}/><br/>
+            <p/><Seat/><br/>
             <button onClick={handleReservation}>예매하기</button>
         </div>
     );
