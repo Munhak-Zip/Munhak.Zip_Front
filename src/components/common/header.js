@@ -38,7 +38,9 @@ const Header=(props) =>{
                     <div className="close">
                         <img src={close} width={50} height={50} onClick={closeSidebar}/>
                     </div>
-                    dd
+                    <div className="sidebar-text">
+                        보관함
+                    </div>
                     <br/>
                     d
                 </div>
