@@ -55,9 +55,7 @@ const Header=(props) =>{
                     <div className="sidebar-text" onClick={goToMypage}>
                         마이페이지
                     </div>
-                    {/*<Link to="/user/mypage" className="sidebar-text">*/}
-                    {/*    마이페이지*/}
-                    {/*</Link>*/}
+
                     <br/>
                     <Link to="/로그아웃" className="sidebar-text">
                         로그아웃
