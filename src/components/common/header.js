@@ -23,6 +23,7 @@ const Header=(props) =>{
 
     const goToMypage = () => {
         navigate("/user/mypage");
+        closeSidebar();
     }
 
     const goToMain = () => {
