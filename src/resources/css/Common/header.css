@@ -28,17 +28,15 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    right: 0;
-    left: 120px;
-    transition: 0.4s ease;
+    left: 250px; /* 초기에는 오른쪽으로 숨겨진 상태 */
     z-index: 99;
     background-color: #202020;
     border-left: 4px solid #202020;
     width: 250px;
-    margin-left: 320px;
-    color: #202020;
+    color: #FFFFFF;
     height: 100%;
     border-radius: 0 20px 20px 0;
+    transition: right 0.4s ease; /* right 속성에 대한 변화에 대해 0.4초 동안의 애니메이션 효과 부여 */
 }
 .close{
     color: #FFFFFF;
