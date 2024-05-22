@@ -41,11 +41,12 @@ const Sidebar = ({ width=280, children }) => {
         <div className="container">
             <div ref={side} className="sidebar"
                  style={{width: `${width}px`, height: '100%', transform: `translatex(${-xPosition}px)`}}>
-                <button onClick={() => toggleMenu()} className="button">
+                <button style={{position: 'fixed', top: '10px', left: '10px'}} onClick={() => toggleMenu()}
+                        className="button">
                     {isOpen ? (
-                        <img src={menu} width={50} height={50} alt="contact open button" className="openBtn"/>
-                    ) : (
                         <span className="close">X</span>
+                    ) : (
+                        <img src={menu} width={50} height={50} alt="contact open button" className="openBtn"/>
                     )}
                 </button>
                 <div className={`content ${!isOpen ? 'hidden' : ''}`}>{children}</div>
