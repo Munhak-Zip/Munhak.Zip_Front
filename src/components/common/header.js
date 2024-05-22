@@ -31,6 +31,9 @@ const Header=(props) =>{
     const goToLogout = () => {
         navigate("/Logout");
     }
+    const goToWish = () => {
+        navigate("/wish");
+    }
 
     //안보여주고 싶은 화면
     // if (locationNow.pathname === "/main") return null;
