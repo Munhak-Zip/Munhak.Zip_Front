@@ -25,8 +25,11 @@ const Header=(props) =>{
         navigate("/user/mypage");
     }
 
-    const goToLogIn = () => {
-        navigate("/LogIn");
+    const goToMain = () => {
+        navigate("/main");
+    }
+    const goToLogout = () => {
+        navigate("/Logout");
     }
 
     //안보여주고 싶은 화면
@@ -36,7 +39,7 @@ const Header=(props) =>{
             <div className= "mobile">
                 <div className="all">
                     <img src={menu} width={50} height={50} onClick={toggleSidebar}/>
-                    <div className="title_style">
+                    <div className="title_style" onClick={goToMain}>
                         Movie.Zip
                     </div>
                     <div className="horizontal-line"></div>
@@ -55,11 +58,10 @@ const Header=(props) =>{
                     <div className="sidebar-text" onClick={goToMypage}>
                         마이페이지
                     </div>
-
                     <br/>
-                    <Link to="/로그아웃" className="sidebar-text">
+                    <div className="sidebar-text" onClick={goToLogout}>
                         로그아웃
-                    </Link>
+                    </div>
                 </div>
             )}
         </header>
