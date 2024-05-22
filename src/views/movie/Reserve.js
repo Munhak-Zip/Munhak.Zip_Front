@@ -6,13 +6,14 @@ const Reserve = () => {
     const [selectedSeat, setSelectedSeat] = useState(null);
 
     function Header(props) {
-        console.log('props', props, props.title)
         return (
             <header>
-                <h1><a href="/" onClick={(event) => {
-                    event.preventDefault();
-                    props.onChangeMode();
-                }}>{props.title}</a></h1>
+                <h1>
+                    <a href="/" onClick={(event) => {
+                        event.preventDefault();
+                        props.onChangeMode();
+                    }}>{props.title}</a>
+                </h1>
             </header>
         );
     }
@@ -33,16 +34,20 @@ const Reserve = () => {
         const rowLabels = 'ABCDEFGHIJ'.split('');
         let tableRows = [];
 
-        const handleSeatClick = (seatId) => {
+        function handleSeatClick(seatId) {
             setSelectedSeat(seatId);
-        };
+        }
 
         for (let row = 0; row < rows; row++) {
             let tableCells = [];
             for (let col = 1; col <= cols; col++) {
                 let seatId = `${rowLabels[row]}-${col}`;
                 tableCells.push(
-                    <td key={seatId} onClick={() => handleSeatClick(seatId)}>
+                    <td
+                        key={seatId}
+                        className={selectedSeat === seatId ? 'selected' : ''}
+                        onClick={() => handleSeatClick(seatId)}
+                    >
                         {`${rowLabels[row]}${col}`}
                     </td>
                 );
@@ -58,11 +63,7 @@ const Reserve = () => {
                     {tableRows}
                     </tbody>
                 </table>
-                {selectedSeat && (
-                    <div className="selectedSeat">
-                        선택된 좌석: {selectedSeat}
-                    </div>
-                )}
+                {selectedSeat && <div>선택된 좌석: {selectedSeat}</div>}
             </div>
         );
     }
@@ -76,6 +77,6 @@ const Reserve = () => {
             <Seat />
         </div>
     );
-};
+}
 
 export default Reserve;
