@@ -19,8 +19,18 @@ const Header=(props) =>{
         setSidebarOpen(false);
     };
 
+    const navigate = useNavigate();
+
+    const goToMypage = () => {
+        navigate("/user/mypage");
+    }
+
+    const goToLogIn = () => {
+        navigate("/LogIn");
+    }
+
     //안보여주고 싶은 화면
-    if (locationNow.pathname === "/main") return null;
+    // if (locationNow.pathname === "/main") return null;
     return (
         <header className="header">
             <div className= "mobile">
@@ -42,9 +52,12 @@ const Header=(props) =>{
                         보관함
                     </Link>
                     <br/>
-                    <Link to="/user/mypage" className="sidebar-text">
+                    <div className="sidebar-text" onClick={goToMypage}>
                         마이페이지
-                    </Link>
+                    </div>
+                    {/*<Link to="/user/mypage" className="sidebar-text">*/}
+                    {/*    마이페이지*/}
+                    {/*</Link>*/}
                     <br/>
                     <Link to="/로그아웃" className="sidebar-text">
                         로그아웃
