@@ -36,6 +36,7 @@ const Header=(props) =>{
     }
     const goToWish = () => {
         navigate("/wish/reviewDetail"); //링크 추후에 변경...
+        closeSidebar();
     }
 
     //안보여주고 싶은 화면
