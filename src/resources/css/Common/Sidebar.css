@@ -1,7 +1,7 @@
 .container {
     background-color: #E3ECF1;
 }
-.sidebar {
+.sidebar2 {
     background-color: #202020;
     border-left: 4px solid #202020;
     position: fixed;
@@ -14,7 +14,7 @@
     height: 100%;
     z-index: 99;
 }
-.button {
+.button2 {
     background: black;
     position: relative;
     left: 330px;
