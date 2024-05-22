@@ -2,8 +2,9 @@ import React from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import menu from '../../resources/img/menu.png';
 import '../../resources/css/Common/header.css';
+import Sidebar from "./Sidebar";
 
-const header=() =>{
+const header=(props) =>{
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const locationNow = useLocation();
 
@@ -13,7 +14,9 @@ const header=() =>{
         <header className="header">
             <div className= "mobile">
                 <div className="all">
-                    <img src={menu} width={50} height={50}/>
+                    <Sidebar width={320}> //원하는 width사이즈
+                    </Sidebar>
+                    {/*<img src={menu} width={50} height={50}/>*/}
                     <div className="title_style">
                         Movie.Zip
                     </div>
