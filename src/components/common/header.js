@@ -36,7 +36,7 @@ const Header=(props) =>{
             {isSidebarOpen && (
                 <div className="sidebar">
                     <div className="close">
-                        <img src={close} width={50} height={50} onClick={closeSidebar}/>
+                        <img src={close} width={50} height={50} />
                     </div>
                     dd
                     <br/>
