@@ -39,16 +39,19 @@ const Sidebar = ({ width=280, children }) => {
 
     return (
         <div className="container">
-            <div ref={side}  className="sidebar" style={{ width: `${width}px`, height: '100%', transform: `translatex(${-xPosition}px)`}}>
-                <button onClick={() => toggleMenu()}
-                         className="button" >
-                    {isOpen ?
-                        <span>X</span> : <img src={menu} width={50} height={50} alt="contact open button" className="openBtn"/>
-                    }
+            <div ref={side} className="sidebar"
+                 style={{width: `${width}px`, height: '100%', transform: `translatex(${-xPosition}px)`}}>
+                <button onClick={() => toggleMenu()} className="button">
+                    {isOpen ? (
+                        <img src={menu} width={50} height={50} alt="contact open button" className="openBtn"/>
+                    ) : (
+                        <span className="close">X</span>
+                    )}
                 </button>
-                <div className="content">{children}</div>
+                <div className={`content ${!isOpen ? 'hidden' : ''}`}>{children}</div>
             </div>
         </div>
+
     );
 };
 
