@@ -70,19 +70,34 @@ body {
         text-decoration: none;
         color: #D1003F;
     }
+    .seatTable {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .seatTable table {
-        border-collapse: collapse; /* 테이블의 테두리가 겹치도록 */
-        margin: auto; /* 테이블을 중앙 정렬 */
-        width: 80%;
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 8px;
     }
 
     .seatTable th, .seatTable td {
-        border: 1px solid white; /* 검은색 테두리 */
-        padding: 8px; /* 내용과 테두리 사이의 간격 */
+        border: 1px solid white;
+        padding: 2px; /* 셀 내부의 패딩을 줄여 셀의 크기를 작게 만듭니다. */
+        text-align: center; /* 셀 내용을 중앙 정렬합니다. */
     }
 
     .seatTable th {
-        background-color: white; /* 테이블 헤더 배경색 */
+        background-color: #f2f2f2;
+    }
+    /* 선택된 좌석의 배경색을 파란색으로 설정 */
+    .seatTable td {
+        cursor: pointer;
+    }
+
+    .seatTable td.selected {
+        background-color: red;
+        color: white;
     }
 
 }
