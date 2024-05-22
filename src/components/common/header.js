@@ -38,7 +38,7 @@ const Header=(props) =>{
         <header className="header">
             <div className= "mobile">
                 <div className="all">
-                    <img src={menu} width={50} height={50} onClick={toggleSidebar}/>
+                    <img src={menu} width={50} height={50} className="img-header" onClick={toggleSidebar}/>
                     <div className="title_style" onClick={goToMain}>
                         Movie.Zip
                     </div>
@@ -51,9 +51,9 @@ const Header=(props) =>{
                     <div className="close">
                         <img src={close} width={50} height={50} onClick={closeSidebar}/>
                     </div>
-                    <Link to="/보관함" className="sidebar-text">
+                    <div className="sidebar-text" onClick={goToLogout}>
                         보관함
-                    </Link>
+                    </div>
                     <br/>
                     <div className="sidebar-text" onClick={goToMypage}>
                         마이페이지
