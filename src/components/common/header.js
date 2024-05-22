@@ -32,7 +32,7 @@ const Header=(props) =>{
         navigate("/Logout");
     }
     const goToWish = () => {
-        navigate("/wish");
+        navigate("/wish/reviewDetail");
     }
 
     //안보여주고 싶은 화면
