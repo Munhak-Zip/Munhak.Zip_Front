@@ -12,10 +12,12 @@ const Header=(props) =>{
 
     // 사이드바를 토글하는 함수
     const toggleSidebar = () => {
+
         setSidebarOpen(!isSidebarOpen);
     };
     // close 이미지를 클릭하여 사이드바를 닫음
     const closeSidebar = () => {
+
         setSidebarOpen(false);
     };
 
@@ -54,7 +56,7 @@ const Header=(props) =>{
             </div>
             {/* 사이드바 상태에 따라 사이드바 컴포넌트 표시 여부 결정 */}
             {isSidebarOpen && (
-                <div className="sidebar">
+                <div className="sidebar" >
                     <div className="close">
                         <img src={close} width={50} height={50} onClick={closeSidebar}/>
                     </div>
