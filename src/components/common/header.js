@@ -28,6 +28,7 @@ const Header=(props) =>{
 
     const goToMain = () => {
         navigate("/main");
+        closeSidebar();
     }
     const goToLogout = () => {
         navigate("/Logout");
