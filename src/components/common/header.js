@@ -54,7 +54,7 @@ const Header=(props) =>{
                     <div className="close">
                         <img src={close} width={50} height={50} onClick={closeSidebar}/>
                     </div>
-                    <div className="sidebar-text" onClick={goToLogout}>
+                    <div className="sidebar-text" onClick={goToWish}>
                         보관함
                     </div>
                     <br/>
