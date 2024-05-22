@@ -32,7 +32,7 @@ const Header=(props) =>{
         navigate("/Logout");
     }
     const goToWish = () => {
-        navigate("/wish/reviewDetail");
+        navigate("/wish/reviewDetail"); //링크 추후에 변경...
     }
 
     //안보여주고 싶은 화면
