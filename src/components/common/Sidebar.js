@@ -57,7 +57,10 @@ const Sidebar = ({ width=280, children }) => {
                 <div className="sidebar-text">
                     마이페이지
                 </div>
-
+                <br/>
+                <div className="sidebar-text">
+                    로그아웃
+                </div>
             </div>
         </div>
     );
