@@ -49,6 +49,8 @@ const Sidebar = ({ width=280, children }) => {
 
     }
     const goToWish = () => {
+        setX(width);
+        setOpen(false);
         navigate("/wish/reviewDetail"); //링크 추후에 변경...
     }
 
