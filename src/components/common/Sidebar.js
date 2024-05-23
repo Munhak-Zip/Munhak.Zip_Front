@@ -62,7 +62,7 @@ const Sidebar = ({ width=280, children }) => {
                 </button>
 
                 <div className="content2">{children}</div>
-                <div className="sidebar-text2">
+                <div className="sidebar-text2" onClick={goToWish}>
                     보관함
                 </div>
                 <br/>
