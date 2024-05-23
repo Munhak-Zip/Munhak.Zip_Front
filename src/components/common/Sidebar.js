@@ -34,10 +34,12 @@ const Sidebar = ({ width=280, children }) => {
         return () => {
             window.removeEventListener('click', handleClose);
         };
-    })
+    } , [isOpen, width])
 
     const navigate = useNavigate();
     const goToMypage = () => {
+        setX(width);
+        setOpen(false);
         navigate("/user/mypage");
     }
     const goToLogout = () => {
