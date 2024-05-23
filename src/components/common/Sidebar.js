@@ -53,6 +53,10 @@ const Sidebar = ({ width=280, children }) => {
                 <div className="sidebar-text">
                     보관함
                 </div>
+                <br/>
+                <div className="sidebar-text">
+                    마이페이지
+                </div>
 
             </div>
         </div>
