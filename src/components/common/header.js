@@ -45,6 +45,9 @@ const Header=(props) =>{
         <header className="header">
             <div className= "mobile">
                 <div className="all">
+                    <Sidebar>
+
+                    </Sidebar>
                     <img src={menu} width={50} height={50} className="img-header" onClick={toggleSidebar}/>
                     <div className="title_style" onClick={goToMain}>
                         Movie.Zip
