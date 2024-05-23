@@ -39,20 +39,25 @@ const Sidebar = ({ width=280, children }) => {
 
     return (
         <div className="container2">
-            <div ref={side}  className="sidebar2" style={{ width: `${width}px`, height: '100%',  transform: `translatex(${-xPosition}px)`}}>
+            <div ref={side} className="sidebar2"
+                 style={{width: `${width}px`, height: '100%', transform: `translatex(${-xPosition}px)`}}>
                 <button onClick={() => toggleMenu()}
-                        className="button2"  >
+                        className="button2">
                     {isOpen ?
-                        <span className="close2">X</span> : <img src={menu} alr="contact open button" className="openBtn2"/>
+                        <span className="close2">X</span> :
+                        <img src={menu} alr="contact open button" className="openBtn2"/>
                     }
                 </button>
 
                 <div className="content2">{children}</div>
+                <div className="sidebar-text">
+                    보관함
+                </div>
+
             </div>
         </div>
     );
 };
-
 
 
 export default Sidebar;
