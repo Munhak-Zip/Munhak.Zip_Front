@@ -43,7 +43,7 @@ const Sidebar = ({ width=280, children }) => {
                 <button onClick={() => toggleMenu()}
                         className="button2"  >
                     {isOpen ?
-                        <span className="close2">X</span> : <img src="images/avatar.png" alr="contact open button" className="openBtn2"/>
+                        <span className="close2">X</span> : <img src={menu} alr="contact open button" className="openBtn2"/>
                     }
                 </button>
 
