@@ -46,9 +46,8 @@ const Header=(props) =>{
             <div className= "mobile">
                 <div className="all">
                     <Sidebar>
-
-                    </Sidebar>
-                    <img src={menu} width={50} height={50} className="img-header" onClick={toggleSidebar}/>
+                    </Sidebar> {/* 이걸 주석처리해도 됨  위 아래 둘 중 하나...*/}
+                    {/* <img src={menu} width={50} height={50} className="img-header" onClick={toggleSidebar}/>  */}
                     <div className="title_style" onClick={goToMain}>
                         Movie.Zip
                     </div>
