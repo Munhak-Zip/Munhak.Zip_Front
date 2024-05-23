@@ -57,13 +57,17 @@ const Sidebar = ({ width=280, children }) => {
                         className="button2">
                     {isOpen ?
                         <span className="close2">X</span> :
-                        <img src={menu} alr="contact open button" className="openBtn2"/>
+                        <div className="hamburger">
+                            <div className="bar"></div>
+                            <div className="bar"></div>
+                            <div className="bar"></div>
+                        </div>
                     }
                 </button>
 
                 <div className="content2">{children}</div>
                 <div className="sidebar-text2" onClick={goToWish}>
-                    보관함
+                보관함
                 </div>
                 <br/>
                 <div className="sidebar-text2" onClick={goToMypage}>
