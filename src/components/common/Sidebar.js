@@ -40,6 +40,11 @@ const Sidebar = ({ width=280, children }) => {
     const goToMypage = () => {
         navigate("/user/mypage");
     }
+    const goToLogout = () => {
+        navigate("/Logout");
+
+    }
+
 
 
     return (
