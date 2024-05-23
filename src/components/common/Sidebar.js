@@ -43,6 +43,8 @@ const Sidebar = ({ width=280, children }) => {
         navigate("/user/mypage");
     }
     const goToLogout = () => {
+        setX(width);
+        setOpen(false);
         navigate("/Logout");
 
     }
