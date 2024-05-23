@@ -43,3 +43,10 @@
     font-size: 30px;
     color: #FFFFFF;
 }
+.sidebar-text2{
+    color: #FFFFFF;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+}
