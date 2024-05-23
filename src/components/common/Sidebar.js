@@ -44,7 +44,9 @@ const Sidebar = ({ width=280, children }) => {
         navigate("/Logout");
 
     }
-
+    const goToWish = () => {
+        navigate("/wish/reviewDetail"); //링크 추후에 변경...
+    }
 
 
     return (
