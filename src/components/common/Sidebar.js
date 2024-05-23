@@ -36,6 +36,11 @@ const Sidebar = ({ width=280, children }) => {
         };
     })
 
+    const navigate = useNavigate();
+    const goToMypage = () => {
+        navigate("/user/mypage");
+    }
+
 
     return (
         <div className="container2">
