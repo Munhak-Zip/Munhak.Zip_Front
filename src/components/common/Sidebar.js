@@ -70,7 +70,7 @@ const Sidebar = ({ width=280, children }) => {
                     마이페이지
                 </div>
                 <br/>
-                <div className="sidebar-text2">
+                <div className="sidebar-text2" onClick={goToLogout}>
                     로그아웃
                 </div>
             </div>
