@@ -20,6 +20,9 @@ const Main=() =>{
             <Link to={"/wish"}>
                 <button>보관함 메인</button>
             </Link>
+            <Link to={"/reserve"}>
+                <button>예매</button>
+            </Link>
             <Link to={"/wish/reviewDetail"}>
                 <button>리뷰페이지</button>
             </Link>
