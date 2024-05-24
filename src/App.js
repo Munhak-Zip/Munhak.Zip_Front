@@ -8,6 +8,8 @@ import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
 import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
+import Header from "./components/common/header";
+
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
@@ -16,6 +18,7 @@ function App() {
     return (
     <BrowserRouter>
         <div className="App">
+            <Header />
             <Routes>
                 <Route
                     path="/"
