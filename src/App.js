@@ -9,6 +9,11 @@ import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
 import Yjin from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
+import FindId from "./views/user/FindID";
+import FindPw1 from "./views/user/FindPW1";
+import FindPw2 from "./views/user/FindPW2";
+import SignUp from "./views/user/SignUp";
+import FirstCheckInterests from "./views/user/FirstCheckInterest";
 
 function App() {
   // @ts-ignore
@@ -52,6 +57,26 @@ function App() {
                     <Route
                         path={"/wish/myReviewDetail"}
                         element={<Myreviewdetail />}
+                    />
+                    <Route
+                        path={"/findId"}
+                        element={<FindId />}
+                    />
+                    <Route
+                        path={"/findPw1"}
+                        element={<FindPw1 />}
+                    />
+                    <Route
+                        path={"/findPw2"}
+                        element={<FindPw2 />}
+                    />
+                    <Route
+                        path={"/signUp"}
+                        element={<SignUp />}
+                    />
+                    <Route
+                        path={"/firstCheckInterests"}
+                        element={<FirstCheckInterests />}
                     />
             </Routes>
         </div>
