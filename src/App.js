@@ -6,8 +6,9 @@ import Minyoung from "./page/user/Minyoung";
 import Moviedetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
-import Yjin from "./views/Main"
+import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
+import MovieList from "./views/movie/MovieList";
 
 function App() {
   // @ts-ignore
@@ -32,10 +33,14 @@ function App() {
                     path={"/user/mypage"}
                     element={<Mypage/>}
                 />
-                    <Route
-                        path={"/main"}
-                        element={<Yjin/>}
-                    />
+                <Route
+                    path={"/main"}
+                    element={<MainPage/>}
+                />
+                <Route
+                    path={"/movie/movieList"}
+                    element={<MovieList/>}
+                />
                     <Route
                         path={"/movie/detail"}
                         element={<Moviedetail />}
