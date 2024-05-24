@@ -17,6 +17,9 @@ const Main=() =>{
             <Link to={"/movie/movieList"}>
                 <button>좋아하는 영화 클릭 시 상세</button>
             </Link>
+            <Link to={"/wish"}>
+                <button>보관함 메인</button>
+            </Link>
             <Link to={"/wish/reviewDetail"}>
                 <button>리뷰페이지</button>
             </Link>

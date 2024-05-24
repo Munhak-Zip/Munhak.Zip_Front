@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter&display=swap');
+
+
+@media (max-width: 768px) {
+    /* 홈 페이지의 제목 스타일 변경 */
+    body {
+        background-color: black;
+        font-family: "Commissioner", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings:
+                "slnt" 0,
+                "FLAR" 0,
+                "VOLM" 0;
+    }
+
+    .div1 {
+        margin: 0;
+        /*max-width: 360px;*/
+        max-height: 800vh;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+
+    .div1 Category a{
+        font-size: 40px;
+        text-decoration: none;
+        color: #D1003F;
+    }
+
+    .wishMovies, .wishReviews, .myReviews{
+        text-align: left;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .review{
+        text-align: center;
+        border: 1px solid white; /* 테두리 색상 */
+        padding: 10px; /* 안쪽 여백 */
+        margin: 10px; /* 바깥쪽 여백 */
+        border-radius: 10px; /* 테두리 둥글게 */
+    }
+
+    .review img{
+        display: inline-block;
+        width: 30px;
+        margin-left: 0;
+    }
+    .before-button{
+        width: 20px;
+        transform: scaleX(-1);
+    }
+    .next-button{
+        width: 20px; /* 이미지의 너비를 조절 */
+        height: auto; /* 높이를 자동으로 설정하여 비율을 유지 */
+        margin-left: 250px;
+    }
+    .movie .Poster-img {
+        width: 131px;
+        height: 20vh;
+    }
+
+    .movies {
+        display: flex; /* 영화들을 수평으로 정렬 */
+        flex-wrap: wrap;
+    }
+    .movie {
+        margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
+    }
+}
+@media (min-width: 769px) {
+    /* 홈 페이지의 제목 스타일 변경 */
+    body {
+        background-color: black;
+        font-family: "Commissioner", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings:
+                "slnt" 0,
+                "FLAR" 0,
+                "VOLM" 0;
+    }
+
+    .div1 {
+        margin: 0;
+        /*max-width: 360px;*/
+        max-height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+
+    .div1 Header a{
+        font-size: 40px;
+        text-decoration: none;
+        color: #D1003F;
+    }
+
+
+    .before-button{
+        width: 20px;
+        transform: scaleX(-1);
+    }
+    .next-button{
+        width: 20px; /* 이미지의 너비를 조절 */
+        height: auto; /* 높이를 자동으로 설정하여 비율을 유지 */
+        margin-left: 250px;
+    }
+
+    .movie img {
+        width: 131px;
+        height: 92px;
+    }
+
+    .new-movies {
+        display: flex; /* 영화들을 수평으로 정렬 */
+    }
+    .movie {
+        margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
+    }
+}
