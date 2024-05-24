@@ -109,6 +109,7 @@ div.title{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .expect .star_ex {
@@ -117,14 +118,17 @@ div.title{
 }
 
 .expect_box {
-    margin-top: 5px;
     margin-left: 3px;
     width: 330px;
     display:  inline-block; /* inline-flex로 설정하여 가로로 배열될 수 있도록 함 */
     align-items: center;
     padding: 5px 10px;
-    border: 2px solid #FFFFFF;
-    border-radius: 18px;
+    border-top: 1px solid transparent; /* 위쪽 선만 투명하게 */
+    border-bottom: 1px solid #FFFFFF; /* 아래쪽 선은 흰색 */
+    border-left: 1px solid #FFFFFF; /* 왼쪽 선은 흰색 */
+    border-right: 1px solid #FFFFFF; /* 오른쪽 선은 흰색 */
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .expect_text_mid{
@@ -139,7 +143,8 @@ div.title{
     color: #FFFFFF;
     font-size: 12px;
     display: inline-block; /* 텍스트 요소들이 가로로 배열되도록 함 */
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .critic_title{
     margin-left: 5px;
@@ -184,4 +189,54 @@ div.title{
     margin-bottom: 25px;
     border-top: 1px solid  #FFFFFF; /* 가로선의 스타일 및 색상 설정 */
     width: 100%; /* 가로선의 너비 설정 */
+}
+
+.btn_good_not {
+    width: 178px;
+    height: 37px;
+    background-color: #D1003F;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-left-radius: 15px;
+    margin-left: 2px;
+
+}
+
+.btn_good {
+    width: 177px;
+    height: 37px;
+    border-top: 1px solid #FFFFFF; /* 위쪽 선만 투명하게 */
+    border-bottom: 1px solid transparent; /* 아래쪽 선은 흰색 */
+    border-left: 1px solid #FFFFFF; /* 왼쪽 선은 흰색 */
+    border-right: 1px solid transparent;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-left-radius: 15px;
+    margin-left: 3px;
+    background-color: transparent;
+}
+.btn_bad_not {
+    width: 178px;
+    height: 37px;
+    background-color: #D1003F;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-right-radius: 15px;
+
+}
+.btn_bad {
+    width: 176px;
+    height: 37px;
+    border-top: 1px solid #FFFFFF; /* 위쪽 선만 투명하게 */
+    border-bottom: 1px solid transparent; /* 아래쪽 선은 흰색 */
+    border-left: 1px solid transparent; /* 왼쪽 선은 흰색 */
+    border-right: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-right-radius: 15px;
+    background-color: transparent;
 }
