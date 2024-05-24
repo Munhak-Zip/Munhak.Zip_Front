@@ -6,10 +6,13 @@ import Minyoung from "./page/user/Minyoung";
 import Moviedetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
-import Yjin from "./views/Main"
+import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
 import Header from "./components/common/header";
 
+import MovieList from "./views/movie/MovieList";
+import Wish from "./views/wish/Wish"
+import Reserve from "./views/movie/Reserve"
 function App() {
   // @ts-ignore
     return (
@@ -21,6 +24,7 @@ function App() {
                     path="/"
                     element={<Main />}
                 />
+
                 <Route
                     path={"/login/minyoung"}
                     element={<Minyoung/>}
@@ -33,9 +37,25 @@ function App() {
                     path={"/user/mypage"}
                     element={<Mypage/>}
                 />
+                <Route
+                    path={"/main"}
+                    element={<MainPage/>}
+                />
+                <Route
+                    path={"/movie/movieList"}
+                    element={<MovieList/>}
+                />
+                <Route
+                    path={"/wish"}
+                    element={<Wish/>}
+                />
+                <Route
+                    path={"/reserve"}
+                    element={<Reserve/>}
+                />
                     <Route
-                        path={"/main"}
-                        element={<Yjin/>}
+                        path={"/movie/detail"}
+                        element={<Moviedetail />}
                     />
                     <Route
                         path={"/wish/reviewDetail"}
