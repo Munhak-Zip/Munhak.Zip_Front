@@ -69,9 +69,6 @@ const Reserve = () => {
 
     return (
         <div className={"div1"}>
-            <Header title={"MOVIE.ZIP"} onChangeMode={() => {
-                setMode('WELCOME');
-            }}></Header>
             영화명 : 파묘 <br/>
             날짜 : <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/><br/>
             시간 : <input type="time" value={time} onChange={(e) => setTime(e.target.value)}/><br/>
