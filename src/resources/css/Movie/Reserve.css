@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter&display=swap');
+
+body {
+    /background-color: black;
+    font-family: "Commissioner", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0,
+            "FLAR" 0,
+            "VOLM" 0;
+}
+
+@media (max-width: 768px) {
+    .div1 {
+        margin: 0;
+        max-height: 800vh;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .div1 Header a {
+        font-size: 40px;
+        text-decoration: none;
+        color: #D1003F;
+    }
+    .seatTable {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .seatTable table {
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 8px;
+    }
+
+    .seatTable th, .seatTable td {
+        border: 1px solid white;
+        padding: 2px; /* 셀 내부의 패딩을 줄여 셀의 크기를 작게 만듭니다. */
+        text-align: center; /* 셀 내용을 중앙 정렬합니다. */
+    }
+
+    .seatTable th {
+        background-color: #f2f2f2;
+    }
+    /* 선택된 좌석의 배경색을 파란색으로 설정 */
+    .seatTable td {
+        cursor: pointer;
+    }
+
+    .seatTable td.selected {
+        background-color: red;
+        color: white;
+    }
+
+
+}
+
+@media (min-width: 769px) {
+    .div1 {
+        margin: 0;
+        max-height: 800vh;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .div1 Header a {
+        font-size: 40px;
+        text-decoration: none;
+        color: #D1003F;
+    }
+    .seatTable {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .seatTable table {
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 8px;
+    }
+
+    .seatTable th, .seatTable td {
+        border: 1px solid white;
+        padding: 2px; /* 셀 내부의 패딩을 줄여 셀의 크기를 작게 만듭니다. */
+        text-align: center; /* 셀 내용을 중앙 정렬합니다. */
+    }
+
+    .seatTable th {
+        background-color: #f2f2f2;
+    }
+    /* 선택된 좌석의 배경색을 파란색으로 설정 */
+    .seatTable td {
+        cursor: pointer;
+    }
+
+    .seatTable td.selected {
+        background-color: red;
+        color: white;
+    }
+
+}
