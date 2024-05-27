@@ -1,14 +1,9 @@
 // @ts-ignore
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Main from './page/user/Main.js';
+import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
-import Moviedetail from "./views/movie/MovieDetail";
-import Reviewdetail from "./views/wish/ReviewDetail";
-import Myreviewdetail from "./views/wish/MyReviewDetail";
-import MainPage from "./views/Main"
-import Mypage from "./views/mypage/Mypage";
-import Header from "./components/common/header";
+import Login from "./views/user/Login"
 
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
@@ -65,11 +60,14 @@ function App() {
                         path={"/wish/myReviewDetail"}
                         element={<Myreviewdetail />}
                     />
+                <Route
+                    path={"/login"}
+                    element={<Login/>}
+                />
             </Routes>
         </div>
     </BrowserRouter>
   );
-
 }
 
 export default App;

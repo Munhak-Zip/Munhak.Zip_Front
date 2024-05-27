@@ -29,6 +29,9 @@ const Main=() =>{
             <Link to={"/wish/myReviewDetail"}>
                 <button>나의리뷰페이지</button>
             </Link>
+            <Link to={"/login"}>
+                <button>login</button>
+            </Link>
         </div>
     );
 }
