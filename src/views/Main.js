@@ -118,9 +118,6 @@ function App() {
     // @ts-ignore
     return (
         <div className={"div1"}>
-            <Header title={"MOVIE.ZIP"} onChangeMode={() => {
-                setMode('WELCOME');
-            }}></Header>
             <input type="text" placeholder={"검색하기"} value={search}/>
             <input type={"button"} value={"검색"}/>
             {/*<Nav topics={topics} onChangeMode={(_id)=>{
