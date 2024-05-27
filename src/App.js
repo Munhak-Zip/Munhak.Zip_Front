@@ -1,7 +1,7 @@
 // @ts-ignore
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Main from './page/user/Main.js';
+import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
 import Login from "./views/user/Login";
 import Moviedetail from "./views/movie/MovieDetail";
@@ -15,6 +15,7 @@ import FindPw2 from "./views/user/FindPW2";
 import SignUp from "./views/user/SignUp";
 import FirstCheckInterests from "./views/user/FirstCheckInterest";
 import Header from "./components/common/header";
+import Login from "./views/user/Login"
 
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
@@ -95,6 +96,10 @@ function App() {
                         path={"/firstCheckInterests"}
                         element={<FirstCheckInterests />}
                     />
+                <Route
+                    path={"/login"}
+                    element={<Login/>}
+                />
             </Routes>
         </div>
     </BrowserRouter>
