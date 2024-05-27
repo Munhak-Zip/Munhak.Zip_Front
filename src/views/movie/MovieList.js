@@ -73,9 +73,6 @@ function App() {
     // @ts-ignore
     return (
         <div className={"div1"}>
-            <Header title={"MOVIE.ZIP"} onChangeMode={() => {
-                setMode('WELCOME');
-            }}></Header>
             <Category type={"wishMovies"}></Category>
         </div>
     )

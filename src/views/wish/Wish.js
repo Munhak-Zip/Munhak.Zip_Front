@@ -180,9 +180,6 @@ const Wish=() => {
 
     return (
         <div className={"div1"}>
-            <Header title={"MOVIE.ZIP"} onChangeMode={() => {
-                setMode('WELCOME');
-            }}></Header>
             <Category type={"wishMovies"}></Category>
             <Category type={"wishReviews"}></Category>
             <Category type={"myReviews"}></Category>
