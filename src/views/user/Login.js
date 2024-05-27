@@ -23,8 +23,8 @@ const Login=() =>{
             </Link>
             <Link to={"/findPw1"}>
                 <button>PW찾기</button>
-
-    );
+            </Link>
+        </div>
+        );
 }
-
 export default Login;

@@ -15,7 +15,6 @@ import FindPw2 from "./views/user/FindPW2";
 import SignUp from "./views/user/SignUp";
 import FirstCheckInterests from "./views/user/FirstCheckInterest";
 import Header from "./components/common/header";
-import Login from "./views/user/Login"
 
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
