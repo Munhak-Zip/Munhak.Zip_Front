@@ -8,6 +8,17 @@ import Login from "./views/user/Login"
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
+import Header from "./components/common/header"
+import Moviedetail from "./views/movie/MovieDetail"
+import Mypage from "./views/Main"
+import MainPage from "./views/Main"
+import Reviewdetail from "./views/wish/ReviewDetail"
+import Myreviewdetail from "./views/wish/MyReviewDetail"
+import SignUp from "./views/user/SignUp"
+
+
+
+
 function App() {
   // @ts-ignore
     return (
@@ -63,6 +74,10 @@ function App() {
                 <Route
                     path={"/login"}
                     element={<Login/>}
+                />
+                <Route
+                    path={"/signup"}
+                    element={<SignUp/>}
                 />
             </Routes>
         </div>
