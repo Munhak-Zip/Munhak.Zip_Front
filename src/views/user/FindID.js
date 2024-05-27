@@ -7,12 +7,9 @@ const FindID=() =>{
 
     return(
         <div className={"findId"}>
-            <h1>MOVIE.ZIP</h1>
-            <input type="text" placeholder={"닉네임"} value={nickName}/>
-            <br/>
             <input type="text" placeholder={"부모님의 이름은?"} value={hint}/>
             <br/>
-            <button>ID찾기</button>
+            <button className={"find_id"}>ID찾기</button>
         </div>
     )
 }

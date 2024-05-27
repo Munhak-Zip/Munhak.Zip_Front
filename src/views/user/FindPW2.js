@@ -7,7 +7,6 @@ const FindPW2=() =>{
 
     return(
         <div className={"findPW1"}>
-            <h1>MOVIE.ZIP</h1>
             <input type="text" placeholder={"PW"} value={pw}/>
             <br/>
             <button>PW변경</button>

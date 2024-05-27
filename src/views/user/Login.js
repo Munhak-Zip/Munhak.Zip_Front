@@ -7,7 +7,6 @@ const Login=() =>{
 
     return (
         <div className={"login"}>
-            <h1>MOVIE.ZIP</h1>
             <input type="text" placeholder={"ID"} value={userId}/>
             <br />
             <input type="text" placeholder={"PW"} value={pw}/>
@@ -17,13 +16,13 @@ const Login=() =>{
             </Link>
             <br />
             <Link to={"/signUp"}>
-                회원가입
+                <button>회원가입</button>
             </Link>
             <Link to={"/findId"}>
-                ID찾기
+                <button>ID찾기</button>
             </Link>
             <Link to={"/findPw1"}>
-                PW찾기
+                <button>PW찾기</button>
             </Link>
         </div>
     );

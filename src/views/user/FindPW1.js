@@ -7,7 +7,6 @@ const FindPW1=() =>{
 
     return(
         <div className={"findPW1"}>
-            <h1>MOVIE.ZIP</h1>
             <input type="text" placeholder={"ID"} value={id}/>
             <br/>
             <Link to={"/findPw2"}>
