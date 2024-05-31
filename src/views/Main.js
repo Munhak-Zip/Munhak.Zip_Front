@@ -1,11 +1,13 @@
 // @ts-ignore
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import '../resources/css/Main/Main.css'
 import Poster from '../resources/img/Main/sample1.png'
 import Next from '../resources/next.png'
 import Star from '../resources/img/Movie/star.png'
+import axios from 'axios';
+
 function Header(props) {
     console.log('props', props, props.title)
     return <header>
@@ -114,23 +116,54 @@ function App() {
             </div>
         </div>
     }
+    const [recommendationResults, setRecommendationResults] = useState([]); // recommendationResults state 추가
 
+    // 백엔드에서 추천 결과를 가져오는 함수
+    const fetchRecommendations = () => {
+        const userId = 3; // 예시로 사용자 ID를 지정
+        axios.get('/main/recommend', {
+            params: {
+                userId: userId
+            }
+        })
+            .then(response => {
+                // 서버 응답을 처리
+                const recommendationResults = response.data;
+                setRecommendationResults(recommendationResults); // 추천 결과를 state에 저장
+            })
+            .catch(error => {
+                // 오류 npm 처리
+                console.error('Request failed:', error);
+            });
+    };
+
+    // 컴포넌트가 마운트될 때 추천 결과를 가져오는 함수 호출
+    useEffect(() => {
+        fetchRecommendations();
+    }, []);
     // @ts-ignore
     return (
         <div className={"div1"}>
             <input type="text" placeholder={"검색하기"} value={search}/>
             <input type={"button"} value={"검색"}/>
             {/*<Nav topics={topics} onChangeMode={(_id)=>{
-                setMode('READ');
-                setId(_id);
-            }}></Nav>
-            {content}*/}
+            setMode('READ');
+            setId(_id);
+        }}></Nav>
+        {content}*/}
+           추천 영화 :
+            <ul>
+                {recommendationResults.map((result, index) => (
+                    <li key={index}>{result}</li> // 'index'를 key로 사용
+                ))}
+            </ul>
             <p/>
             <Movies type={"new"}></Movies>
             <Movies type={"recommend"}></Movies>
             <Movies type={"wish"}></Movies>
         </div>
     )
+
 }
 
 export default App;
