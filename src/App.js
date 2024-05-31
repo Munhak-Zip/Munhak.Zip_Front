@@ -22,14 +22,6 @@ import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
 
 function App() {
-    const [hello, setHello] = useState('')
-
-    useEffect(() => {
-        axios.get('/api/hello')
-            .then(response => setHello(response.data))
-            .catch(error => console.log(error))
-    }, []);
-
     return (
         <BrowserRouter>
             <div className="App">
