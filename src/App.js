@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
@@ -19,9 +19,23 @@ import Header from "./components/common/header";
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
+import axios from "axios";
 function App() {
   // @ts-ignore
+    const [hello, setHello] = useState('')
+
+    useEffect(() => {
+        axios.get('/api/hello')
+            .then(response => setHello(response.data))
+            .catch(error => console.log(error))
+    }, []);
+
     return (
+        <div>
+            백엔드에서 가져온 데이터입니다 : {hello}
+        </div>
+    );
+    /*return (
     <BrowserRouter>
         <div className="App">
             <Header />
@@ -102,7 +116,7 @@ function App() {
             </Routes>
         </div>
     </BrowserRouter>
-  );
+  );*/
 }
 
 export default App;
