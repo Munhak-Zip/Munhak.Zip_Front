@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const [nickName, setNickName] = useState("");
@@ -11,14 +11,15 @@ const SignUp = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const user = {
-            nickName: nickName,
+            nickname: nickName,
             userId: userId,
-            pw: pw,
+            password: pw,
             hint: hint
         };
 
         try {
-            const response = await fetch("/signup", {
+            console.log("사용자:"+ user);
+            const response = await fetch("/joinProc", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -41,39 +42,40 @@ const SignUp = () => {
         }
     };
 
-
     return (
         <div className="signUp">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} name="joinForm">
                 <input
                     type="text"
-                    placeholder="닉네임"
-                    value={nickName}
-                    onChange={(e) => setNickName(e.target.value)}
-                />
-                <br/>
-                <input
-                    type="text"
-                    placeholder="ID"
+                    name="UserId"
+                    placeholder="Username"
                     value={userId}
                     onChange={(e) => setUserId(e.target.value)}
                 />
-                <br/>
                 <input
                     type="password"
-                    placeholder="PW"
+                    name="password"
+                    placeholder="Password"
                     value={pw}
                     onChange={(e) => setPw(e.target.value)}
                 />
-                <br/>
                 <input
+                    id="nickname"
                     type="text"
-                    placeholder="부모님의 이름은?"
+                    name="nickname"
+                    placeholder="Nickname"
+                    value={nickName}
+                    onChange={(e) => setNickName(e.target.value)}
+                />
+                <input
+                    id="hint"
+                    type="text"
+                    name="hint"
+                    placeholder="Hint"
                     value={hint}
                     onChange={(e) => setHint(e.target.value)}
                 />
-                <br/>
-                <button type="submit" className="sign_up">회원가입</button>
+                <input type="submit" value="Join"/>
             </form>
         </div>
     );
