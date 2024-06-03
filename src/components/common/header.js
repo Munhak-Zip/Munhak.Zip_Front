@@ -34,6 +34,10 @@ const Header=(props) =>{
         navigate("/Logout");
         closeSidebar();
     }
+    const goToSignup = () => {
+        navigate("/signup");
+        closeSidebar();
+    }
     const goToWish = () => {
         navigate("/wish/reviewDetail"); //링크 추후에 변경...
         closeSidebar();
@@ -70,6 +74,9 @@ const Header=(props) =>{
                     <br/>
                     <div className="sidebar-text" onClick={goToLogout}>
                         로그아웃
+                    </div>
+                    <div className="sidebar-text" onClick={goToSignup}>
+                        회원가입
                     </div>
                 </div>
             )}

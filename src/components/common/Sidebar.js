@@ -3,7 +3,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import '../../resources/css/Common/Sidebar.css';
 import menu from '../../resources/img/menu.png';
 
-const Sidebar = ({ width=280, children }) => {
+const Sidebar = ({width = 280, children}) => {
     const [isOpen, setOpen] = useState(false);
     const [xPosition, setX] = useState(width);
     const side = useRef();
@@ -29,12 +29,12 @@ const Sidebar = ({ width=280, children }) => {
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         window.addEventListener('click', handleClose);
         return () => {
             window.removeEventListener('click', handleClose);
         };
-    } , [isOpen, width])
+    }, [isOpen, width])
 
     const navigate = useNavigate();
     const goToMypage = () => {
@@ -53,7 +53,11 @@ const Sidebar = ({ width=280, children }) => {
         setOpen(false);
         navigate("/wish/reviewDetail"); //링크 추후에 변경...
     }
-
+    const goToSignup = () => {
+        setX(width);
+        setOpen(false);
+        navigate("/signup");
+    }
 
     return (
         <div className="container2">
@@ -73,7 +77,7 @@ const Sidebar = ({ width=280, children }) => {
 
                 <div className="content2">{children}</div>
                 <div className="sidebar-text2" onClick={goToWish}>
-                보관함
+                    보관함
                 </div>
                 <br/>
                 <div className="sidebar-text2" onClick={goToMypage}>
@@ -82,6 +86,9 @@ const Sidebar = ({ width=280, children }) => {
                 <br/>
                 <div className="sidebar-text2" onClick={goToLogout}>
                     로그아웃
+                </div>
+                <div className="sidebar-text" onClick={goToSignup}>
+                    회원가입
                 </div>
             </div>
         </div>
