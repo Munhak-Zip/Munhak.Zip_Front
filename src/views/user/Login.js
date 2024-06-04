@@ -3,49 +3,60 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const Login = () => {
-    const [userId, setUserId] = useState("");
-    const [pw, setPw] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handler = async () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const loginDTO = {
+            username: username,
+            password: password,
+        };
+
         try {
-            const response = await axios.post("http://localhost:8080/login", {
-                ID: userId,  // 서버가 ID로 필드를 기대한다면 ID로 변경
-                password: pw
+            console.log("사용자:", loginDTO.username);
+            const response = await axios.post("http://localhost:8080/loginProc", loginDTO, {
+                headers: {
+                    'Content-Type': ' application/x-www-form-urlencoded',
+                },
+                withCredentials: true, // 쿠키 기반 인증 정보를 포함
             });
-            console.log(response.data);  // 정상 통신 후 응답된 메시지 출력
-            navigate("/main");  // 성공 시 메인 페이지로 이동
+            if (response.status === 200) {
+                navigate("/main");
+            } else {
+                console.error("Error:", response.data);
+            }
         } catch (error) {
-            console.log(error);  // 오류 발생 시 실행
+            console.error("Network error:", error);
         }
     };
 
     return (
         <div className="login">
-            <input
-                type="text"
-                placeholder="ID"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-            />
-            <br />
-            <input
-                type="password"
-                placeholder="PW"
-                value={pw}
-                onChange={(e) => setPw(e.target.value)}
-            />
-            <br />
-            <button onClick={handler}>로그인</button>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="ID"
+                    value={username}
+                    name= "username"
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <br />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    name= "password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <br />
+                <button type="submit">로그인</button>
+            </form>
             <br />
             <Link to="/signUp">
                 <button>회원가입</button>
-            </Link>
-            <Link to="/findId">
-                <button>ID찾기</button>
-            </Link>
-            <Link to="/findPw1">
-                <button>PW찾기</button>
             </Link>
         </div>
     );
