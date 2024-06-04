@@ -91,10 +91,6 @@ function App() {
                         path={"/firstCheckInterests"}
                         element={<FirstCheckInterests />}
                     />
-                    <Route
-                        path={"/login"}
-                        element={<Login/>}
-                    />
                 </Routes>
             </div>
         </BrowserRouter>
