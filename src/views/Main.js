@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import '../resources/css/Main/Main.css'
-import Poster from '../resources/img/Main/sample1.png'
 import Next from '../resources/next.png'
 import Star from '../resources/img/Movie/star.png'
 import axios from 'axios';
@@ -103,7 +102,7 @@ function App() {
     const renderMovies = (movies) => {
         return movies.map((movie) => (
             <span key={movie.mvId} className="movie">
-                <img src={Poster} alt={movie.mvTitle} className="Poster-img" />
+                <img src={movie.mvImg} alt={movie.mvTitle} className="Poster-img" />
                 <p>
                     {movie.mvTitle}
                     <img src={Star} className="star" />
@@ -153,7 +152,7 @@ function App() {
             추천 영화 :
             <ul>
                 {recommendationResults.map((result, index) => (
-                    <li key={index}>{result.mvTitle} - {result.mvStar}</li>
+                    <li key={index}> {result.mvTitle} - {result.mvStar}</li>
                 ))}
             </ul>
             <p />
