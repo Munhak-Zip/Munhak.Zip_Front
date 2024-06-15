@@ -6,8 +6,10 @@ import star from '../../resources/img/Movie/star.png';
 import starN from '../../resources/img/Movie/star_unclick.png';
 import back from '../../resources/img/Movie/back.png';
 import {Link, useNavigate} from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 const MovieDetail=() =>{
+    const { mvId } = useParams();
     const [starRating, setStarRating] = useState(0); // 별점 상태를 저장하는 state 변수
 
     // 별점 클릭 시 이벤트 핸들러
