@@ -115,7 +115,17 @@ function App() {
     };
 
     const showMovies = (mvId) => {
-        navigate(`/movie/${mvId}`);
+        axios
+            .get(`/movie/${mvId}`) // 경로 변수를 사용하여 mvId 전달
+            .then((response) => {
+                // 서버 응답에 따른 처리
+                const movieDetails = response.data;
+                // 예를 들어, 응답 데이터를 통해 상세 페이지로 이동
+                navigate(`/movie/${mvId}`, { state: movieDetails });
+            })
+            .catch((error) => {
+                console.error('Request failed:', error);
+            });
     };
     
     function Movies(props) {
