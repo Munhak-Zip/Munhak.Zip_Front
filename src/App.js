@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
 import Login from "./views/user/Login";
-import Moviedetail from "./views/movie/MovieDetail";
+import MovieDetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
 import MainPage from "./views/Main"
@@ -36,9 +36,8 @@ function App() {
                         element={<Login/>}
                     />
                     <Route
-                        path={"/movie/detail"}
-                        element={<Moviedetail />}
-                    />
+                        path="/movie/:mvId"
+                        element={<MovieDetail />} />
                     <Route
                         path={"/user/mypage"}
                         element={<Mypage/>}
@@ -59,10 +58,10 @@ function App() {
                         path={"/reserve"}
                         element={<Reserve/>}
                     />
-                    <Route
-                        path={"/movie/detail"}
-                        element={<Moviedetail />}
-                    />
+                    {/*<Route*/}
+                    {/*    path={"/movie/detail"}*/}
+                    {/*    element={<Moviedetail />}*/}
+                    {/*/>*/}
                     <Route
                         path={"/wish/reviewDetail"}
                         element={<Reviewdetail />}
