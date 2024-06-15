@@ -6,6 +6,7 @@ import '../resources/css/Main/Main.css'
 import Next from '../resources/next.png'
 import Star from '../resources/img/Movie/star.png'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
     console.log('props', props, props.title);
@@ -62,6 +63,7 @@ function Article(props) {
 }
 
 function App() {
+    const navigate = useNavigate();
     const [mode, setMode] = useState('WELCOME');
     const [search, setSearch] = useState('');
     const [moviesIndex, setMoviesIndex] = useState(0);
@@ -102,7 +104,7 @@ function App() {
     const renderMovies = (movies) => {
         return movies.map((movie) => (
             <span key={movie.mvId} className="movie">
-                <img src={movie.mvImg} alt={movie.mvTitle} className="Poster-img" />
+                <img src={movie.mvImg} alt={movie.mvTitle} className="Poster-img" onClick={() => showMovies(movie.mvId)}/>
                 <p>
                     {movie.mvTitle}
                     <img src={Star} className="star" />
@@ -112,6 +114,10 @@ function App() {
         ));
     };
 
+    const showMovies = (mvId) => {
+        navigate(`/movie/${mvId}`);
+    };
+    
     function Movies(props) {
         let content;
         if (props.type === 'new') {
@@ -124,7 +130,7 @@ function App() {
         return (
             <div className={props.type}>
                 {content}
-                <img src={Next} className="next-button" alt="next" onClick={props.showMovies} />
+                <img src={Next} className="next-button" alt="next" />
                 <div className="new-movies">{renderMovies(props.movies)}</div>
             </div>
         );
@@ -157,7 +163,8 @@ function App() {
             </ul>
             <p />
             <Movies type="new" movies={[]} showMovies={() => { /* showMovies 함수 구현 */ }} />
-            <Movies type="recommend" movies={recommendationResults} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            <Movies type="recommend" movies={recommendationResults}
+            />
             <Movies type="wish" movies={[]} showMovies={() => { /* showMovies 함수 구현 */ }} />
         </div>
     );
