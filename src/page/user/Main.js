@@ -43,6 +43,7 @@ const Main=() =>{
             </Link>
              <Link to={"/firstCheckInterests"}>
                 <button>첫취향선택</button>
+             </Link>
             <Link to={"/login"}>
                 <button>login</button>
             </Link>
