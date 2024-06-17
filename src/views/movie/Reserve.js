@@ -67,10 +67,28 @@ const Reserve = () => {
     }
 
     function handleReservation() {
-        if (!selectedSeat) {
-            alert("좌석을 선택해주세요.");
+        if (!selectedSeat || !date || !time) {
+            alert("좌석, 날짜 및 시간을 선택해주세요.");
         } else {
-            alert("예매가 완료되었습니다. 선택된 좌석: " + selectedSeat);
+            const reservationData = {
+                movieId: mvId,
+                seat: selectedSeat,
+                date,
+                time
+            };
+
+            console.log('Sending reservation data:', reservationData); // 추가된 로그
+
+            axios.post('/movie/reserve', reservationData)
+                .then(response => {
+                    console.log('Reservation response:', response.data); // 추가된 로그
+                    alert("예매가 완료되었습니다. 선택된 좌석: " + selectedSeat);
+                    navigate('/user/mypage', { state: { reservationDetails: response.data } }); // 예매 완료 후 확인 페이지로 이동
+                })
+                .catch(error => {
+                    console.error('Reservation failed:', error);
+                    alert("예매에 실패했습니다. 다시 시도해주세요.");
+                });
         }
     }
 
