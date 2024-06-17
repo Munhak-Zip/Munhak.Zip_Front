@@ -71,7 +71,7 @@ const Reserve = () => {
             alert("좌석, 날짜 및 시간을 선택해주세요.");
         } else {
             const reservationData = {
-                movieId: mvId,
+                mvId: mvId,
                 seat: selectedSeat,
                 date,
                 time
