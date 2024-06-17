@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import '../../resources/css/Common/Sidebar.css';
 import menu from '../../resources/img/menu.png';
+import axios from 'axios';
 
 const Sidebar = ({width = 280, children}) => {
     const [isOpen, setOpen] = useState(false);
@@ -43,10 +44,18 @@ const Sidebar = ({width = 280, children}) => {
         navigate("/user/mypage");
     }
     const goToLogout = () => {
-        setX(width);
-        setOpen(false);
-        navigate("/Logout");
-
+        // setX(width);
+        // setOpen(false);
+        // navigate("/Logout");
+        axios.post('/logout')
+            .then(response => {
+                console.log('로그아웃 성공');
+                alert('로그아웃 성공');
+                navigate("/login");
+            })
+            .catch(error => {
+                console.error('로그아웃 오류:', error);
+            });
     }
     const goToWish = () => {
         setX(width);

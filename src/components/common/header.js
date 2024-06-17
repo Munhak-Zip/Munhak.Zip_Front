@@ -4,6 +4,7 @@ import menu from '../../resources/img/menu.png';
 import close from '../../resources/img/close.png';
 import '../../resources/css/Common/header.css';
 import Sidebar from "./Sidebar";
+import axios from 'axios';
 
 const Header=(props) =>{
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -31,9 +32,17 @@ const Header=(props) =>{
         closeSidebar();
     }
     const goToLogout = () => {
-        navigate("/Logout");
-        closeSidebar();
+        axios.post('/logout')
+            .then(response => {
+                console.log('로그아웃 성공');
+                closeSidebar();
+            })
+            .catch(error => {
+                console.error('로그아웃 오류:', error);
+                closeSidebar();
+            });
     }
+
     const goToSignup = () => {
         navigate("/signup");
         closeSidebar();
