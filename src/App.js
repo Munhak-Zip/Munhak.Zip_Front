@@ -6,6 +6,7 @@ import Minyoung from "./page/user/Minyoung";
 import Login from "./views/user/Login";
 import Logout from "./views/user/Logout";
 import Moviedetail from "./views/movie/MovieDetail";
+import MovieDetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
 import MainPage from "./views/Main"
@@ -41,9 +42,8 @@ function App() {
                         element={<Logout/>}
                     />
                     <Route
-                        path={"/movie/detail"}
-                        element={<Moviedetail />}
-                    />
+                        path="/movie/:mvId"
+                        element={<MovieDetail />} />
                     <Route
                         path={"/user/mypage"}
                         element={<Mypage/>}
@@ -61,13 +61,13 @@ function App() {
                         element={<Wish/>}
                     />
                     <Route
-                        path={"/reserve"}
+                        path={"/movie/showReserveForm/:mvId"}
                         element={<Reserve/>}
                     />
-                    <Route
-                        path={"/movie/detail"}
-                        element={<Moviedetail />}
-                    />
+                    {/*<Route*/}
+                    {/*    path={"/movie/detail"}*/}
+                    {/*    element={<Moviedetail />}*/}
+                    {/*/>*/}
                     <Route
                         path={"/wish/reviewDetail"}
                         element={<Reviewdetail />}
