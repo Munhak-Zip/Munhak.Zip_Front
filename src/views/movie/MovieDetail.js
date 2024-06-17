@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const MovieDetail = () => {
+    const navigate = useNavigate();
     const { mvId } = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
     const [starRating, setStarRating] = useState(0); // 초기 별점을 0으로 설정
@@ -20,7 +21,6 @@ const MovieDetail = () => {
                 const movieData = response.data;
                 movieData.openDate = movieData.openDate.split(' ')[0]; // openDate에서 시간 부분을 제거
                 setMovieDetails(movieData);
-                // setStarRating(response.data.mvStar); // 이 부분을 주석 처리하여 초기 별점 설정하지 않음
             })
             .catch(error => {
                 console.error('Request failed:', error);
@@ -44,6 +44,10 @@ const MovieDetail = () => {
     if (!movieDetails) {
         return <div>Loading...</div>;
     }
+
+    const showReserve = () => {
+        navigate(`/movie/showReserveForm/${mvId}`, { state: movieDetails });
+    };
 
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
         const renderStars = (count, totalStars) => {
@@ -142,7 +146,7 @@ const MovieDetail = () => {
                     </div>
                 </div>
             </div>
-            <button className="reservation_btn">예매하기</button>
+            <button className="reservation_btn" onClick={showReserve}>예매하기</button>
 
             <div className="starGroup">
                 {[...Array(5)].map((_, index) => (

@@ -1,23 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../../resources/css/Movie/Reserve.css';
+import axios from 'axios';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 const Reserve = () => {
-    const [mode, setMode] = useState('WELCOME');
+    const navigate = useNavigate();
+    const { mvId } = useParams();
+    const location = useLocation();
+    const [movieDetails, setMovieDetails] = useState(location.state || null); // location.state에서 movieDetails를 가져옴
     const [selectedSeat, setSelectedSeat] = useState(null);
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
-    function Header(props) {
-        return (
-            <header>
-                <h1>
-                    <a href="/" onClick={(event) => {
-                        event.preventDefault();
-                        props.onChangeMode();
-                    }}>{props.title}</a>
-                </h1>
-            </header>
-        );
-    }
+
+    useEffect(() => {
+        if (!movieDetails) {
+            axios.get(`/movie/showReserveForm/${mvId}`)
+                .then(response => {
+                    const movieData = response.data;
+                    movieData.openDate = movieData.openDate.split(' ')[0]; // openDate에서 시간 부분을 제거
+                    setMovieDetails(movieData);
+                })
+                .catch(error => {
+                    console.error('Request failed:', error);
+                });
+        }
+    }, [mvId, movieDetails]);
 
     function Seat() {
         const rows = 10;
@@ -47,7 +54,7 @@ const Reserve = () => {
         }
 
         return (
-            <div className={"seatTable"}>
+            <div className="seatTable">
                 좌석 선택
                 <table>
                     <tbody>
@@ -67,9 +74,13 @@ const Reserve = () => {
         }
     }
 
+    if (!movieDetails) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div className={"div1"}>
-            영화명 : 파묘 <br/>
+        <div className="div1">
+            영화명 : {movieDetails.mvTitle} <br/>
             날짜 : <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/><br/>
             시간 : <input type="time" value={time} onChange={(e) => setTime(e.target.value)}/><br/>
             <p/><Seat/><br/>

@@ -55,7 +55,7 @@ function App() {
                         element={<Wish/>}
                     />
                     <Route
-                        path={"/reserve"}
+                        path={"/movie/showReserveForm/:mvId"}
                         element={<Reserve/>}
                     />
                     {/*<Route*/}
