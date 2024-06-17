@@ -21,7 +21,7 @@ body{
     border-radius: 15px;
 }
 div.title{
-    margin-top: 20px;
+    margin-top: 18px;
     margin-bottom: 10px;
     text-align: center;
     font-weight: bold;
@@ -45,7 +45,6 @@ div.title{
     margin-top: 15px;
     margin-left: 5px;
     color: #FFFFFF;
-    font-weight: bold;
     font-size: 18px;
 }
 .category{
@@ -64,7 +63,6 @@ div.title{
 
 .category .category_box .category_text {
     color: #FFFFFF;
-    font-weight: bold;
     font-size: 13px;
     text-align: center; /* 텍스트를 가운데 정렬 */
 }

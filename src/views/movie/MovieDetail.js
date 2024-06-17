@@ -1,25 +1,36 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../resources/css/Movie/MovieDetail.css';
-import bookmark from '../../resources/img/Movie/bookmark.png'
-import movieImg from '../../resources/img/Movie/movie.png';
+import bookmark from '../../resources/img/Movie/bookmark.png';
 import star from '../../resources/img/Movie/star.png';
 import starN from '../../resources/img/Movie/star_unclick.png';
 import back from '../../resources/img/Movie/back.png';
-import {Link, useNavigate} from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const MovieDetail=() =>{
+const MovieDetail = () => {
     const { mvId } = useParams();
-    const [starRating, setStarRating] = useState(0); // 별점 상태를 저장하는 state 변수
-
-    // 별점 클릭 시 이벤트 핸들러
-    const handleStarClick = (index) => {
-        setStarRating(index + 1); // 클릭한 별의 인덱스에 1을 더한 값으로 별점 상태를 업데이트
-    };
-
-    //버튼 클릭
+    const [movieDetails, setMovieDetails] = useState(null);
+    const [starRating, setStarRating] = useState(0); // 초기 별점을 0으로 설정
     const [isGoodClicked, setIsGoodClicked] = useState(true);
     const [isBadClicked, setIsBadClicked] = useState(false);
+
+    useEffect(() => {
+        axios.get(`/movie/${mvId}`)
+            .then(response => {
+                const movieData = response.data;
+                movieData.openDate = movieData.openDate.split(' ')[0]; // openDate에서 시간 부분을 제거
+                setMovieDetails(movieData);
+                // setStarRating(response.data.mvStar); // 이 부분을 주석 처리하여 초기 별점 설정하지 않음
+            })
+            .catch(error => {
+                console.error('Request failed:', error);
+            });
+    }, [mvId]);
+
+    const handleStarClick = (index) => {
+        setStarRating(index + 1);
+    };
+
     const handleGoodClick = () => {
         setIsGoodClicked(true);
         setIsBadClicked(false);
@@ -30,6 +41,9 @@ const MovieDetail=() =>{
         setIsBadClicked(true);
     };
 
+    if (!movieDetails) {
+        return <div>Loading...</div>;
+    }
 
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
         const renderStars = (count, totalStars) => {
@@ -70,7 +84,6 @@ const MovieDetail=() =>{
         );
     };
 
-    // Critic 컴포넌트 사용
     const critics = [
         {
             name: '이은선',
@@ -84,61 +97,52 @@ const MovieDetail=() =>{
             reviewTitle: '리뷰 소제목',
             reviewContent: '리뷰리뷰리뷰리뷰리뷰~',
         },
-        // 다른 평론가 데이터들...
     ];
+
     return (
         <div className="mobile">
             <div className="back_img">
-                <img src={back} width={30} height={30}/>
-                {/*좋아하는 영화*/}
+                <img src={back} width={30} height={30} alt="Back"/>
             </div>
             <div className="bookmarkMovie">
-                <img src={bookmark} width={45} height={45}/>
+                <img src={bookmark} width={45} height={45} alt="Bookmark"/>
             </div>
             <div className="imgMovie">
-                <img src={movieImg} width={250} height={350}/>
+                <img src={movieDetails.mvImg} width={250} height={350} alt={movieDetails.mvTitle}/>
             </div>
             <div className="title">
-                파묘
+                {movieDetails.mvTitle}
             </div>
-            {/* 별점 */}
             <div className="starGroup">
-                <img className="star_image" src={star} width={30} height={30}/>
-                <img className="star_image" src={star} width={30} height={30}/>
-                <img className="star_image" src={star} width={30} height={30}/>
-                <img className="star_image" src={star} width={30} height={30}/>
-                <img className="star_image" src={star} width={30} height={30}/>
+                {[...Array(5)].map((_, index) => (
+                    <img
+                        key={index}
+                        className="star_image"
+                        src={index < movieDetails.mvStar ? star : starN} // movieDetails.mvStar를 사용하여 별점을 렌더링
+                        width={30}
+                        height={30}
+                    />
+                ))}
                 <div className="star_text">
-                    (5)
+                    ({movieDetails.mvStar})
                 </div>
             </div>
             <div className="movie_text">
-                영화설명~~~~~~~~~~~~~~~~~~~~~<br/>
-                영화설명~~~~~~~~~~
+                {movieDetails.mvDetail}
             </div>
-            {/* 카테고리 */}
             <div className="category">
                 <div className="category_box">
                     <div className="category_text">
-                        #스릴러
+                        #{movieDetails.genre2}
                     </div>
                 </div>
                 <div className="category_box">
                     <div className="category_text">
-                        #로맨스
+                        #{movieDetails.openDate}
                     </div>
                 </div>
             </div>
-            {/* 버튼 */}
             <button className="reservation_btn">예매하기</button>
-
-            {/*<div className="starGroup">*/}
-            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
-            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
-            {/*    <img className="star_image" src={star} width={40} height={40}/>*/}
-            {/*    <img className="star_image" src={starN} width={40} height={40}/>*/}
-            {/*    <img className="star_image" src={starN} width={40} height={40}/>*/}
-            {/*</div>*/}
 
             <div className="starGroup">
                 {[...Array(5)].map((_, index) => (
@@ -152,10 +156,8 @@ const MovieDetail=() =>{
                     />
                 ))}
             </div>
-
             <input className="review_text" type="text" placeholder="리뷰를 작성해주세요"/>
             <button className="review_btn">작성</button>
-
             <div className="expect">
                 평점요약
             </div>
@@ -164,11 +166,9 @@ const MovieDetail=() =>{
             <div className="expect_box">
                 <b className="expect_text">ㅇㅇ님은 이거 이거 좋아해서 영화명은 3점일것입니다~</b>
             </div>
-
             <div className="critic_title">
                 평론가 리뷰
             </div>
-
             {critics.map((critic, index) => (
                 <Critic
                     key={index}
@@ -178,7 +178,6 @@ const MovieDetail=() =>{
                     reviewContent={critic.reviewContent}
                 />
             ))}
-
         </div>
     );
 }
