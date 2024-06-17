@@ -1,12 +1,11 @@
-// @ts-ignore
-import React, {useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {useState} from 'react';
-import '../resources/css/Main/Main.css'
-import Next from '../resources/next.png'
-import Star from '../resources/img/Movie/star.png'
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import '../resources/css/Main/Main.css';
+import Next from '../resources/next.png';
+import Star from '../resources/img/Movie/star.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Oval } from 'react-loader-spinner';
 
 function Header(props) {
     console.log('props', props, props.title);
@@ -24,6 +23,29 @@ function Header(props) {
                 </a>
             </h1>
         </header>
+    );
+}
+
+function Loading() {
+    const loadingStyle = {
+        margin: '20px 0', // 위아래 여백 추가
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100px', // 로딩 스피너 컨테이너의 높이
+        backgroundColor: 'rgba(0, 0, 0, 0.1)', // 배경색 설정
+        borderRadius: '8px', // 모서리 둥글기
+    };
+
+    return (
+        <div className="loading-spinner" style={loadingStyle}>
+            <Oval
+                color="#D1003F"
+                height={70}
+                width={70}
+                strokeWidth={3}
+            />
+        </div>
     );
 }
 
@@ -69,6 +91,7 @@ function App() {
     const [moviesIndex, setMoviesIndex] = useState(0);
     const [id, setId] = useState(null);
     const [recommendationResults, setRecommendationResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
     const topics = [
         { id: 1, title: '보관함', body: 'wish is...' },
@@ -94,6 +117,9 @@ function App() {
             })
             .catch((error) => {
                 console.error('Request failed:', error);
+            })
+            .finally(() => {
+                setIsLoading(false); // 데이터 요청 완료 시 로딩 상태 해제
             });
     };
 
@@ -104,7 +130,7 @@ function App() {
     const renderMovies = (movies) => {
         return movies.map((movie) => (
             <span key={movie.mvId} className="movie">
-                <img src={movie.mvImg} alt={movie.mvTitle} className="Poster-img" onClick={() => showMovies(movie.mvId)}/>
+                <img src={movie.mvImg} alt={movie.mvTitle} className="Poster-img" onClick={() => showMovies(movie.mvId)} />
                 <p>
                     {movie.mvTitle}
                     <img src={Star} className="star" />
@@ -118,16 +144,14 @@ function App() {
         axios
             .get(`/movie/${mvId}`) // 경로 변수를 사용하여 mvId 전달
             .then((response) => {
-                // 서버 응답에 따른 처리
                 const movieDetails = response.data;
-                // 예를 들어, 응답 데이터를 통해 상세 페이지로 이동
                 navigate(`/movie/${mvId}`, { state: movieDetails });
             })
             .catch((error) => {
                 console.error('Request failed:', error);
             });
     };
-    
+
     function Movies(props) {
         let content;
         if (props.type === 'new') {
@@ -137,11 +161,14 @@ function App() {
         } else {
             content = '보관함';
         }
+
         return (
             <div className={props.type}>
                 {content}
                 <img src={Next} className="next-button" alt="next" />
-                <div className="new-movies">{renderMovies(props.movies)}</div>
+                <div className="new-movies">
+                    {props.isLoading && props.type === 'recommend' ? <Loading /> : renderMovies(props.movies)}
+                </div>
             </div>
         );
     }
@@ -172,10 +199,9 @@ function App() {
                 ))}
             </ul>
             <p />
-            <Movies type="new" movies={[]} showMovies={() => { /* showMovies 함수 구현 */ }} />
-            <Movies type="recommend" movies={recommendationResults}
-            />
-            <Movies type="wish" movies={[]} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            <Movies type="new" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            <Movies type="recommend" movies={recommendationResults} isLoading={isLoading} />
+            <Movies type="wish" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
         </div>
     );
 }
