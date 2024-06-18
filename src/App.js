@@ -4,6 +4,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from './views/Main';
 import Minyoung from "./page/user/Minyoung";
 import Login from "./views/user/Login";
+import Logout from "./views/user/Logout";
+import Moviedetail from "./views/movie/MovieDetail";
 import MovieDetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import Myreviewdetail from "./views/wish/MyReviewDetail";
@@ -20,7 +22,7 @@ import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
-
+import axiosInstance from './axiosConfig';
 function App() {
     return (
         <BrowserRouter>
@@ -34,6 +36,10 @@ function App() {
                     <Route
                         path={"/login"}
                         element={<Login/>}
+                    />
+                    <Route
+                        path={"/logout"}
+                        element={<Logout/>}
                     />
                     <Route
                         path="/movie/:mvId"

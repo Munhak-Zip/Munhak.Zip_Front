@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from '../../axiosConfig';
+import qs from 'qs'; // URL-encoded 형식으로 변환하기 위해 qs 라이브러리 사용
 import axios from 'axios';
 import '../../resources/css/User/Login.css';
+
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const checkAuthentication = async () => {
+            try {
+                const response = await axiosInstance.get("/auth-check", { withCredentials: true });
+                if (response.data) {
+                    alert("이미 로그인된 사용자입니다.");
+                    navigate("/"); // Redirect to home or any other page
+                }
+            } catch (error) {
+                console.error("Authentication check failed:", error);
+            }
+        };
+        checkAuthentication();
+    }, [navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -17,7 +35,8 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/loginProc", loginDTO, {
+            const response = await axiosInstance.post("/loginProc", qs.stringify(loginDTO), {
+
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
