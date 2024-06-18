@@ -8,7 +8,7 @@ body {
     background-color: black;
 }
 
-.login-container {
+.findId-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,17 +16,17 @@ body {
     height: 100vh;
 }
 
-.login-container img {
+.findId-container img {
     margin-bottom: 20px;
 }
 
-.login form {
+.findId form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.login form input {
+.findId form input {
     width: 300px;
     padding: 10px;
     margin: 10px 0;
@@ -35,7 +35,7 @@ body {
     font-size: 16px;
 }
 
-.login form button {
+.findId form button {
     width: 320px;
     padding: 10px;
     margin: 10px 0;
@@ -47,23 +47,6 @@ body {
     cursor: pointer;
 }
 
-.login form button:hover {
+.findId form button:hover {
     background-color: #ff3366;
-}
-
-.login .links {
-    color: white;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.login .links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-
-.login .links a:hover {
-    text-decoration: underline;
 }
