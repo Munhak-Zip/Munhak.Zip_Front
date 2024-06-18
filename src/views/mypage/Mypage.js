@@ -1,11 +1,16 @@
+import React, {useState,useEffect} from 'react';
 import React, {useEffect, useState} from 'react';
 import Mypage_css from "../../resources/css/Mypage/Mypage.css"
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const Mypage = () => {
     const location = useLocation();
 
+    const navigate = useNavigate();
     const [changeToggle, setChangeToggle] = useState(false);
     const [reserveDetails, setReserveDetails] = useState([]);
 
@@ -21,6 +26,31 @@ const Mypage = () => {
     }, []);
 
     // 현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
+    // useEffect(() => {
+    //     // 세션 체크 함수
+    //     const checkSession = async () => {
+    //         try {
+    //             // 예시로 /session-expired 엔드포인트에 GET 요청을 보냅니다.
+    //             const response = await axiosInstance.get('/session-expired');
+    //             console.log('세션 만료 체크 결과:', response);
+    //         } catch (error) {
+    //             // 오류 발생 시
+    //             if (error.response && error.response.status === 401) {
+    //                 // 세션이 만료된 경우
+    //                 alert('세션이 만료되었습니다. 다시 로그인 해주세요.');
+    //                 // 여기서 다시 로그인 페이지로 리디렉션하거나 다른 처리를 할 수 있습니다.
+    //                 // 예시로 리다이렉션 처리:
+    //                 window.location.href = '/login';
+    //             } else {
+    //                 console.error('세션 체크 오류:', error);
+    //             }
+    //         }
+    //     };
+    //
+    //     // 페이지 진입 시 세션 체크 수행
+    //     checkSession();
+    // }, []); // 빈 배열을 넣어 한 번만 실행되도록 설정
+    //현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
     const onClickChangebtn = () => {
         setChangeToggle(!changeToggle);
     };
