@@ -188,6 +188,34 @@ function App() {
         content = <Article title={title} body={body} />;
     }
 
+    const [userId, setUserId] = useState();
+
+    useEffect(() => {
+        const fetchUsername = async () => {
+            try {
+                const response = await axios.get('/user-id', { withCredentials: true });
+                setUserId(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching user ID:', error);
+            }
+        };
+
+        fetchUsername();
+    }, []);
+
+    useEffect(() => {
+        const fetchUserIdByUsername = async () => {
+            try {
+                const response = await axios.post('/getUserIdByUsername', userId, { withCredentials: true });
+                setUserId(response.data); // Assuming response contains user ID
+                console.log('User ID:', response.data);
+            } catch (error) {
+                console.error('Error fetching user ID:', error);
+            }
+        };
+        fetchUserIdByUsername();
+    }, [userId]);
     return (
         <div className="div1">
             <input type="text" placeholder="검색하기" value={search} onChange={onChange} />
