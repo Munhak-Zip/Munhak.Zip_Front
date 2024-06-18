@@ -73,7 +73,7 @@ const Reserve = () => {
             const reservationData = {
                 mvId: mvId,
                 seat: selectedSeat,
-                date,
+                dateR: date,
                 time
             };
 
