@@ -48,6 +48,8 @@ function App() {
                         path={"/user/mypage"}
                         element={<Mypage/>}
                     />
+                />
+
                     <Route
                         path={"/"}
                         element={<MainPage/>}
@@ -64,10 +66,6 @@ function App() {
                         path={"/movie/showReserveForm/:mvId"}
                         element={<Reserve/>}
                     />
-                    {/*<Route*/}
-                    {/*    path={"/movie/detail"}*/}
-                    {/*    element={<Moviedetail />}*/}
-                    {/*/>*/}
                     <Route
                         path={"/wish/reviewDetail"}
                         element={<Reviewdetail />}
