@@ -1,8 +1,6 @@
 import React, {useState,useEffect} from 'react';
-import React, {useEffect, useState} from 'react';
 import Mypage_css from "../../resources/css/Mypage/Mypage.css"
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import axiosInstance from '../../axiosConfig';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';

@@ -127,6 +127,7 @@ function App() {
         fetchRecommendations();
     }, []);
 
+
     const renderMovies = (movies) => {
         return movies.map((movie) => (
             <span key={movie.mvId} className="movie">
@@ -188,13 +189,14 @@ function App() {
         content = <Article title={title} body={body} />;
     }
 
-    const [userId, setUserId] = useState();
+    const [username, setUserName] = useState('');
+    const [userid, setUserId] = useState();
 
     useEffect(() => {
         const fetchUsername = async () => {
             try {
                 const response = await axios.get('/user-id', { withCredentials: true });
-                setUserId(response.data);
+                setUserName(response.data);
                 console.log(response.data);
             } catch (error) {
                 console.error('Error fetching user ID:', error);
@@ -203,19 +205,34 @@ function App() {
 
         fetchUsername();
     }, []);
-
     useEffect(() => {
-        const fetchUserIdByUsername = async () => {
+        const fetchUserId = async () => {
             try {
-                const response = await axios.post('/getUserIdByUsername', userId, { withCredentials: true });
-                setUserId(response.data); // Assuming response contains user ID
-                console.log('User ID:', response.data);
+                const response = await axios.get('/getId');
+                const userIdFromApi = response.data;
+                setUserId(userIdFromApi);
+                console.log('User ID:', userIdFromApi);
+                localStorage.setItem('userId', userIdFromApi); // 로컬 스토리지에 사용자 아이디 저장
             } catch (error) {
                 console.error('Error fetching user ID:', error);
             }
         };
-        fetchUserIdByUsername();
-    }, [userId]);
+
+        fetchUserId();
+    }, []);
+    const fetchUserIdByUsername = async () => {
+        try {
+            if (username) {
+                const response = await axios.post('/getUserIdByUsername', { username: username }, { withCredentials: true });
+                setUserId(response.data);
+                console.log('User ID:', response.data);
+            }
+        } catch (error) {
+            console.error('Error fetching user ID:', error);
+        }
+    };
+
+
     return (
         <div className="div1">
             <input type="text" placeholder="검색하기" value={search} onChange={onChange} />
@@ -233,5 +250,4 @@ function App() {
         </div>
     );
 }
-
 export default App;
