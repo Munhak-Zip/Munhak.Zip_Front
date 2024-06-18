@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import Mypage_css from "../../resources/css/Mypage/Mypage.css"
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import axiosInstance from '../../axiosConfig';
 import { useLocation } from 'react-router-dom';
 
@@ -49,6 +48,24 @@ const Mypage = () => {
     //     checkSession();
     // }, []); // 빈 배열을 넣어 한 번만 실행되도록 설정
     //현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
+
+
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        const fetchUserId = async () => {
+            try {
+                const response = await axios.get('/user-id', { withCredentials: true });
+                setUserId(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching user ID:', error);
+            }
+        };
+
+        fetchUserId();
+    }, []);
+
     const onClickChangebtn = () => {
         setChangeToggle(!changeToggle);
     };
