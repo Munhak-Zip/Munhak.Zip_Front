@@ -3,6 +3,7 @@ import Mypage_css from "../../resources/css/Mypage/Mypage.css"
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const Mypage = () => {
     const location = useLocation();
@@ -14,7 +15,12 @@ const Mypage = () => {
     useEffect(() => {
         axios.get(`/user/mypage`)
             .then(response => {
-                const reserveData = response.data;
+                const reserveData = response.data.map(reservation => {
+                    return {
+                        ...reservation,
+                        dateR: new Date(reservation.dateR).toLocaleDateString() // Format dateR
+                    };
+                });
                 setReserveDetails(reserveData);
             })
             .catch(error => {
@@ -74,9 +80,9 @@ const Mypage = () => {
 
     return (
         <div className={"wrap"}>
-            <div className={"header"}>
-                헤더
-            </div>
+            {/*<div className={"header"}>*/}
+            {/*    헤더*/}
+            {/*</div>*/}
             <div className={"content_wrap"}>
                 <div className={"views_name"}>
                     마이페이지
@@ -142,7 +148,7 @@ const Mypage = () => {
                         {reserveDetails.map((reservation, index) => (
                             <tr key={index}>
                                 <td>{reservation.mvTitle}</td>
-                                <td>{reservation.date} {reservation.time}</td>
+                                <td>{reservation.dateR} {reservation.time}</td>
                                 <td>{reservation.seat}</td>
                             </tr>
                         ))}
