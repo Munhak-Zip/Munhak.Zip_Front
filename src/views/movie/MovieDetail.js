@@ -50,23 +50,20 @@ const MovieDetail = () => {
     }
 
     const handleReviewSubmit = () => {
-        axios.post('/reviews/add', {
-            rvStar: starRating,  // 선택한 별점
-            mvTitle: movieDetails.mvTitle,  // 영화 제목
-            content: reviewText,  // 리뷰 내용
-            is_Critic: "N",  // 평론가 여부는 무조건 false
-            mvId: mvId  // 영화 ID
-            // 필요한 경우 추가 필드를 포함할 수 있습니다.
+        axios.post(`/movie/${mvId}/regReview`, {
+            rvStar: starRating,
+            mvTitle: movieDetails.mvTitle,
+            content: reviewText,
+            is_Critic: "N",
+            mvId: mvId
         })
             .then(response => {
-                alert("리뷰가 성공적으로 제출되었습니다.");
+                alert(`리뷰가 성공적으로 제출되었습니다.${mvId} ${reviewText}`);
                 console.log('리뷰가 성공적으로 제출되었습니다.');
-                // 성공적으로 제출되었을 때 UI를 업데이트하거나 확인 메시지를 표시할 수 있습니다.
             })
             .catch(error => {
                 alert("리뷰 제출 중 오류 발생했습니다.");
                 console.error('리뷰 제출 중 오류 발생:', error);
-                // 오류 발생 시 오류 메시지를 표시하거나 graceful하게 오류를 처리할 수 있습니다.
             });
     };
 
