@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import '../resources/css/Main/Main.css';
 import Next from '../resources/next.png';
 import Star from '../resources/img/Movie/star.png';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { Oval } from 'react-loader-spinner';
 
 function Header(props) {
@@ -91,6 +90,7 @@ function App() {
     const [moviesIndex, setMoviesIndex] = useState(0);
     const [id, setId] = useState(null);
     const [recommendationResults, setRecommendationResults] = useState([]);
+    const [recentMovies, setRecentMovies] = useState([]); // 최신 영화를 위한 상태 추가
     const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
     const topics = [
@@ -123,8 +123,22 @@ function App() {
             });
     };
 
+    const fetchRecentMovies = () => {
+        axios
+            .get('http://localhost:3000/main') // 최신 영화를 가져오는 API 호출
+            .then((response) => {
+                const recentMovies = response.data;
+                console.log("Fetched recent movies:", recentMovies); // 콘솔에 최신 영화 출력
+                setRecentMovies(recentMovies);
+            })
+            .catch((error) => {
+                console.error('Request failed:', error);
+            });
+    };
+
     useEffect(() => {
         fetchRecommendations();
+        fetchRecentMovies(); // 컴포넌트가 마운트될 때 최신 영화를 가져옴
     }, []);
 
     const renderMovies = (movies) => {
@@ -165,7 +179,6 @@ function App() {
         return (
             <div className={props.type}>
                 {content}
-                <img src={Next} className="next-button" alt="next" />
                 <div className="new-movies">
                     {props.isLoading && props.type === 'recommend' ? <Loading /> : renderMovies(props.movies)}
                 </div>
@@ -199,7 +212,7 @@ function App() {
                 ))}
             </ul>
             <p />
-            <Movies type="new" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            <Movies type="new" movies={recentMovies} isLoading={isLoading} />
             <Movies type="recommend" movies={recommendationResults} isLoading={isLoading} />
             <Movies type="wish" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
         </div>
