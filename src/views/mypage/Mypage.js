@@ -1,9 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import Mypage_css from "../../resources/css/Mypage/Mypage.css"
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import axiosInstance from '../../axiosConfig';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const Mypage = () => {
     const location = useLocation();
@@ -15,7 +15,12 @@ const Mypage = () => {
     useEffect(() => {
         axios.get(`/user/mypage`)
             .then(response => {
-                const reserveData = response.data;
+                const reserveData = response.data.map(reservation => {
+                    return {
+                        ...reservation,
+                        dateR: new Date(reservation.dateR).toLocaleDateString() // Format dateR
+                    };
+                });
                 setReserveDetails(reserveData);
             })
             .catch(error => {
@@ -49,6 +54,24 @@ const Mypage = () => {
     //     checkSession();
     // }, []); // 빈 배열을 넣어 한 번만 실행되도록 설정
     //현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
+
+
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        const fetchUserId = async () => {
+            try {
+                const response = await axios.get('/user-id', { withCredentials: true });
+                setUserId(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching user ID:', error);
+            }
+        };
+
+        fetchUserId();
+    }, []);
+
     const onClickChangebtn = () => {
         setChangeToggle(!changeToggle);
     };
@@ -57,9 +80,9 @@ const Mypage = () => {
 
     return (
         <div className={"wrap"}>
-            <div className={"header"}>
-                헤더
-            </div>
+            {/*<div className={"header"}>*/}
+            {/*    헤더*/}
+            {/*</div>*/}
             <div className={"content_wrap"}>
                 <div className={"views_name"}>
                     마이페이지
@@ -125,7 +148,7 @@ const Mypage = () => {
                         {reserveDetails.map((reservation, index) => (
                             <tr key={index}>
                                 <td>{reservation.mvTitle}</td>
-                                <td>{reservation.date} {reservation.time}</td>
+                                <td>{reservation.dateR} {reservation.time}</td>
                                 <td>{reservation.seat}</td>
                             </tr>
                         ))}

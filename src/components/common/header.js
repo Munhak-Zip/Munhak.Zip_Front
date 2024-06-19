@@ -37,7 +37,7 @@ const Header = (props) => {
     }
 
     const goToMain = () => {
-        navigate("/main");
+        navigate("/");
         closeSidebar();
     }
 
