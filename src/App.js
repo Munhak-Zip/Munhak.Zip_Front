@@ -48,7 +48,6 @@ function App() {
                         path={"/user/mypage"}
                         element={<Mypage/>}
                     />
-                />
 
                     <Route
                         path={"/"}

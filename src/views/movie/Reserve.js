@@ -70,10 +70,12 @@ const Reserve = () => {
         if (!selectedSeat || !date || !time) {
             alert("좌석, 날짜 및 시간을 선택해주세요.");
         } else {
+            const userId = localStorage.getItem('userId');
             const reservationData = {
                 mvId: mvId,
+                id: userId,
                 seat: selectedSeat,
-                date,
+                dateR: date,
                 time
             };
 
