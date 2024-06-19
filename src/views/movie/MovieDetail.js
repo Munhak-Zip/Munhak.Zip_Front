@@ -14,6 +14,7 @@ const MovieDetail = () => {
     const [starRating, setStarRating] = useState(0); // 초기 별점을 0으로 설정
     const [isGoodClicked, setIsGoodClicked] = useState(true);
     const [isBadClicked, setIsBadClicked] = useState(false);
+    const [reviewText, setReviewText] = useState('');
 
     useEffect(() => {
         axios.get(`/movie/${mvId}`)
@@ -26,6 +27,9 @@ const MovieDetail = () => {
                 console.error('Request failed:', error);
             });
     }, [mvId]);
+    const handleReviewChange = (e) => {
+        setReviewText(e.target.value);
+    };
 
     const handleStarClick = (index) => {
         setStarRating(index + 1);
@@ -44,6 +48,24 @@ const MovieDetail = () => {
     if (!movieDetails) {
         return <div>Loading...</div>;
     }
+
+    const handleReviewSubmit = () => {
+        axios.post(`/movie/${mvId}/regReview`, {
+            rvStar: starRating,
+            mvTitle: movieDetails.mvTitle,
+            content: reviewText,
+            is_Critic: "N",
+            mvId: mvId
+        })
+            .then(response => {
+                alert(`리뷰가 성공적으로 제출되었습니다.${mvId} ${reviewText}`);
+                console.log('리뷰가 성공적으로 제출되었습니다.');
+            })
+            .catch(error => {
+                alert("리뷰 제출 중 오류 발생했습니다.");
+                console.error('리뷰 제출 중 오류 발생:', error);
+            });
+    };
 
     const showReserve = () => {
         navigate(`/movie/showReserveForm/${mvId}`, { state: movieDetails });
@@ -160,10 +182,10 @@ const MovieDetail = () => {
                     />
                 ))}
             </div>
-            <input className="review_text" type="text" placeholder="리뷰를 작성해주세요"/>
-            <button className="review_btn">작성</button>
+            <input className="review_text" type="text" placeholder="리뷰를 작성해주세요" value={reviewText} onChange={handleReviewChange}/>
+            <button className="review_btn" onClick={handleReviewSubmit}>작성</button>
             <div className="expect">
-                평점요약
+            평점요약
             </div>
             <button className={isGoodClicked ? "btn_good" : "btn_good_not"} onClick={handleGoodClick}>높은 평점</button>
             <button className={isBadClicked ? "btn_bad" : "btn_bad_not"} onClick={handleBadClick}>낮은 평점</button>
