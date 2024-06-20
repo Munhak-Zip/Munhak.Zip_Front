@@ -93,6 +93,7 @@ function App() {
     const [id, setId] = useState(null);
     const [recommendationResults, setRecommendationResults] = useState([]);
     const [recentMovies, setRecentMovies] = useState([]); // 최신 영화를 위한 상태 추가
+    const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
     const topics = [
@@ -251,10 +252,33 @@ function App() {
         }
     };
 
+    const handleSearch = () => {
+        if (search.trim() === '') {
+            alert('검색어를 입력해주세요.');
+            return;
+        }
+
+        setIsLoading(true); // 검색 시작 시 로딩 상태를 true로 설정
+
+        axios
+            .get(`/search/${search}`)
+            .then((response) => {
+                const searchResults = response.data;
+                setSearchResults(searchResults);
+                navigate(`/search/${search}`, { state: searchResults });
+            })
+            .catch((error) => {
+                console.error('검색 요청 실패:', error);
+            })
+            .finally(() => {
+                setIsLoading(false); // 검색 완료 시 로딩 상태를 false로 설정
+            });
+    };
+
     return (
         <div className="div1">
-            <input type="text" placeholder="검색하기" value={search} onChange={onChange} />
-            <input type="button" value="검색" onClick={() => { /* 검색 기능 구현 */ }} />
+            <input type="text" placeholder="검색하기" value={search} onChange={onChange}/>
+            <input type="button" value="검색" onClick={handleSearch} />
             추천 영화 :
             <ul>
                 {recommendationResults.map((result, index) => (
@@ -270,4 +294,5 @@ function App() {
         </div>
     );
 }
+
 export default App;

@@ -25,6 +25,7 @@ import axios from 'axios';
 import axiosInstance from './axiosConfig';
 import ReviewBoxDetail from "./views/wish/ReviewBoxDetail";
 import MyReviewBoxUpdate from "./views/wish/MyReviewBoxUpdate";
+import SearchMovie from "./views/movie/SearchMovie";
 function App() {
     return (
         <BrowserRouter>
@@ -102,6 +103,10 @@ function App() {
                     <Route
                         path={"/wish/MyReviewBoxUpdate"}
                         element={<MyReviewBoxUpdate/>}
+                    />
+                    <Route
+                        path={"/search/:mvTitle"}
+                        element={<SearchMovie />}
                     />
                 </Routes>
 
