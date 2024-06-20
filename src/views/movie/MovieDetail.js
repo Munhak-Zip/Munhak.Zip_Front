@@ -44,6 +44,18 @@ const MovieDetail = () => {
             });
     }, [mvId]);
 
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        axios.get(`/movie/${mvId}/wish?userId=${userId}`)
+            .then(response => {
+                const ch = response.data;
+                setIsMovieBookmarked(ch === 1); // 1일 경우 북마크된 상태로 설정
+            })
+            .catch(error => {
+                console.error('Failed to fetch bookmark status:', error);
+            });
+    }, [mvId]);
+
     const handleReviewChange = (e) => {
         setReviewText(e.target.value);
     };
@@ -82,6 +94,20 @@ const MovieDetail = () => {
 
     const showReserve = () => {
         navigate(`/movie/showReserveForm/${mvId}`, { state: movieDetails });
+    };
+
+    const toggleBookmark = () => {
+        const userId = localStorage.getItem('userId');
+        const endpoint = isMovieBookmarked ? `movie/${mvId}/wish/delete` : `movie/${mvId}/wish/add`;
+
+        axios.get(`/${endpoint}?userId=${userId}`)
+            .then(response => {
+                const ch = response.data;
+                setIsMovieBookmarked(ch === 1);
+            })
+            .catch(error => {
+                console.error('Toggle bookmark failed:', error);
+            });
     };
 
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
@@ -133,7 +159,13 @@ const MovieDetail = () => {
                 <img src={back} width={30} height={30} alt="Back" onClick={() => navigate(-1)} />
             </div>
             <div className="bookmarkMovie">
-                <img src={isMovieBookmarked ? bookmarkC : bookmark} width={45} height={45} alt="Bookmark" onClick={() => setIsMovieBookmarked(!isMovieBookmarked)} />
+                <img
+                    src={isMovieBookmarked ? bookmarkC : bookmark}
+                    width={45}
+                    height={45}
+                    alt="Bookmark"
+                    onClick={toggleBookmark}
+                />
             </div>
             <div className="imgMovie">
                 <img src={movieDetails.mvImg} width={250} height={350} alt={movieDetails.mvTitle} />
