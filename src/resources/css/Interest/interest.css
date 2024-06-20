@@ -1,0 +1,78 @@
+/* General form styling */
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.content_wrap {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust width */
+    height: 500px; /* Adjust height */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.like p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Button group styling */
+.button_group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the buttons */
+}
+
+.genre_button {
+    padding: 8px 16px; /* Adjust padding */
+    margin: 5px;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.9rem; /* Adjust font size */
+    color: #007bff;
+}
+
+.genre_button:hover {
+    background-color: #e0e0e0;
+    border-color: #0056b3;
+    color: #0056b3;
+}
+
+.genre_button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Change button styling */
+.change_btn {
+    margin-top: 20px;
+    padding: 10px 20px; /* Adjust padding */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-size: 1rem;
+}
+
+.change_btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
