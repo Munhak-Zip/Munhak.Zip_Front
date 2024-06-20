@@ -1,201 +1,6 @@
-import React, { useState, useEffect } from "react";
-import '../../resources/css/Wish/Wish.css';
-import Arrow from '../../resources/next.png';
-import Poster from '../../resources/img/Main/sample1.png';
-import Star from '../../resources/img/Movie/star.png';
-import axios from 'axios';
-
-const Wish = () => {
-    const [currentMoviePage, setCurrentMoviePage] = useState(0);
-    const [currentReviewPage, setCurrentReviewPage] = useState(0);
-    const [currentMyReviewPage, setCurrentMyReviewPage] = useState(0);
-
-    const [movies, setMovies] = useState([]);
-    const [reviews, setReviews] = useState([]);
-    const [myReviews, setMyReviews] = useState([]);
-
-    const moviesPerPage = 2;
-    const reviewsPerPage = 2;
-    const myReviewsPerPage = 2;
-
-    const fetchMovies = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/wish/movies', {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token') // JWT 토큰 포함
-                }
-            });
-            setMovies(response.data);
-        } catch (error) {
-            console.error('Error fetching movies:', error);
-        }
-    };
-
-    const fetchReviews = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/wish/reviews', {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-            });
-            setReviews(response.data);
-        } catch (error) {
-            console.error('Error fetching reviews:', error);
-        }
-    };
-
-    const fetchMyReviews = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/wish/myreviews', {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-            });
-            setMyReviews(response.data);
-        } catch (error) {
-            console.error('Error fetching my reviews:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchMovies();
-        fetchReviews();
-        fetchMyReviews();
-    }, []);
-
-    const showNextMovies = () => {
-        if ((currentMoviePage + 1) * moviesPerPage < movies.length) {
-            setCurrentMoviePage(currentMoviePage + 1);
-        }
-    }
-
-    const showPreMovies = () => {
-        if (currentMoviePage > 0) {
-            setCurrentMoviePage(currentMoviePage - 1);
-        }
-    }
-
-    const showNextReviews = () => {
-        if ((currentReviewPage + 1) * reviewsPerPage < reviews.length) {
-            setCurrentReviewPage(currentReviewPage + 1);
-        }
-    }
-
-    const showPreReviews = () => {
-        if (currentReviewPage > 0) {
-            setCurrentReviewPage(currentReviewPage - 1);
-        }
-    }
-
-    const showNextMyReviews = () => {
-        if ((currentMyReviewPage + 1) * myReviewsPerPage < myReviews.length) {
-            setCurrentMyReviewPage(currentMyReviewPage + 1);
-        }
-    }
-
-    const showPreMyReviews = () => {
-        if (currentMyReviewPage > 0) {
-            setCurrentMyReviewPage(currentMyReviewPage - 1);
-        }
-    }
-
-    const renderWishMovies = () => {
-        const start = currentMoviePage * moviesPerPage;
-        const end = start + moviesPerPage;
-        const currentMovies = movies.slice(start, end);
-
-        return currentMovies.map(movie => (
-            <span key={movie.id} className="movie">
-                <img src={movie.poster} alt={movie.title} className="Poster-img"/>
-                <p>{movie.title}<img src={Star} className={"star"}/>({movie.start})</p>
-            </span>
-        ));
-    }
-
-    const renderWishReviews = () => {
-        const start = currentReviewPage * reviewsPerPage;
-        const end = start + reviewsPerPage;
-        const currentReviews = reviews.slice(start, end);
-
-        return currentReviews.map(review => (
-            <span key={review.id} className="review">
-                <img src={review.poster} alt={review.title} className="Poster-img"/>
-                <p>{review.mvTitle}</p>
-                <div>
-                    {[...Array(Number.isInteger(review.star) && review.star > 0 ? review.star : 0)].map((_, i) => (
-                        <img key={i} src={Star} className="star"/>
-                    ))}
-                </div>
-                {review.title}
-            </span>
-        ));
-    }
-
-    const renderMyReviews = () => {
-        const start = currentMyReviewPage * myReviewsPerPage;
-        const end = start + myReviewsPerPage;
-        const currentMyReviews = myReviews.slice(start, end);
-
-        return currentMyReviews.map(review => (
-            <span key={review.id} className="review">
-                <img src={review.poster} alt={review.title} className="Poster-img"/>
-                <p>{review.mvTitle}</p>
-                <div>
-                    {[...Array(Number.isInteger(review.star) && review.star > 0 ? review.star : 0)].map((_, i) => (
-                        <img key={i} src={Star} className="star"/>
-                    ))}
-                </div>
-                {review.title}
-            </span>
-        ));
-    }
-
-    function Category(props) {
-        let content;
-        let renderContent;
-        let showPre;
-        let showNext;
-        if (props.type === "wishMovies") {
-            content = "좋아하는 영화";
-            renderContent = renderWishMovies;
-            showPre = showPreMovies;
-            showNext = showNextMovies;
-        } else if (props.type === "wishReviews") {
-            content = "좋아하는 리뷰";
-            renderContent = renderWishReviews;
-            showPre = showPreReviews;
-            showNext = showNextReviews;
-        } else {
-            content = "내가 작성한 리뷰";
-            renderContent = renderMyReviews;
-            showPre = showPreMyReviews;
-            showNext = showNextMyReviews;
-        }
-        return (
-            <div className={props.type}>
-                {content}
-                <p/>
-                <img src={Arrow} className={"before-button"} alt="before" onClick={showPre}/>
-                <img src={Arrow} className={"next-button"} alt="next" onClick={showNext}/>
-                <div className={"new-movies"}>
-                    {renderContent()}
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className={"div1"}>
-            <Category type={"wishMovies"}/>
-            <Category type={"wishReviews"}/>
-            <Category type={"myReviews"}/>
-        </div>
-    );
-}
-
-export default Wish;
-
-
+//
+//
+//
 // import React, {useState} from "react";
 // import '../../resources/css/Wish/Wish.css'
 // import Arrow from '../../resources/next.png'
@@ -387,3 +192,177 @@ export default Wish;
 //     )
 // }
 // export default Wish;
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import '../../resources/css/Wish/Wish.css';
+import Arrow from '../../resources/next.png';
+import Poster from '../../resources/img/Main/sample1.png';
+import Star from '../../resources/img/Movie/star.png';
+
+const Wish = () => {
+    const [currentMoviePage, setCurrentMoviePage] = useState(0);
+    const [currentReviewPage, setCurrentReviewPage] = useState(0);
+    const [currentMyReviewPage, setCurrentMyReviewPage] = useState(0);
+    const [movies, setMovies] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [myReviews, setMyReviews] = useState([]);
+
+    const moviesPerPage = 2;
+    const reviewsPerPage = 2;
+    const myReviewsPerPage = 2;
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/wish/movies', { withCredentials: true })
+            .then(response => {
+                console.log('Wish movies:', response.data);
+                setMovies(response.data);
+            })
+            .catch(error => console.error('Error fetching wish movies:', error));
+
+        axios.get('http://localhost:8080/wish/reviews', { withCredentials: true })
+            .then(response => {
+                console.log('Wish reviews:', response.data);
+                setReviews(response.data);
+            })
+            .catch(error => console.error('Error fetching wish reviews:', error));
+
+        axios.get('http://localhost:8080/wish/myreviews', { withCredentials: true })
+            .then(response => {
+                console.log('My reviews:', response.data);
+                setMyReviews(response.data);
+            })
+            .catch(error => console.error('Error fetching my reviews:', error));
+    }, []);
+
+    const showNextMovies = () => {
+        if ((currentMoviePage + 1) * moviesPerPage < movies.length) {
+            setCurrentMoviePage(currentMoviePage + 1);
+        }
+    };
+
+    const showPreMovies = () => {
+        if (currentMoviePage > 0) {
+            setCurrentMoviePage(currentMoviePage - 1);
+        }
+    };
+
+    const showNextReviews = () => {
+        if ((currentReviewPage + 1) * reviewsPerPage < reviews.length) {
+            setCurrentReviewPage(currentReviewPage + 1);
+        }
+    };
+
+    const showPreReviews = () => {
+        if (currentReviewPage > 0) {
+            setCurrentReviewPage(currentReviewPage - 1);
+        }
+    };
+
+    const showNextMyReviews = () => {
+        if ((currentMyReviewPage + 1) * myReviewsPerPage < myReviews.length) {
+            setCurrentMyReviewPage(currentMyReviewPage + 1);
+        }
+    };
+
+    const showPreMyReviews = () => {
+        if (currentMyReviewPage > 0) {
+            setCurrentMyReviewPage(currentMyReviewPage - 1);
+        }
+    };
+
+    const renderWishMovies = () => {
+        const start = currentMoviePage * moviesPerPage;
+        const end = start + moviesPerPage;
+        const currentMovies = movies.slice(start, end);
+
+        return currentMovies.map(movie => (
+            <span key={movie.id} className="movie">
+                <img src={movie.poster || Poster} alt={movie.title} className="Poster-img"/>
+                <p>{movie.title}<img src={Star} className={"star"}/>({movie.star})</p>
+            </span>
+        ));
+    };
+
+    const renderWishReviews = () => {
+        const start = currentReviewPage * reviewsPerPage;
+        const end = start + reviewsPerPage;
+        const currentReviews = reviews.slice(start, end);
+
+        return currentReviews.map(review => (
+            <span key={review.id} className="review">
+                <img src={review.poster || Poster} alt={review.title} className="Poster-img"/>
+                <p>{review.mvTitle}</p>
+                <div>
+                    {[...Array(Number.isInteger(review.star) && review.star > 0 ? review.star : 0)].map((_, i) => (
+                        <img key={i} src={Star} className="star"/>
+                    ))}
+                </div>
+                {review.title}
+            </span>
+        ));
+    };
+
+    const renderMyReviews = () => {
+        const start = currentMyReviewPage * myReviewsPerPage;
+        const end = start + myReviewsPerPage;
+        const currentMyReviews = myReviews.slice(start, end);
+
+        return currentMyReviews.map(review => (
+            <span key={review.id} className="review">
+                <img src={review.poster || Poster} alt={review.title} className="Poster-img"/>
+                <p>{review.mvTitle}</p>
+                <div>
+                    {[...Array(Number.isInteger(review.star) && review.star > 0 ? review.star : 0)].map((_, i) => (
+                        <img key={i} src={Star} className="star"/>
+                    ))}
+                </div>
+                {review.title}
+            </span>
+        ));
+    };
+
+    function Category(props) {
+        let content;
+        let renderContent;
+        let showPre;
+        let showNext;
+        if (props.type === "wishMovies") {
+            content = "좋아하는 영화";
+            renderContent = renderWishMovies;
+            showPre = showPreMovies;
+            showNext = showNextMovies;
+        } else if (props.type === "wishReviews") {
+            content = "좋아하는 리뷰";
+            renderContent = renderWishReviews;
+            showPre = showPreReviews;
+            showNext = showNextReviews;
+        } else {
+            content = "내가 작성한 리뷰";
+            renderContent = renderMyReviews;
+            showPre = showPreMyReviews;
+            showNext = showNextMyReviews;
+        }
+        return (
+            <div className={props.type}>
+                {content}
+                <p/>
+                <img src={Arrow} className={"before-button"} alt="before" onClick={showPre}/>
+                <img src={Arrow} className={"next-button"} alt="next" onClick={showNext}/>
+                <div className={"new-movies"}>
+                    {renderContent()}
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className={"div1"}>
+            <Category type={"wishMovies"}/>
+            <Category type={"wishReviews"}/>
+            <Category type={"myReviews"}/>
+        </div>
+    );
+}
+
+export default Wish;
+
