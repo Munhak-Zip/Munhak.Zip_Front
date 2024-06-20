@@ -23,6 +23,7 @@ import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
 import axiosInstance from './axiosConfig';
+import SearchMovie from "./views/movie/SearchMovie";
 function App() {
     return (
         <BrowserRouter>
@@ -92,6 +93,10 @@ function App() {
                     <Route
                         path={"/firstCheckInterests"}
                         element={<FirstCheckInterests />}
+                    />
+                    <Route
+                        path={"/search/:mvTitle"}
+                        element={<SearchMovie />}
                     />
                 </Routes>
             </div>
