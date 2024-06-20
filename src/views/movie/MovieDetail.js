@@ -102,8 +102,9 @@ const MovieDetail = () => {
 
         axios.get(`/${endpoint}?userId=${userId}`)
             .then(response => {
-                const ch = response.data;
-                setIsMovieBookmarked(ch === 1);
+                // Assuming the response indicates the current state of the bookmark
+                const newBookmarkState = !isMovieBookmarked;
+                setIsMovieBookmarked(newBookmarkState);
             })
             .catch(error => {
                 console.error('Toggle bookmark failed:', error);
@@ -248,3 +249,10 @@ const MovieDetail = () => {
 }
 
 export default MovieDetail;
+
+
+
+
+
+
+
