@@ -8,7 +8,7 @@ import Logout from "./views/user/Logout";
 import Moviedetail from "./views/movie/MovieDetail";
 import MovieDetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
-import Myreviewdetail from "./views/wish/MyReviewDetail";
+import MyReviewList from "./views/wish/MyReviewList";
 import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
 import FindId from "./views/user/FindID";
@@ -23,6 +23,9 @@ import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
 import axiosInstance from './axiosConfig';
+import ReviewBoxDetail from "./views/wish/ReviewBoxDetail";
+import MyReviewBoxUpdate from "./views/wish/MyReviewBoxUpdate";
+import SearchMovie from "./views/movie/SearchMovie";
 function App() {
     return (
         <BrowserRouter>
@@ -70,8 +73,8 @@ function App() {
                         element={<Reviewdetail />}
                     />
                     <Route
-                        path={"/wish/myReviewDetail"}
-                        element={<Myreviewdetail />}
+                        path={"/wish/myReviewList"}
+                        element={<MyReviewList />}
                     />
                     <Route
                         path={"/findId"}
@@ -93,7 +96,20 @@ function App() {
                         path={"/firstCheckInterests"}
                         element={<FirstCheckInterests />}
                     />
+                    <Route
+                        path={"/wish/ReviewBoxDetail"}
+                        element={<ReviewBoxDetail/>}
+                        />
+                    <Route
+                        path={"/wish/MyReviewBoxUpdate"}
+                        element={<MyReviewBoxUpdate/>}
+                    />
+                    <Route
+                        path={"/search/:mvTitle"}
+                        element={<SearchMovie />}
+                    />
                 </Routes>
+
             </div>
         </BrowserRouter>
     );

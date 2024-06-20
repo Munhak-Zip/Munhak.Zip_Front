@@ -164,6 +164,11 @@ const MovieDetail = () => {
                         #{movieDetails.openDate}
                     </div>
                 </div>
+                <div className="category_box">
+                    <div className="category_text">
+                        #{movieDetails.mvDirector}
+                    </div>
+                </div>
             </div>
             <button className="reservation_btn" onClick={showReserve}>예매하기</button>
 
