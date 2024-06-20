@@ -52,3 +52,10 @@ body {
 .movie {
     margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
 }
+
+.search-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -120px;
+}
