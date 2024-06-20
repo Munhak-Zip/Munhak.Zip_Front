@@ -5,6 +5,8 @@ import Next from '../resources/next.png';
 import Star from '../resources/img/Movie/star.png';
 import axios from 'axios';
 import { Oval } from 'react-loader-spinner';
+import Modal from '../components/Modal/Modal';
+import Interest from '../components/interest/Interest';
 
 function Header(props) {
     console.log('props', props, props.title);
@@ -205,6 +207,7 @@ function App() {
 
     const [username, setUserName] = useState('');
     const [userid, setUserId] = useState();
+    const [showModal, setShowModal] = useState(false); // Interest 모달 창 상태 추가
 
     useEffect(() => {
         const fetchUsername = async () => {
@@ -234,6 +237,9 @@ function App() {
 
         fetchUserId();
     }, []);
+    const handleInterestModal = () => {
+        setShowModal(true);
+    };
     const fetchUserIdByUsername = async () => {
         try {
             if (username) {
@@ -280,10 +286,11 @@ function App() {
                 ))}
             </ul>
             <p/>
-            <Movies type="new" movies={recentMovies} isLoading={isLoading}/>
-            <Movies type="recommend" movies={recommendationResults} isLoading={isLoading}/>
-            <Movies type="wish" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */
-            }}/>
+            <Movies type="new" movies={recentMovies} isLoading={isLoading} />
+            <Movies type="recommend" movies={recommendationResults} isLoading={isLoading} />
+            <Movies type="wish" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            {/* Interest 모달 창 */}
+
         </div>
     );
 }
