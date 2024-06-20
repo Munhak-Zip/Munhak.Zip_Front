@@ -49,7 +49,7 @@ const MovieDetail = () => {
         axios.get(`/movie/${mvId}/wish?userId=${userId}`)
             .then(response => {
                 const ch = response.data;
-                setIsMovieBookmarked(ch === 1); // 1일 경우 북마크된 상태로 설정
+                setIsMovieBookmarked(ch === 1); // Set bookmark state based on ch value
             })
             .catch(error => {
                 console.error('Failed to fetch bookmark status:', error);
@@ -249,10 +249,6 @@ const MovieDetail = () => {
 }
 
 export default MovieDetail;
-
-
-
-
 
 
 
