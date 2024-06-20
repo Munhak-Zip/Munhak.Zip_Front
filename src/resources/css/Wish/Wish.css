@@ -1,81 +1,189 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter&display=swap');*/
+
+/*    !* 홈 페이지의 제목 스타일 변경 *!*/
+/*    body {*/
+
+/*        background-color: black;*/
+/*        font-family: "Commissioner", sans-serif;*/
+/*        font-optical-sizing: auto;*/
+/*        font-style: normal;*/
+/*        font-variation-settings:*/
+/*                "slnt" 0,*/
+/*                "FLAR" 0,*/
+/*                "VOLM" 0;*/
+/*    }*/
+
+/*    .div1 {*/
+/*        margin: 0;*/
+/*        !*max-width: 360px;*!*/
+/*        max-height: 800vh;*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*        background-color: black;*/
+/*        color: white;*/
+/*        text-align: center;*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        align-items: center;*/
+/*        justify-content: center;*/
+/*    }*/
+/*    .movie .star {*/
+/*        margin-left: 40px;*/
+/*        width: 20px;*/
+/*        height: 20px;*/
+/*    }*/
+
+/*    .div1 Category a{*/
+/*        font-size: 40px;*/
+/*        text-decoration: none;*/
+/*        color: #D1003F;*/
+/*    }*/
+
+/*    .wishMovies, .wishReviews, .myReviews{*/
+/*        text-align: left;*/
+/*        font-size: 18px;*/
+/*        font-weight: bold;*/
+/*    }*/
+
+/*    .review{*/
+/*        text-align: center;*/
+/*        border: 1px solid white; !* 테두리 색상 *!*/
+/*        padding: 10px; !* 안쪽 여백 *!*/
+/*        margin: 10px; !* 바깥쪽 여백 *!*/
+/*        border-radius: 10px; !* 테두리 둥글게 *!*/
+/*    }*/
+
+/*    .review img{*/
+/*        display: inline-block;*/
+/*        width: 30px;*/
+/*        margin-left: 0;*/
+/*    }*/
+/*    .before-button{*/
+/*        width: 20px;*/
+/*        transform: scaleX(-1);*/
+/*    }*/
+/*    .next-button{*/
+/*        width: 20px; !* 이미지의 너비를 조절 *!*/
+/*        height: auto; !* 높이를 자동으로 설정하여 비율을 유지 *!*/
+/*        margin-left: 250px;*/
+/*    }*/
+/*    .movie .Poster-img {*/
+/*        width: 131px;*/
+/*        height: 20vh;*/
+/*    }*/
+
+/*    .movies {*/
+/*        display: flex; !* 영화들을 수평으로 정렬 *!*/
+/*        flex-wrap: wrap;*/
+/*    }*/
+/*    .movie {*/
+/*        margin-right: 20px; !* 각 영화 사이의 간격을 조절 *!*/
+/*    }*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter&display=swap');
 
-    /* 홈 페이지의 제목 스타일 변경 */
-    body {
+body {
+    background-color: black;
+    font-family: "Commissioner", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "slnt" 0, "FLAR" 0, "VOLM" 0;
+}
 
-        background-color: black;
-        font-family: "Commissioner", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings:
-                "slnt" 0,
-                "FLAR" 0,
-                "VOLM" 0;
-    }
+.div1 {
+    margin: 0;
+    max-height: 800vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    .div1 {
-        margin: 0;
-        /*max-width: 360px;*/
-        max-height: 800vh;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: black;
-        color: white;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .movie .star {
-        margin-left: 40px;
-        width: 20px;
-        height: 20px;
-    }
+.movie .star {
+    margin-left: 40px;
+    width: 20px;
+    height: 20px;
+}
 
-    .div1 Category a{
-        font-size: 40px;
-        text-decoration: none;
-        color: #D1003F;
-    }
+.div1 Category a {
+    font-size: 40px;
+    text-decoration: none;
+    color: #D1003F;
+}
 
-    .wishMovies, .wishReviews, .myReviews{
-        text-align: left;
-        font-size: 18px;
-        font-weight: bold;
-    }
+.wishMovies, .wishReviews, .myReviews {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
 
-    .review{
-        text-align: center;
-        border: 1px solid white; /* 테두리 색상 */
-        padding: 10px; /* 안쪽 여백 */
-        margin: 10px; /* 바깥쪽 여백 */
-        border-radius: 10px; /* 테두리 둥글게 */
-    }
+.review {
+    text-align: center;
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 150px;
+}
 
-    .review img{
-        display: inline-block;
-        width: 30px;
-        margin-left: 0;
-    }
-    .before-button{
-        width: 20px;
-        transform: scaleX(-1);
-    }
-    .next-button{
-        width: 20px; /* 이미지의 너비를 조절 */
-        height: auto; /* 높이를 자동으로 설정하여 비율을 유지 */
-        margin-left: 250px;
-    }
-    .movie .Poster-img {
-        width: 131px;
-        height: 20vh;
-    }
+.review img {
+    display: inline-block;
+    width: 30px;
+    margin-left: 0;
+}
 
-    .movies {
-        display: flex; /* 영화들을 수평으로 정렬 */
-        flex-wrap: wrap;
-    }
-    .movie {
-        margin-right: 20px; /* 각 영화 사이의 간격을 조절 */
-    }
+.before-button {
+    width: 20px;
+    transform: scaleX(-1);
+}
+
+.next-button {
+    width: 20px;
+    height: auto;
+}
+
+.movie .Poster-img {
+    width: 131px;
+    height: 20vh;
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    margin-right: 20px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.new-movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.category-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 괄호 사이 간격 조정 */
+    margin: 0px;
+}
