@@ -109,5 +109,6 @@
     }
     .movie {
         margin-right: 20px; /* 각 영화 사이의 간격을 조절합니다. */
+        cursor: pointer;
     }
 }

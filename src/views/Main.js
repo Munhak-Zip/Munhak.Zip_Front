@@ -94,6 +94,7 @@ function App() {
     const [recommendationResults, setRecommendationResults] = useState([]);
     const [recentMovies, setRecentMovies] = useState([]); // 최신 영화를 위한 상태 추가
     const [searchResults, setSearchResults] = useState([]);
+    const [wishMovies, setWishMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
     const topics = [
@@ -107,7 +108,8 @@ function App() {
     };
 
     const fetchRecommendations = () => {
-        const userId = 3; // 예시로 사용자 ID를 지정
+        //const userId = 3; // 예시로 사용자 ID를 지정
+        const userId = localStorage.getItem('userId');
         axios
             .get('/main/recommend', {
                 params: {
@@ -139,9 +141,28 @@ function App() {
             });
     };
 
+    const fetchWishMovies = () => {
+        const userId = localStorage.getItem('userId');
+        axios
+            .get('http://localhost:3000/movie/wish', {
+                params: {
+                    userId: userId,
+                },
+            }) // 보관함 영화를 가져오는 API 호출
+            .then((response) => {
+                const wishMovies = response.data;
+                console.log("Fetched wish movies:", wishMovies); // 콘솔에 보관함 영화 출력
+                setWishMovies(wishMovies);
+            })
+            .catch((error) => {
+                console.error('Request failed:', error);
+            });
+    };
+
     useEffect(() => {
         fetchRecommendations();
         fetchRecentMovies(); // 컴포넌트가 마운트될 때 최신 영화를 가져옴
+        fetchWishMovies(); // 컴포넌트가 마운트될 때 보관함 영화를 가져옴
     }, []);
 
 
@@ -184,7 +205,14 @@ function App() {
             <div className={props.type}>
                 {content}
                 <div className="new-movies">
-                    {props.isLoading && props.type === 'recommend' ? <Loading /> : renderMovies(props.movies)}
+                    {/* Display either the loading indicator or the movie list */}
+                    {props.isLoading && props.type === 'recommend' ? <Loading/> : (
+                        props.type === 'wish' && props.movies.length === 0 ? (
+                            <p>보관함에 영화가 없습니다</p>
+                        ) : (
+                            renderMovies(props.movies)
+                        )
+                    )}
                 </div>
             </div>
         );
@@ -192,7 +220,7 @@ function App() {
 
     let content = null;
     if (mode === 'WELCOME') {
-        content = <Article title="Welcome" body="Hello, MOVIE.ZIP" />;
+        content = <Article title="Welcome" body="Hello, MOVIE.ZIP"/>;
     } else if (mode === 'READ') {
         let title,
             body = null;
@@ -279,16 +307,10 @@ function App() {
         <div className="div1">
             <input type="text" placeholder="검색하기" value={search} onChange={onChange}/>
             <input type="button" value="검색" onClick={handleSearch} />
-            추천 영화 :
-            <ul>
-                {recommendationResults.map((result, index) => (
-                    <li key={index}> {result.mvTitle} - {result.mvStar}</li>
-                ))}
-            </ul>
             <p/>
             <Movies type="new" movies={recentMovies} isLoading={isLoading} />
             <Movies type="recommend" movies={recommendationResults} isLoading={isLoading} />
-            <Movies type="wish" movies={[]} isLoading={isLoading} showMovies={() => { /* showMovies 함수 구현 */ }} />
+            <Movies type="wish" movies={wishMovies} isLoading={isLoading} />
             {/* Interest 모달 창 */}
 
         </div>
