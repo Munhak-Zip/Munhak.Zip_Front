@@ -15,8 +15,10 @@ const MovieDetail = () => {
     const [isGoodClicked, setIsGoodClicked] = useState(true);
     const [isBadClicked, setIsBadClicked] = useState(false);
     const [reviewText, setReviewText] = useState('');
+    const [critics, setCritics] = useState([]); // State to store critic reviews
 
     useEffect(() => {
+        // Fetch movie details
         axios.get(`/movie/${mvId}`)
             .then(response => {
                 const movieData = response.data;
@@ -26,7 +28,17 @@ const MovieDetail = () => {
             .catch(error => {
                 console.error('Request failed:', error);
             });
+
+        // Fetch critic reviews
+        axios.get(`/movie/${mvId}/critics`)
+            .then(response => {
+                setCritics(response.data); // Store critic reviews in state
+            })
+            .catch(error => {
+                console.error('Failed to fetch critic reviews:', error);
+            });
     }, [mvId]);
+
     const handleReviewChange = (e) => {
         setReviewText(e.target.value);
     };
@@ -44,10 +56,6 @@ const MovieDetail = () => {
         setIsGoodClicked(false);
         setIsBadClicked(true);
     };
-
-    if (!movieDetails) {
-        return <div>Loading...</div>;
-    }
 
     const handleReviewSubmit = () => {
         axios.post(`/movie/${mvId}/regReview`, {
@@ -110,20 +118,9 @@ const MovieDetail = () => {
         );
     };
 
-    const critics = [
-        {
-            name: '이은선',
-            stars: 3,
-            reviewTitle: '리뷰 소제목',
-            reviewContent: '리뷰리뷰리뷰리뷰리뷰~',
-        },
-        {
-            name: '이은선',
-            stars: 3,
-            reviewTitle: '리뷰 소제목',
-            reviewContent: '리뷰리뷰리뷰리뷰리뷰~',
-        },
-    ];
+    if (!movieDetails) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="mobile">
@@ -185,7 +182,7 @@ const MovieDetail = () => {
             <input className="review_text" type="text" placeholder="리뷰를 작성해주세요" value={reviewText} onChange={handleReviewChange}/>
             <button className="review_btn" onClick={handleReviewSubmit}>작성</button>
             <div className="expect">
-            평점요약
+                평점요약
             </div>
             <button className={isGoodClicked ? "btn_good" : "btn_good_not"} onClick={handleGoodClick}>높은 평점</button>
             <button className={isBadClicked ? "btn_bad" : "btn_bad_not"} onClick={handleBadClick}>낮은 평점</button>
@@ -198,10 +195,10 @@ const MovieDetail = () => {
             {critics.map((critic, index) => (
                 <Critic
                     key={index}
-                    name={critic.name}
-                    stars={critic.stars}
-                    reviewTitle={critic.reviewTitle}
-                    reviewContent={critic.reviewContent}
+                    name={critic.writer}
+                    stars={critic.rvStar}
+                    reviewTitle={critic.rvTitle}
+                    reviewContent={critic.content}
                 />
             ))}
         </div>
