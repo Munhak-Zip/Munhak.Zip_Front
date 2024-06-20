@@ -137,7 +137,7 @@ body {
 
 .review img {
     display: inline-block;
-    width: 30px;
+    width: 130px;
     margin-left: 0;
 }
 
@@ -149,6 +149,7 @@ body {
 .next-button {
     width: 20px;
     height: auto;
+    margin-left: 10px;
 }
 
 .movie .Poster-img {

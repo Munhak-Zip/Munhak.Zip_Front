@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../resources/css/Wish/Wish.css';
 import Arrow from '../../resources/next.png';
-import Poster from '../../resources/img/Main/sample1.png';
 import Star from '../../resources/img/Movie/star.png';
 
 const Wish = () => {
@@ -88,9 +87,13 @@ const Wish = () => {
         const currentMovies = movies.slice(start, end);
 
         return currentMovies.map(movie => (
-            <span key={movie.id} className="movie">
-                <img src={movie.poster || Poster} alt={movie.title} className="Poster-img"/>
-                <p>{movie.mvTitle}<img src={Star} className={"star"}/>({movie.star})</p>
+            <span key={movie.mvid} className="movie">
+                <img src={movie.mvImg} alt={movie.title} className="Poster-img"/>
+                <p>
+                    {movie.mvTitle}
+                    <img src={Star} className={"star"}/>
+                    ({movie.mvStar})</p>
+
             </span>
         ));
     };
@@ -102,9 +105,9 @@ const Wish = () => {
 
         return currentReviews.map(review => (
             <span key={review.id} className="review">
-                <img src={review.poster || Poster} alt={review.title} className="Poster-img"/>
+                <img src={review.mvImg} alt={review.mvTitle} className="Poster-img"/>
                 <p>{review.mvTitle}</p>
-                <p>{review.reviewerName}</p>
+                <p>{review.writer}</p>
             </span>
         ));
     };
@@ -116,7 +119,7 @@ const Wish = () => {
 
         return currentMyReviews.map(review => (
             <span key={review.id} className="review">
-                <img src={review.poster || Poster} alt={review.title} className="Poster-img"/>
+                <img src={review.mvImg} alt={review.title} className="Poster-img"/>
                 <p>{review.mvTitle}</p>
             </span>
         ));
