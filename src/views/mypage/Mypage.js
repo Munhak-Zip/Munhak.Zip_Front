@@ -79,17 +79,17 @@ const Mypage = () => {
                     <div className={"article"}>
                         <div className={"index"} id={"nickname"}>닉네임</div>
                         <input className={"input_info"} type={"text"} />
-                        <button className={"change_btn"}>변경</button>
+                        <button className={"change_btn"}><p>변경</p></button>
                     </div>
                     <div className={"article"}>
                         <div className={"index"} id={"id"}>아이디</div>
                         <input className={"input_info"} type={"text"} />
-                        <button className={"change_btn"}>변경</button>
+                        <button className={"change_btn"}><p>변경</p></button>
                     </div>
                     <div className={"article"}>
                         <div className={"index"} id={"current_pw"}>현재비밀번호</div>
                         <input className={"input_info"} type={"text"} />
-                        <button className={"change_btn"} onClick={onClickChangebtn}>변경</button>
+                        <button className={"change_btn"} onClick={onClickChangebtn}><p>변경</p></button>
                     </div>
                     {changeToggle ? (
                         <div>
@@ -100,7 +100,7 @@ const Mypage = () => {
                             <div className={"article"}>
                                 <div className={"index"} id={"check_new_pw"}>새 비밀번호 확인</div>
                                 <input className={"input_info"} type={"text"} />
-                                <button className={"change_btn"}>변경</button>
+                                <button className={"change_btn"}><p>변경</p></button>
                             </div>
                         </div>
                     ) : null}
