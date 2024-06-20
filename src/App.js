@@ -23,6 +23,8 @@ import Wish from "./views/wish/Wish"
 import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
 import axiosInstance from './axiosConfig';
+import ReviewBoxDetail from "./views/wish/ReviewBoxDetail";
+import MyReviewBoxUpdate from "./views/wish/MyReviewBoxUpdate";
 function App() {
     return (
         <BrowserRouter>
@@ -93,7 +95,16 @@ function App() {
                         path={"/firstCheckInterests"}
                         element={<FirstCheckInterests />}
                     />
+                    <Route
+                        path={"/wish/ReviewBoxDetail"}
+                        element={<ReviewBoxDetail/>}
+                        />
+                    <Route
+                        path={"/wish/MyReviewBoxUpdate"}
+                        element={<MyReviewBoxUpdate/>}
+                    />
                 </Routes>
+
             </div>
         </BrowserRouter>
     );

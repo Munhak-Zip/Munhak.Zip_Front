@@ -14,7 +14,8 @@
 .content_wrap{
     width: 95%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    position: relative;
+    top:15%;
 }
 
 .views_name{
@@ -25,6 +26,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
+    height: 20px;
 }
 .article:first-child{
     margin-top: 40px;
@@ -48,9 +50,15 @@
     border-radius: 40px;
     background-color: black;
     color: white;
-    width: 90px;
+    font-size: 10px;
+    width: 100px;
+    position: relative;
+    bottom: 20px;
 }
-
+.change_btn > p{
+    position: relative;
+    bottom: 16px;
+}
 .change_btn:hover{
     border: 3px solid red;
 }
@@ -80,7 +88,11 @@
 #radio_btn{
     margin: 10px;
     font-size: 12px;
+    display: flex;
+    flex-direction: column;
 }
+
+
 label{
     position: relative;
     bottom: 2.5px;
@@ -88,8 +100,12 @@ label{
 #ganre-change{
     margin-top: 30px;
     width: 300px;
-    height: 30px;
+    height: 40px;
     font-size: 18px;
+
+}
+.genre_change{
+    width: 35px;
 }
 
 /*예매 내역*/
@@ -102,7 +118,7 @@ label{
     width: 100%;
     margin-top: 50px;
     margin-bottom: 30px;
-    padding-bottom: 30px;
+
 }
 th{
     position: relative;
