@@ -37,10 +37,10 @@ const Interest = () => {
     };
 
     return (
-        <div className="wrap">
-            <div className="content_wrap">
+        <div className="interest_wrap">
+            <div className="interest_content_wrap">
                 <div className="like">
-                    <p>Select your favorite genre:</p>
+                    <p>당신의 영화 취향을 하나 고르세요.</p>
                     <form onSubmit={handleSubmit}>
                         <div className="button_group">
                             {genres.map((genre, index) => (
