@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../resources/css/Movie/MovieDetail.css';
 import bookmark from '../../resources/img/Movie/bookmark.png';
+import bookmarkC from '../../resources/img/Movie/bookmarkC.png'; // New bookmarked icon for movie
+import bookmarkCritic from '../../resources/img/Movie/bookmarkC.png'; // New bookmarked icon for critic review
 import star from '../../resources/img/Movie/star.png';
 import starN from '../../resources/img/Movie/star_unclick.png';
 import back from '../../resources/img/Movie/back.png';
@@ -11,19 +13,22 @@ const MovieDetail = () => {
     const navigate = useNavigate();
     const { mvId } = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
-    const [starRating, setStarRating] = useState(0); // 초기 별점을 0으로 설정
+    const [starRating, setStarRating] = useState(0); // Initial star rating set to 0
     const [isGoodClicked, setIsGoodClicked] = useState(true);
     const [isBadClicked, setIsBadClicked] = useState(false);
     const [reviewText, setReviewText] = useState('');
     const [critics, setCritics] = useState([]); // State to store critic reviews
+    const [isMovieBookmarked, setIsMovieBookmarked] = useState(false); // State to manage movie bookmark
+    const [isCriticBookmarked, setIsCriticBookmarked] = useState(false); // State to manage critic bookmark
 
     useEffect(() => {
         // Fetch movie details
         axios.get(`/movie/${mvId}`)
             .then(response => {
                 const movieData = response.data;
-                movieData.openDate = movieData.openDate.split(' ')[0]; // openDate에서 시간 부분을 제거
+                movieData.openDate = movieData.openDate.split(' ')[0]; // Remove time from openDate
                 setMovieDetails(movieData);
+                setIsMovieBookmarked(movieData.isBookmarked); // Example logic for movie bookmark
             })
             .catch(error => {
                 console.error('Request failed:', error);
@@ -36,6 +41,18 @@ const MovieDetail = () => {
             })
             .catch(error => {
                 console.error('Failed to fetch critic reviews:', error);
+            });
+    }, [mvId]);
+
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        axios.get(`/movie/${mvId}/wish?userId=${userId}`)
+            .then(response => {
+                const ch = response.data;
+                setIsMovieBookmarked(ch === 1); // Set bookmark state based on ch value
+            })
+            .catch(error => {
+                console.error('Failed to fetch bookmark status:', error);
             });
     }, [mvId]);
 
@@ -66,17 +83,32 @@ const MovieDetail = () => {
             mvId: mvId
         })
             .then(response => {
-                alert(`리뷰가 성공적으로 제출되었습니다.${mvId} ${reviewText}`);
-                console.log('리뷰가 성공적으로 제출되었습니다.');
+                alert('Review submitted successfully.');
+                console.log('Review submitted successfully.');
             })
             .catch(error => {
-                alert("리뷰 제출 중 오류 발생했습니다.");
-                console.error('리뷰 제출 중 오류 발생:', error);
+                alert("Error submitting review.");
+                console.error('Error submitting review:', error);
             });
     };
 
     const showReserve = () => {
         navigate(`/movie/showReserveForm/${mvId}`, { state: movieDetails });
+    };
+
+    const toggleBookmark = () => {
+        const userId = localStorage.getItem('userId');
+        const endpoint = isMovieBookmarked ? `movie/${mvId}/wish/delete` : `movie/${mvId}/wish/add`;
+
+        axios.get(`/${endpoint}?userId=${userId}`)
+            .then(response => {
+                // Assuming the response indicates the current state of the bookmark
+                const newBookmarkState = !isMovieBookmarked;
+                setIsMovieBookmarked(newBookmarkState);
+            })
+            .catch(error => {
+                console.error('Toggle bookmark failed:', error);
+            });
     };
 
     const Critic = ({ name, stars, reviewTitle, reviewContent }) => {
@@ -104,7 +136,7 @@ const MovieDetail = () => {
                         {renderStars(stars, 5)}
                     </div>
                     <div className="bookmark_critic">
-                        <img src={bookmark} width={35} height={35} />
+                        <img src={isCriticBookmarked ? bookmarkCritic : bookmark} width={35} height={35} onClick={() => setIsCriticBookmarked(!isCriticBookmarked)} />
                     </div>
                 </div>
                 <div className="critic_review_mid">
@@ -125,13 +157,19 @@ const MovieDetail = () => {
     return (
         <div className="mobile">
             <div className="back_img">
-                <img src={back} width={30} height={30} alt="Back"/>
+                <img src={back} width={30} height={30} alt="Back" onClick={() => navigate(-1)} />
             </div>
             <div className="bookmarkMovie">
-                <img src={bookmark} width={45} height={45} alt="Bookmark"/>
+                <img
+                    src={isMovieBookmarked ? bookmarkC : bookmark}
+                    width={45}
+                    height={45}
+                    alt="Bookmark"
+                    onClick={toggleBookmark}
+                />
             </div>
             <div className="imgMovie">
-                <img src={movieDetails.mvImg} width={250} height={350} alt={movieDetails.mvTitle}/>
+                <img src={movieDetails.mvImg} width={250} height={350} alt={movieDetails.mvTitle} />
             </div>
             <div className="title">
                 {movieDetails.mvTitle}
@@ -141,7 +179,7 @@ const MovieDetail = () => {
                     <img
                         key={index}
                         className="star_image"
-                        src={index < movieDetails.mvStar ? star : starN} // movieDetails.mvStar를 사용하여 별점을 렌더링
+                        src={index < movieDetails.mvStar ? star : starN}
                         width={30}
                         height={30}
                     />
@@ -164,6 +202,11 @@ const MovieDetail = () => {
                         #{movieDetails.openDate}
                     </div>
                 </div>
+                <div className="category_box">
+                    <div className="category_text">
+                        #{movieDetails.mvDirector}
+                    </div>
+                </div>
             </div>
             <button className="reservation_btn" onClick={showReserve}>예매하기</button>
 
@@ -172,14 +215,14 @@ const MovieDetail = () => {
                     <img
                         key={index}
                         className="star_image"
-                        src={index < starRating ? star : starN} // 현재 별점 상태에 따라 이미지 소스를 선택
+                        src={index < starRating ? star : starN}
                         width={40}
                         height={40}
-                        onClick={() => handleStarClick(index)} // 별 클릭 시 이벤트 핸들러 호출
+                        onClick={() => handleStarClick(index)}
                     />
                 ))}
             </div>
-            <input className="review_text" type="text" placeholder="리뷰를 작성해주세요" value={reviewText} onChange={handleReviewChange}/>
+            <input className="review_text" type="text" placeholder="리뷰를 작성해주세요" value={reviewText} onChange={handleReviewChange} />
             <button className="review_btn" onClick={handleReviewSubmit}>작성</button>
             <div className="expect">
                 평점요약
@@ -206,3 +249,6 @@ const MovieDetail = () => {
 }
 
 export default MovieDetail;
+
+
+

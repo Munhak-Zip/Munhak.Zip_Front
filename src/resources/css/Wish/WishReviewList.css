@@ -1,0 +1,77 @@
+body {
+    background-color: black;
+    color: #FFFFFF; /* 전체 텍스트 색상을 흰색으로 설정 */
+    font-family: Arial, sans-serif; /* 글꼴 설정 */
+}
+
+.mobile {
+    width: 360px;
+    margin: 0 auto;
+    padding: 20px; /* 좌우 여백 추가 */
+    background-color: black;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* 헤더와 내용 사이의 여백 */
+}
+
+.back_img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer; /* 마우스 커서 모양 변경 */
+    transform: scaleX(-1); /* 이미지 뒤집기 */
+}
+
+
+.review_title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.critic {
+    margin-top: 20px;
+    background-color: #1a1a1a; /* 리뷰 카드 배경색 설정 */
+    padding: 15px;
+    border-radius: 8px; /* 카드 모서리 둥글게 설정 */
+    cursor: pointer; /* 마우스 커서 모양 변경 */
+}
+
+.critic .critic_review_mid {
+    color: #D1003F;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.critic .critic_review_writer {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.star_critic {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.star_image {
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+}
+
+.critic_review {
+    color: #FFFFFF;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.horizontal-line {
+    margin-top: 20px;
+    border-top: 1px solid #FFFFFF;
+    width: 100%;
+}
