@@ -44,30 +44,30 @@ const WishReviewList = () => {
     };
 
     return (
-        <div className="mobile">
-            <div className="header">
-                <div className="back_img">
+        <div className="wr-mobile">
+            <div className="wr-header">
+                <div className="wr-back_img">
                     <img src={back} className="back-button" width={30} height={30} alt="back" onClick={goBack}/>
                 </div>
-                <span className="review_title">좋아하는 리뷰</span>
+                <span className="wr-review_title">좋아하는 리뷰</span>
             </div>
             {wishReviewList.map((review, idx) => (
-                <div key={idx} className="critic" onClick={() => showMovieDetail(review.mvId)}>
-                    <div className="critic_review_mid">
-                        <span className="movie_title">{review.mvTitle}</span>
+                <div key={idx} className="wr-critic" onClick={() => showMovieDetail(review.mvId)}>
+                    <div className="wr-critic_review_mid">
+                        <span className="wr-movie_title">{review.mvTitle}</span>
                     </div>
-                    <div className="critic_review_writer">
+                    <div className="wr-critic_review_writer">
                         {review.writer}
                     </div>
-                    <div className="star_critic">
+                    <div className="wr-star_critic">
                         {[...Array(review.rvStar)].map((_, i) => (
-                            <img key={i} className="star_image" src={star} width={25} height={25} alt="star"/>
+                            <img key={i} className="wr-star_image" src={star} width={25} height={25} alt="star"/>
                         ))}
                     </div>
-                    <div className="critic_review">
+                    <div className="wr-critic_review">
                         {review.content}
                     </div>
-                    <div className="horizontal-line"></div>
+                    <div className="wr-horizontal-line"></div>
                 </div>
             ))}
         </div>

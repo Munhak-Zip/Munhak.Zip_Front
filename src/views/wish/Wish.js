@@ -89,11 +89,9 @@ const Wish = () => {
         return currentMovies.map(movie => (
             <span key={movie.mvid} className="movie">
                 <img src={movie.mvImg} alt={movie.title} className="Poster-img"/>
-                <p>
-                    {movie.mvTitle}
-                    <img src={Star} className={"star"}/>
+                <p>{movie.mvTitle}
+                    <img src={Star} className="star"/>
                     ({movie.mvStar})</p>
-
             </span>
         ));
     };
