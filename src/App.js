@@ -107,11 +107,11 @@ function App() {
                         element={<FirstCheckInterests />}
                     />
                     <Route
-                        path={"/wish/ReviewBoxDetail"}
+                        path={"/wish/myReviewList/ReviewBoxDetail/:rvId"}
                         element={<ReviewBoxDetail/>}
                         />
                     <Route
-                        path={"/wish/MyReviewBoxUpdate"}
+                        path={"/wish/MyReviewBoxUpdate/:rvId"}
                         element={<MyReviewBoxUpdate/>}
                     />
                     <Route

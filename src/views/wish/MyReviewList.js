@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import '../../resources/css/Wish/ReviewDetail.css';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const MyReviewList = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [userId, setUserId] = useState('');
     const [myReviewList, setMyReviewList] = useState(location.state || []);
 
@@ -19,7 +21,6 @@ const MyReviewList = () => {
             console.error('No user ID found in local storage');
         }
     }, []);
-
 
     const fetchMyReviewList = (userId) => {
         axios.get('/wish/myReviewList', { params: { userId: userId } })
@@ -37,6 +38,17 @@ const MyReviewList = () => {
             });
     };
 
+    const handleReviewClick = (rvId) => {
+        axios.get(`/wish/myReviewList/ReviewBoxDetail/${rvId}`)
+            .then(response => {
+                console.log("리뷰 상세 정보:", response.data); // 콘솔에 출력
+                navigate(`/wish/myReviewList/ReviewBoxDetail/${rvId}`);
+            })
+            .catch(error => {
+                console.error('Failed to fetch review detail:', error);
+            });
+    };
+
     return (
         <div className="mobile">
             <div className="back_img">
@@ -44,7 +56,7 @@ const MyReviewList = () => {
                 <span>나의 리뷰</span>
             </div>
             {myReviewList.map((review, idx) => (
-                <div key={idx} className="critic">
+                <div key={idx} className="critic" onClick={() => handleReviewClick(review.rvId)}>
                     <div className="star_critic">
                         {[...Array(review.rvStar)].map((_, i) => (
                             <img key={i} className="star_image" src={star} width={25} height={25} alt="star" />
@@ -54,7 +66,7 @@ const MyReviewList = () => {
                         {review.mvTitle}
                     </div>
                     <div className="critic_review">
-                        {review.content}
+                        {review.content}{review.id}
                     </div>
                     <div className="horizontal-line"></div>
                 </div>
