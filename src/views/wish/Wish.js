@@ -164,8 +164,8 @@ const Wish = () => {
 
     return (
         <div className="div1">
-            <Category type="wishMovies" url="/wish/movies" />
-            <Category type="wishReviews" url="/wish/reviews" />
+            <Category type="wishMovies" url="/wish/wishMovieList" />
+            <Category type="wishReviews" url="/wish/wishReviewList" />
             <Category type="myReviews" url="/wish/myReviewList" />
         </div>
     );
