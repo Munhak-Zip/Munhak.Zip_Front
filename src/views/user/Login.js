@@ -48,9 +48,25 @@ const Login = () => {
                 withCredentials: true, // 쿠키 기반 인증 정보를 포함
             });
             if (response.status === 200) {
-                setShowModal(true); // 로그인 성공 시 Interest 모달 창을 열기
+               
+                const userIdResponse = await axios.get('/getId');
+                if (userIdResponse.status === 200) {
+                    const userId = userIdResponse.data; // 서버에서 받은 userId
+                    // alert(userId);
+
+                    // userId를 사용해 Interest 존재 여부 확인
+                    const interestResponse = await axios.post('/checkExistInterestById', { id: userId });
+
+                    if (interestResponse.data) {
+                        navigate("/");
+                    } else {
+                        setShowModal(true);
+                    }
+                } else {
+                    console.error("Error fetching user ID:", userIdResponse.data);
+                }
             } else {
-                console.error("Error:", response.data);
+                console.error("Error during login:", response.data);
             }
         } catch (error) {
             console.error("Network error:", error);
