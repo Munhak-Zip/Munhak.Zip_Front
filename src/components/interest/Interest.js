@@ -25,11 +25,11 @@ const Interest = () => {
                 const interest = { id: Number(userId), genre: selectedGenre };
                 console.log("Sending payload:", interest);
 
-                await axios.post('/addInterest', interest); // Ensure the URL is correct
-                navigate('/'); // Redirect to main page after successful submission
+                await axios.post('/addInterest', interest); 
+                navigate('/'); 
             } catch (error) {
                 console.error('Error adding interest:', error);
-                // Handle error as needed
+              
             }
         } else {
             alert("Please select a genre.");
