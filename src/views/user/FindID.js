@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import '../../resources/css/User/FindID.css';
+import axios from 'axios';
 
 const FindID = () => {
     const [nickName, setNickName] = useState("");
     const [hint, setHint] = useState("");
+    const [userId, setUserId] = useState(""); // 유저 ID 상태 추가
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("닉네임:", nickName);
-        console.log("부모님의 이름:", hint);
+
+        try {
+            const response = await axios.post('/findUserId', {
+                nickname: nickName,
+                hint: hint
+            });
+
+            setUserId(response.data);
+            alert(`User ID: ${response.data}`);
+        } catch (error) {
+            console.error('Error finding user ID:', error);
+            alert('Error finding user ID');
+        }
     };
 
     return (
@@ -30,6 +43,7 @@ const FindID = () => {
                 />
                 <button type="submit">ID 찾기</button>
             </form>
+            {userId && <p>{nickName}님의 ID는 {userId} 입니다.</p>} {/* 유저 ID를 표시 */}
         </div>
     );
 }
