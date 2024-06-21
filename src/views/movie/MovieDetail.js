@@ -20,7 +20,14 @@ const MovieDetail = () => {
     const [critics, setCritics] = useState([]); // State to store critic reviews
     const [isMovieBookmarked, setIsMovieBookmarked] = useState(false); // State to manage movie bookmark
     const [isCriticBookmarked, setIsCriticBookmarked] = useState(false); // State to manage critic bookmark
+    const [userId, setUserId] = useState('');
 
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setUserId(storedUserId);
+        }
+    }, []);
     useEffect(() => {
         // Fetch movie details
         axios.get(`/movie/${mvId}`)
@@ -80,7 +87,8 @@ const MovieDetail = () => {
             mvTitle: movieDetails.mvTitle,
             content: reviewText,
             is_Critic: "N",
-            mvId: mvId
+            mvId: mvId,
+            writer: userId
         })
             .then(response => {
                 alert('Review submitted successfully.');
