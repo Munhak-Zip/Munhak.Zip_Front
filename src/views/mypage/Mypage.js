@@ -10,44 +10,45 @@ const Mypage = () => {
     const [changeToggle, setChangeToggle] = useState(false);
     const [reserveDetails, setReserveDetails] = useState([]);
     const [userId, setUserId] = useState('');
+    const [userInfo, setUserInfo] = useState({ nickname: '', userId: '', password: '' });
+    const [userInterest, setUserInterest] = useState([]);
 
     useEffect(() => {
-        // 로컬 저장소에서 사용자 ID 가져오기
         const storedUserId = localStorage.getItem('userId');
         if (storedUserId) {
             setUserId(storedUserId);
             fetchReservationDetails(storedUserId);
+            fetchUserInfo(storedUserId);
+            fetchUserInterest(storedUserId);
         } else {
             console.error('No user ID found in local storage');
         }
     }, []);
 
-    // 현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
-    // useEffect(() => {
-    //     // 세션 체크 함수
-    //     const checkSession = async () => {
-    //         try {
-    //             // 예시로 /session-expired 엔드포인트에 GET 요청을 보냅니다.
-    //             const response = await axiosInstance.get('/session-expired');
-    //             console.log('세션 만료 체크 결과:', response);
-    //         } catch (error) {
-    //             // 오류 발생 시
-    //             if (error.response && error.response.status === 401) {
-    //                 // 세션이 만료된 경우
-    //                 alert('세션이 만료되었습니다. 다시 로그인 해주세요.');
-    //                 // 여기서 다시 로그인 페이지로 리디렉션하거나 다른 처리를 할 수 있습니다.
-    //                 // 예시로 리다이렉션 처리:
-    //                 window.location.href = '/login';
-    //             } else {
-    //                 console.error('세션 체크 오류:', error);
-    //             }
-    //         }
-    //     };
-    //
-    //     // 페이지 진입 시 세션 체크 수행
-    //     checkSession();
-    // }, []); // 빈 배열을 넣어 한 번만 실행되도록 설정
-    //현재 비밀번호에서 변경하기 버튼 누르면 새 비밀번호 적는 칸 생기도록 구현
+    const fetchUserInfo = (userId) => {
+        axios.get('/mypage/user', { params: { userId: userId } })
+            .then(response => {
+                const data = response.data;
+                setUserInfo({
+                    nickname: data.nickname,
+                    userId: data.userId,
+                    password: data.password
+                });
+            })
+            .catch(error => {
+                console.error('Request failed:', error);
+            });
+    };
+
+    const fetchUserInterest = (userId) => {
+        axios.get('/mypage/user/interest', { params: { userId: userId } })
+            .then(response => {
+                setUserInterest(response.data.genre); // Assuming the response contains the user's genres as an array
+            })
+            .catch(error => {
+                console.error('Request failed:', error);
+            });
+    };
 
     const fetchReservationDetails = (userId) => {
         axios.get('/user/mypage', { params: { userId: userId } })
@@ -78,17 +79,17 @@ const Mypage = () => {
                 <div className={"mypage-userinfo"}>
                     <div className={"article"}>
                         <div className={"index"} id={"nickname"}>닉네임</div>
-                        <input className={"input_info"} type={"text"} />
+                        <input className={"input_info"} type={"text"} value={userInfo.nickname} readOnly />
                         <button className={"change_btn"}><p>변경</p></button>
                     </div>
                     <div className={"article"}>
                         <div className={"index"} id={"id"}>아이디</div>
-                        <input className={"input_info"} type={"text"} />
+                        <input className={"input_info"} type={"text"} value={userInfo.userId} readOnly />
                         <button className={"change_btn"}><p>변경</p></button>
                     </div>
                     <div className={"article"}>
                         <div className={"index"} id={"current_pw"}>현재비밀번호</div>
-                        <input className={"input_info"} type={"text"} />
+                        <input className={"input_info"} type={"text"} value={userInfo.password} readOnly />
                         <button className={"change_btn"} onClick={onClickChangebtn}><p>변경</p></button>
                     </div>
                     {changeToggle ? (
@@ -113,7 +114,13 @@ const Mypage = () => {
                                 const radioId = `genre-${index}`;
                                 return (
                                     <div key={index} id={"radio_btn"}>
-                                        <input type="checkbox" id={radioId} value={p} name={p} />
+                                        <input
+                                            type="checkbox"
+                                            id={radioId}
+                                            value={p}
+                                            name={p}
+                                            checked={userInterest.includes(p)} // Check if the genre is in the user's interest list
+                                        />
                                         <label htmlFor={radioId}>{p}</label>
                                     </div>
                                 );
@@ -146,4 +153,5 @@ const Mypage = () => {
         </div>
     );
 };
+
 export default Mypage;
