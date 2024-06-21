@@ -50,25 +50,25 @@ const MyReviewList = () => {
     };
 
     return (
-        <div className="mobile">
-            <div className="back_img">
+        <div className="rd-mobile">
+            <div className="rd-back_img">
                 <img src={back} width={30} height={30} alt="back" />
                 <span>나의 리뷰</span>
             </div>
             {myReviewList.map((review, idx) => (
-                <div key={idx} className="critic" onClick={() => handleReviewClick(review.rvId)}>
-                    <div className="star_critic">
+                <div key={idx} className="rd-critic" onClick={() => handleReviewClick(review.rvId)}>
+                    <div className="rd-star_critic">
                         {[...Array(review.rvStar)].map((_, i) => (
-                            <img key={i} className="star_image" src={star} width={25} height={25} alt="star" />
+                            <img key={i} className="rd-star_image" src={star} width={25} height={25} alt="star" />
                         ))}
                     </div>
-                    <div className="critic_review_mid">
+                    <div className="rd-critic_review_mid">
                         {review.mvTitle}
                     </div>
-                    <div className="critic_review">
+                    <div className="rd-critic_review">
                         {review.content}{review.id}
                     </div>
-                    <div className="horizontal-line"></div>
+                    <div className="rd-horizontal-line"></div>
                 </div>
             ))}
         </div>
