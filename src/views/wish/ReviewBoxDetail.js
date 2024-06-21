@@ -43,9 +43,17 @@ const ReviewBoxDetail = () => {
 
     // 리뷰 삭제 알림 및 페이지 이동
     const deleteMyReviewBox = () => {
-        alert("삭제 완료되었습니다.");
-        navigate("/wish/ReviewBoxDetail"); // 삭제 후 목록 페이지로 이동
+        axios.delete(`/wish/myReviewList/delete`, { params: { rvId } })
+            .then(response => {
+                alert('삭제 완료되었습니다.');
+                navigate(`/wish/myReviewList`); // 삭제 후 목록 페이지로 이동
+            })
+            .catch(error => {
+                console.error('Failed to delete review:', error);
+                alert('리뷰 삭제 실패. 다시 시도해주세요.');
+            });
     };
+
 
     // myReviewDetails가 null인 경우 로딩 중을 표시할 수 있습니다.
     if (!myReviewDetails) {
