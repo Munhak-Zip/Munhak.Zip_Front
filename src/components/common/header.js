@@ -61,7 +61,7 @@ const Header = (props) => {
     }
 
     const goToWish = () => {
-        navigate("/wish/reviewDetail");
+        navigate("/wish");
         closeSidebar();
     }
 

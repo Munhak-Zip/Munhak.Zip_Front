@@ -9,6 +9,7 @@ import Moviedetail from "./views/movie/MovieDetail";
 import MovieDetail from "./views/movie/MovieDetail";
 import Reviewdetail from "./views/wish/ReviewDetail";
 import MyReviewList from "./views/wish/MyReviewList";
+import WishReviewList from "./views/wish/WishReviewList";
 import MainPage from "./views/Main"
 import Mypage from "./views/mypage/Mypage";
 import FindId from "./views/user/FindID";
@@ -20,6 +21,7 @@ import Header from "./components/common/header";
 
 import MovieList from "./views/movie/MovieList";
 import Wish from "./views/wish/Wish"
+import WishMovieList from "./views/wish/WishMovieList"
 import Reserve from "./views/movie/Reserve"
 import axios from 'axios';
 import axiosInstance from './axiosConfig';
@@ -77,6 +79,14 @@ function App() {
                         element={<MyReviewList />}
                     />
                     <Route
+                        path={"/wish/wishMovieList"}
+                        element={<WishMovieList />}
+                    />
+                    <Route
+                        path={"/wish/wishReviewList"}
+                        element={<WishReviewList />}
+                    />
+                    <Route
                         path={"/findId"}
                         element={<FindId />}
                     />
@@ -108,6 +118,7 @@ function App() {
                         path={"/search/:mvTitle"}
                         element={<SearchMovie />}
                     />
+
                 </Routes>
 
             </div>
