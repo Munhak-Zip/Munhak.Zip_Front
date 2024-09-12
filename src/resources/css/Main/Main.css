@@ -112,3 +112,22 @@
         cursor: pointer;
     }
 }
+
+.search-button {
+    background-color: #D1003F;
+    color: white; /* 글자 색상 */
+    width: 70px;
+    height: 40px;
+    border-radius: 10px; /* 둥글기 정도 조절 */
+    border: none; /* 기본 테두리 제거 (선택 사항) */
+    cursor: pointer; /* 마우스 포인터 변화 */
+    display: flex; /* Flexbox 사용 */
+
+}
+.search-type{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px; /* 버튼과의 간격 조정 */
+}

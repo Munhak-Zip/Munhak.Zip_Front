@@ -305,8 +305,8 @@ function App() {
 
     return (
         <div className="div1">
-            <input type="text" placeholder="검색하기" value={search} onChange={onChange}/>
-            <input type="button" value="검색" onClick={handleSearch} />
+            <input type="text" class="search-type" placeholder="검색하기" value={search} onChange={onChange}/>
+            <input type="button" class="search-button" value="검색" onClick={handleSearch}/>
             <p/>
             <Movies type="new" movies={recentMovies} isLoading={isLoading} />
             <Movies type="recommend" movies={recommendationResults} isLoading={isLoading} />
